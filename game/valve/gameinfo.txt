@@ -1,7 +1,7 @@
 "GameInfo"
 {
-	"game"		"Aperture Sandbox"
-	"title"		"Aperture Sandbox"
+	"game"		"MultiSTOP"
+	"title"		"MultiSTOP"
 	"type"		"singleplayer_only"
 	GameData	"portalretract_part2.fgd"
 	InstancePath "tilegen/instances/"
