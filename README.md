@@ -4,4 +4,4 @@
 
 It is based on arosla's mod, "Aperture Camera" (https://github.com/arosla-dev/aperture-camera)
 
-We will attempt to be an alternative to "F-Stop Deathmatch", another multiplayer fix for Aperture Deathmatch.
+We will attempt to be an alternative to "F-Stop Deathmatch", another multiplayer fix for F-Stop.
