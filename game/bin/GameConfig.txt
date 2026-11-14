@@ -1,0 +1,31 @@
+"Configs"
+{
+	"Games"
+	{
+		"Aperture Sandbox"
+		{
+			"GameDir"		".\..\valve"
+			"Hammer"
+			{
+				"GameData0"		"portal.fgd"
+				"TextureFormat"		"5"
+				"MapFormat"		"4"
+				"DefaultTextureScale"		"0.250000"
+				"DefaultLightmapScale"		"16"
+				"GameExe"		".\..\valve.exe"
+				"DefaultSolidEntity"		"func_detail"
+				"DefaultPointEntity"		"info_player_start"
+				"BSP"		".\vbsp.exe"
+				"Vis"		".\vvis.exe"
+				"Light"		".\vrad.exe"
+				"GameExeDir"		".\..\"
+				"MapDir"		".\..\valve\maps"
+				"BSPDir"		".\..\valve\maps"
+				"PrefabDir"		".\..\bin\Prefabs"
+				"CordonTexture"		"BLACK"
+				"MaterialExcludeCount"		"0"
+			}
+		}
+	}
+	"SDKVersion"		"5"
+}
