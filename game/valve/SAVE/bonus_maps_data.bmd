@@ -1,0 +1,13 @@
+"bonus_map_saved_data"
+{
+	"bonusfiles"
+	{
+		"scripts/challenges/challenges.bns"
+		{
+			"#Bonus_Map_A3TC03Challenges"
+			{
+				"lock"		"0"
+			}
+		}
+	}
+}

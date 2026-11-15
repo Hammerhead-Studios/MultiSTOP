@@ -307,7 +307,11 @@ PRECACHE_REGISTER_BEGIN( GLOBAL, ClientPrecache )
 	PRECACHE( MODEL, "sprites/blueglow1.vmt" )
 	PRECACHE( MODEL, "sprites/purpleglow1.vmt" )
 	PRECACHE( MODEL, "sprites/purplelaser1.vmt" )
-
+	PRECACHE(MODEL, "models/bot_fem/bot_fem.mdl")
+	PRECACHE(MODEL, "models/humans/group01/female_01.mdl")
+	PRECACHE(MODEL, "models/humans/group01/male_07.mdl")
+	
+		
 
 	PRECACHE_CONDITIONAL( MODEL, "models/germangibs.mdl", g_Language.GetInt() == LANGUAGE_GERMAN )
 	PRECACHE_CONDITIONAL( MODEL, "models/gibs/hgibs.mdl", g_Language.GetInt() != LANGUAGE_GERMAN )
@@ -935,8 +939,8 @@ CON_COMMAND( give, "Give item to player.\n\tArguments: <item_name>" )
 //------------------------------------------------------------------------------
 void CC_Player_SetModel( const CCommand &args )
 {
-	if ( gpGlobals->deathmatch )
-		return;
+	/*if ( gpGlobals->deathmatch )
+		return;*/
 
 	CBasePlayer *pPlayer = ToBasePlayer( UTIL_GetCommandClient() );
 	if ( pPlayer && args.ArgC() == 2)
