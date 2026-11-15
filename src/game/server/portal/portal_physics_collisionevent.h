@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7fe7516d82627232f8b1e465a20b5883934a8d430fd2b647a1022bb20ae6b462
-size 1216
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef PORTAL_PHYSICS_COLLISIONEVENT_H
+#define PORTAL_PHYSICS_COLLISIONEVENT_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "physics_collisionevent.h"
+
+class CPortal_CollisionEvent : public CCollisionEvent
+{
+public:
+	DECLARE_CLASS_GAMEROOT( CPortal_CollisionEvent, CCollisionEvent );
+
+	virtual int ShouldCollide( IPhysicsObject *pObj0, IPhysicsObject *pObj1, void *pGameData0, void *pGameData1 );
+	virtual void PreCollision( vcollisionevent_t *pEvent );
+	virtual void PostCollision( vcollisionevent_t *pEvent );
+	virtual int ShouldSolvePenetration( IPhysicsObject *pObj0, IPhysicsObject *pObj1, void *pGameData0, void *pGameData1, float dt );
+
+	virtual void PostSimulationFrame( void );
+	void PortalPostSimulationFrame( void );
+	void AddDamageEvent( CBaseEntity *pEntity, const CTakeDamageInfo &info, IPhysicsObject *pInflictorPhysics, bool bRestoreVelocity, const Vector &savedVel, const AngularImpulse &savedAngVel );
+};
+
+#endif //#ifndef PORTAL_PHYSICS_COLLISIONEVENT_H

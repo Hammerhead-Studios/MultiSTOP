@@ -18,7 +18,7 @@ bool g_bAllOnReleasedChainedToBase;
 bool UTIL_FizzlePlayerPhotos( CPortal_Player *pPlayer )
 {
 	// Must have photos to bother
-	if ( Photo_Count() == 0 )
+	if ( Photo_Count( pPlayer ) == 0 )
 		return false;
 
 	CaptureInfo_t captureInfo;
@@ -27,7 +27,7 @@ bool UTIL_FizzlePlayerPhotos( CPortal_Player *pPlayer )
 	// FIXME: Need better accessor
 	for ( int i = 0; i < 3; i++ )
 	{
-		if ( Photo_Get( i, &captureInfo ) )
+		if ( Photo_Get( pPlayer, i, &captureInfo ) )
 		{
 			bFizzleOccurred = true;
 
@@ -69,12 +69,9 @@ public:
 
 		if ( m_bDisabled == false )
 		{
-			SetCollisionGroup(COLLISION_GROUP_CAMERA_SOLID);
-			// RemoveSolidFlags( FSOLID_NOT_SOLID );
-			
 			// We want to hit camera traces!
-			//SetCollisionGroup( COLLISION_GROUP_CAMERA_SOLID );
-			//RemoveSolidFlags( FSOLID_NOT_SOLID ); // HACK: We want camera traces to hit this!
+			SetCollisionGroup( COLLISION_GROUP_CAMERA_SOLID );
+			// Keep this trigger nonsolid for player movement. Placement checks handle the barrier.
 		}
 	}
 
@@ -99,11 +96,8 @@ public:
 	
 	virtual void Enable( void )
 	{
-		SetCollisionGroup(COLLISION_GROUP_CAMERA_SOLID);
-		// RemoveSolidFlags( FSOLID_NOT_SOLID );
-		
-		//SetCollisionGroup( COLLISION_GROUP_CAMERA_SOLID );
-		//RemoveSolidFlags( FSOLID_NOT_SOLID ); // HACK: We want camera traces to hit this!
+		SetCollisionGroup( COLLISION_GROUP_CAMERA_SOLID );
+		// Keep this trigger nonsolid for player movement. Placement checks handle the barrier.
 	}
 
 	virtual void Disable( void )

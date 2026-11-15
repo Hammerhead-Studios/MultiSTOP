@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4f64f493d9204f6ee3c2c69c3c072c51034a5ae6a6bc505f369a37d8c318ca42
-size 676
+//============== Copyright © Valve Corporation, All rights reserved. =================//
+//
+// Entities which paint brushes that intersect with specified sphere
+//
+//=====================================================================================//
+#ifndef PAINT_SPHERE_H
+#define PAINT_SPHERE_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "paint_color_manager.h"
+
+class CPaintSphere : public CPointEntity
+{
+public:
+	DECLARE_CLASS( CPaintSphere, CPointEntity );
+	DECLARE_DATADESC();
+
+	CPaintSphere();
+
+	void Paint( inputdata_t &inputdata );
+private:
+	PaintPowerType m_nPaintType;
+	float m_flSphereRadius;
+	float m_flAlphaPercent;
+};
+
+#endif

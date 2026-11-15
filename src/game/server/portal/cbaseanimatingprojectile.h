@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:661458fc61e9f754e7f15ad146b1120319dc3d5d83ea32cfd0202cc15faba3e3
-size 1166
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:		Base class for simple projectiles
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CBASEANIMATINGPROJECTILE_H
+#define CBASEANIMATINGPROJECTILE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+enum MoveType_t;
+enum MoveCollide_t;
+
+
+//=============================================================================
+//=============================================================================
+class CBaseAnimatingProjectile : public CBaseAnimating
+{
+	DECLARE_DATADESC();
+	DECLARE_CLASS( CBaseAnimatingProjectile, CBaseAnimating );
+
+public:
+	void Touch( CBaseEntity *pOther );
+
+	void CBaseAnimatingProjectile::Spawn(	char *pszModel,
+											const Vector &vecOrigin,
+											const Vector &vecVelocity,
+											edict_t *pOwner,
+											MoveType_t	iMovetype,
+											MoveCollide_t nMoveCollide,
+											int	iDamage,
+											int iDamageType );
+
+	virtual void Precache( void ) {};
+
+	int	m_iDmg;
+	int m_iDmgType;
+};
+
+#endif // CBASEANIMATINGPROJECTILE_H

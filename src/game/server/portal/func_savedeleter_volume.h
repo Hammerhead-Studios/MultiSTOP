@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4fbc0bb91f9b43b0c7445388c9d630752646009c09a3bbe75d898d3d6212f29a
-size 401
+#ifndef FUNC_SAVEDELETER_VOLUME_H
+#define FUNC_SAVEDELETER_VOLUME_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "baseentity.h"
+
+class CFuncPaintSaveDeletorVolume : public CBaseEntity
+{
+public:
+	DECLARE_CLASS( CFuncPaintSaveDeletorVolume, CBaseEntity );
+	DECLARE_DATADESC();
+
+	void Spawn();
+	void InputClearSaveTraces( inputdata_t &inputdata );
+};
+
+#endif // FUNC_SAVEDELETER_VOLUME_H

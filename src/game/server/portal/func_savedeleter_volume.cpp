@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:747d4dc8a2fd16e128e7b4428d903fb10381ded392f0b6bb04ab636971aa94e2
-size 562
+#include "cbase.h"
+#include "func_savedeleter_volume.h"
+#include "paint_saverestore.h"
+
+BEGIN_DATADESC( CFuncPaintSaveDeletorVolume )
+
+DEFINE_INPUTFUNC( FIELD_VOID, "ClearSaveTraces", InputClearSaveTraces )
+
+END_DATADESC()
+
+LINK_ENTITY_TO_CLASS( func_paint_savedeletor_volume, CFuncPaintSaveDeletorVolume )
+
+void CFuncPaintSaveDeletorVolume::Spawn( void )
+{	
+	SetModel( STRING( GetModelName() ) );
+	BaseClass::Spawn();
+}
+
+void CFuncPaintSaveDeletorVolume::InputClearSaveTraces( inputdata_t &inputdata )
+{
+	ClearPaintTracesInVolume( this );
+}

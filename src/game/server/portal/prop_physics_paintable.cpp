@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:72d8da69b6214bdd40f60de388d61a3930e32e4f149835de29c2f565efd71615
-size 769
+//========= Copyright 1996-2010, Valve Corporation, All rights reserved. ============//
+//
+//=============================================================================//
+
+#include "cbase.h"
+#include "props.h"
+#include "player_pickup_paint_power_user.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+#if !defined( FRONTLINEFORCE )	//Tony; in FLF, CPhysicsProp is a paintpoweruser.
+class CPropPhysicsPaintable : public PlayerPickupPaintPowerUser< CPhysicsProp >
+{
+	DECLARE_CLASS( CPropPhysicsPaintable, PlayerPickupPaintPowerUser< CPhysicsProp > );
+};
+
+
+LINK_ENTITY_TO_CLASS( prop_physics_paintable, CPropPhysicsPaintable );	
+#else
+LINK_ENTITY_TO_CLASS( prop_physics_paintable, CPhysicsProp );	
+#endif

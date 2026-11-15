@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4cb7ad36abe9c418f40cf0eb382886f8588a47327e67f242b2e2b060e5ef7d2a
-size 2001
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef WEAPON_PHYSCANNON_H
+#define WEAPON_PHYSCANNON_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class CGrabController;
+
+//-----------------------------------------------------------------------------
+// Do we have the super-phys gun?
+//-----------------------------------------------------------------------------
+bool PlayerHasMegaPhysCannon();
+
+// force the physcannon to drop an object (if carried)
+void PhysCannonForceDrop( CBaseCombatWeapon *pActiveWeapon, CBaseEntity *pOnlyIfHoldingThis );
+void PhysCannonBeginUpgrade( CBaseAnimating *pAnim );
+
+bool PlayerPickupControllerIsHoldingEntity( CBaseEntity *pPickupController, CBaseEntity *pHeldEntity );
+void ShutdownPickupController( CBaseEntity *pPickupControllerEntity );
+float PlayerPickupGetHeldObjectMass( CBaseEntity *pPickupControllerEntity, IPhysicsObject *pHeldObject );
+float PhysCannonGetHeldObjectMass( CBaseCombatWeapon *pActiveWeapon, IPhysicsObject *pHeldObject );
+
+CBaseEntity *PhysCannonGetHeldEntity( CBaseCombatWeapon *pActiveWeapon );
+CBaseEntity *GetPlayerHeldEntity( CBasePlayer *pPlayer );
+CBasePlayer *GetPlayerHoldingEntity( CBaseEntity *pEntity );
+
+CGrabController *GetGrabControllerForPlayer( CBasePlayer *pPlayer );
+CGrabController *GetGrabControllerForPhysCannon( CBaseCombatWeapon *pActiveWeapon );
+void GetSavedParamsForCarriedPhysObject( CGrabController *pGrabController, IPhysicsObject *pObject, float *pSavedMassOut, float *pSavedRotationalDampingOut );
+void UpdateGrabControllerTargetPosition( CBasePlayer *pPlayer, Vector *vPosition, QAngle *qAngles );
+bool PhysCannonAccountableForObject( CBaseCombatWeapon *pPhysCannon, CBaseEntity *pObject );
+
+void GrabController_SetPortalPenetratingEntity( CGrabController *pController, CBaseEntity *pPenetrated );
+
+#endif // WEAPON_PHYSCANNON_H

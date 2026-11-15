@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0cbc89e78dda47a9786dfbb6cb9e2fe89b54133e2d3c8d504f2bf57e5e3695c0
-size 1256
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef PORTAL_PLACEMENT_H
+#define PORTAL_PLACEMENT_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+struct CPortalCornerFitData;
+
+bool FitPortalOnSurface( const CProp_Portal *pIgnorePortal, Vector &vOrigin, const Vector &vForward, const Vector &vRight, 
+						 const Vector &vTopEdge, const Vector &vBottomEdge, const Vector &vRightEdge, const Vector &vLeftEdge, 
+						 int iPlacedBy, ITraceFilter *pTraceFilterPortalShot, 
+						 int iRecursions = 0, const CPortalCornerFitData *pPortalCornerFitData = 0, const int *p_piIntersectionIndex = 0, const int *piIntersectionCount = 0 );
+bool IsPortalIntersectingNoPortalVolume( const Vector &vOrigin, const QAngle &qAngles, const Vector &vForward );
+bool IsPortalOverlappingOtherPortals( const CProp_Portal *pIgnorePortal, const Vector &vOrigin, const QAngle &qAngles, bool bFizzle = false );
+float VerifyPortalPlacement( const CProp_Portal *pIgnorePortal, Vector &vOrigin, QAngle &qAngles, int iPlacedBy, bool bTest = false );
+bool IsOnPortalPaint( const trace_t &tr );
+
+
+#endif // PORTAL_PLACEMENT_H

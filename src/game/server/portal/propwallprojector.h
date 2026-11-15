@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:643d0b9138efc85d060ba3d1e175cbca579506869fdbfe1c3615fc89292ec524
-size 512
+#ifndef PROP_WALL_PROJECTOR_H
+#define PROP_WALL_PROJECTOR_H
+
+#include "baseprojector.h"
+#include "projectedwallentity.h"
+
+class CPropWallProjector : public CBaseProjector
+{
+public:
+	DECLARE_CLASS( CPropWallProjector, CBaseProjector );
+	DECLARE_DATADESC();
+    CPropWallProjector();
+    ~CPropWallProjector();
+    void Spawn();
+    void Precache();
+    void Project();
+    void Shutdown();
+
+protected:
+    CBaseProjectedEntity *CreateNewProjectedEntity();
+};
+
+#endif // PROP_WALL_PROJECTOR_H
