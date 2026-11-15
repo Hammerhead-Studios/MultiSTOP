@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9c2a9ef372112455e86609ecfd514724cfd540dbbe32bc50342a10da292d966c
-size 504
+//========== Copyright (c) Valve Corporation, All rights reserved. ==========//
+
+#ifdef PIXELSHADER
+	#define VS_OUTPUT PS_INPUT
+#endif
+
+struct VS_OUTPUT
+{
+#ifndef PIXELSHADER
+	float4 projPos				: POSITION;	
+#endif
+
+	float2 texCoord				: TEXCOORD0;
+	float4 worldPos_projPosZ	: TEXCOORD1;	
+	float4 argbcolor			: COLOR;
+
+#ifndef PIXELSHADER
+	#if !defined( _X360 ) && !defined( SHADER_MODEL_VS_3_0 )
+		float fog : FOG;
+	#endif
+#endif
+};
+
+#ifdef PIXELSHADER
+	#undef VS_OUTPUT
+#endif

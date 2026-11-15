@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ee4bdf937e250ec8dcd3cf4f6e704d05b79cde4c489f0d3c424d75d3eef970a8
-size 537
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef IVGUIMATINFOVAR_H
+#define IVGUIMATINFOVAR_H
+
+
+// wrapper for IMaterialVar
+class IVguiMatInfoVar
+{
+public:
+	virtual int GetIntValue ( void ) const = 0;
+	virtual void SetIntValue ( int val ) = 0;
+
+	// todo: if you need to add more IMaterialVar functions add them here
+};
+
+#endif //IVGUIMATINFOVAR_H

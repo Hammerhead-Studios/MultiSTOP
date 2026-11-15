@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fd932014809c894803b6ce1ee32a896e5c4f451049e0834ab479b1896ce10711
-size 624
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CRTMEMDEBUG_H
+#define CRTMEMDEBUG_H
+#pragma once
+
+#ifdef USECRTMEMDEBUG
+
+#include <crtdbg.h>
+#define MEMCHECK CheckHeap()
+void CheckHeap( void );
+
+#else
+
+#define MEMCHECK
+
+#endif
+
+void InitCRTMemDebug( void );
+
+
+#endif // CRTMEMDEBUG_H

@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ef611b2825f678bc12711237814fdf1d124795d770f731600e2943973d7b7594
-size 453
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef ENTITY_TOOLS_SERVER_H
+#define ENTITY_TOOLS_SERVER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "toolframework/itoolentity.h"
+
+
+void HandleFoundryEntitySpawnRecords();
+
+
+extern IServerTools *g_pServerTools;
+
+
+#endif // ENTITY_TOOLS_SERVER_H

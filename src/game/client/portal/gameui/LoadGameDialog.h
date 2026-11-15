@@ -1,3 +1,53 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ccfea5dc81e44211ab80f559974cc0a44550a1f21790dab0527c15cfcd21e706
-size 1433
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef LOADGAMEDIALOG_H
+#define LOADGAMEDIALOG_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "BaseSaveGameDialog.h"
+#include "SaveGameDialog.h"
+#include "SaveGameBrowserDialog.h"
+#include "BasePanel.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Displays game loading options
+//-----------------------------------------------------------------------------
+class CLoadGameDialog : public CBaseSaveGameDialog
+{
+	DECLARE_CLASS_SIMPLE( CLoadGameDialog, CBaseSaveGameDialog );
+
+public:
+	CLoadGameDialog(vgui::Panel *parent);
+	~CLoadGameDialog();
+
+	virtual void OnCommand( const char *command );
+};
+
+//
+//
+//
+
+class CLoadGameDialogXbox : public CSaveGameBrowserDialog
+{
+	DECLARE_CLASS_SIMPLE( CLoadGameDialogXbox, CSaveGameBrowserDialog );
+
+public:
+					CLoadGameDialogXbox( vgui::Panel *parent );
+	virtual void	ApplySchemeSettings( vgui::IScheme *pScheme );
+	virtual void	OnCommand(const char *command);
+	virtual void	PerformSelectedAction( void );
+	virtual void	PerformDeletion( void );
+	virtual void	UpdateFooterOptions( void );
+
+private:
+	void			DeleteSaveGame( const SaveGameDescription_t *pSaveDesc );
+};
+
+#endif // LOADGAMEDIALOG_H

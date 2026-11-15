@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a3cde1d6d0ff329908c50daf604ba7a0a89e29c2f9fe17ae4d26631b669c84d9
-size 475
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#if !defined ( SHATTERSURFACETYPES_H )
+#define SHATTERSURFACETYPES_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+enum ShatterSurface_t
+{
+	// Note: This much match with the client entity
+	SHATTERSURFACE_GLASS = 0,
+	SHATTERSURFACE_TILE  = 1,
+};
+
+#endif

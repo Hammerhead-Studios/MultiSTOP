@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e0d7f1cc6c5b82f3b9905257f14bf6150eccf54113d30bffc2eb1761b124d17e
-size 660
+#ifndef _DEFINED_C_ASW_FIREWALL_PIECE_H
+#define _DEFINED_C_ASW_FIREWALL_PIECE_H
+
+class CASWGenericEmitter;
+
+class C_ASW_Firewall_Piece : public C_BaseEntity
+{
+public:
+	DECLARE_CLASS( C_ASW_Firewall_Piece, C_BaseEntity );
+	DECLARE_CLIENTCLASS();
+	DECLARE_PREDICTABLE();
+
+					C_ASW_Firewall_Piece();
+	virtual			~C_ASW_Firewall_Piece();
+
+	virtual void ClientThink();
+	void OnDataChanged( DataUpdateType_t updateType );
+	void CreateFireEmitter();
+	CSmartPtr<CASWGenericEmitter> m_hFireEmitter;
+	
+private:
+	C_ASW_Firewall_Piece( const C_ASW_Firewall_Piece & ); // not defined, not accessible
+};
+
+#endif /* _DEFINED_C_ASW_FIREWALL_PIECE_H */

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:438904bc7ea88c4b1a33a987d1c2cd5a4f7dbbabc76ae2abb5cca56a6d247296
-size 526
+//========= Copyright 1996-2009, Valve Corporation, All rights reserved. ============//
+//
+//=============================================================================//
+
+#include "cbase.h"
+#include "hudelement.h"
+#include "iclientmode.h"
+#include <vgui_controls/editablepanel.h>
+#include <vgui_controls/imagepanel.h>
+#include <vgui/ivgui.h>
+#include <vgui/isurface.h>
+
+#include "c_portal_player.h"
+#include "view.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"

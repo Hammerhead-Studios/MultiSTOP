@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cadd302ca9995b53c4b6f733fe6bfde3f25251cb590b09ff2696ce71191e70fc
-size 387
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef FONTABC_H
+#define FONTABC_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+typedef struct
+{
+	int		abcA, abcB, abcC;
+	int		total;
+} FONTABC;
+
+#endif // FONTABC_H

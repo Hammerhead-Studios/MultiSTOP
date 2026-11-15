@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:27291380c585c5a3db935cd06a414825262ec510b794b127994b70c1de00e214
-size 1076
+//-----------------------------------------------------------------------------
+//	game_shader_dx9.vpc
+//
+//	Project Script for mods to use an an example of how to override shaders
+//-----------------------------------------------------------------------------
+
+$Macro OUTBINNAME	"game_shader_dx9"
+$Macro SRCDIR		"..\.."
+$Macro GAMENAME "valve"
+$Include "$SRCDIR\materialsystem\stdshaders\game_shader_dx9_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$PreprocessorDefinitions		"$BASE;PORTAL_ONLY"
+	}
+}
+
+$Project "Shaders (Portal)"
+{
+	// Portals
+	$File "portal.cpp"
+	$File "portal_refract.cpp"
+	$File "portal_refract_helper.cpp"
+	$File "portalstaticoverlay.cpp"
+	
+	$File "paintblob_dx9.cpp"
+	$File "paintblob_helper.cpp"
+	$File "paintblob_helper.h"
+	
+	$File "lightmappedgeneric_dx9.cpp"
+	$File "lightmappedgeneric_dx9_helper.cpp"
+	$File "lightmappedgeneric_dx9_helper.h"
+	
+	$File "lightmappedpaint_dx9_helper.cpp"
+	$File "lightmappedpaint_dx9_helper.h"
+	
+	
+	$folder "Shaders"
+	{
+		$File "portal_ps2x.fxc"
+		$File "portal_vs20.fxc"
+	}
+}

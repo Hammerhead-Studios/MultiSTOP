@@ -1,3 +1,49 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7b74650171340295eda0532f86f8e7ead1bc1347c965ae7f387ff08b6b054741
-size 1121
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Resource collection entity
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef SKYCAMERA_H
+#define SKYCAMERA_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+class CSkyCamera;
+
+//=============================================================================
+//
+// Sky Camera Class
+//
+class CSkyCamera : public CLogicalEntity
+{
+	DECLARE_CLASS( CSkyCamera, CLogicalEntity );
+
+public:
+
+	DECLARE_DATADESC();
+	CSkyCamera();
+	~CSkyCamera();
+	virtual void Spawn( void );
+	virtual void Activate();
+
+	void InputActivateSkybox( inputdata_t &inputdata );
+
+public:
+	sky3dparams_t	m_skyboxData;
+	bool			m_bUseAngles;
+	CSkyCamera		*m_pNext;
+};
+
+
+//-----------------------------------------------------------------------------
+// Retrives the current skycamera
+//-----------------------------------------------------------------------------
+CSkyCamera*		GetCurrentSkyCamera();
+CSkyCamera*		GetSkyCameraList();
+
+
+#endif // SKYCAMERA_H

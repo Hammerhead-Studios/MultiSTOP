@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:351ac4a4d5ae3099f02147bff1a33d58cf5115ac323a46f8d88b8f869d75ca9b
-size 593
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef CLIENT_FACTORYLIST_H
+#define CLIENT_FACTORYLIST_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "interface.h"
+
+struct factorylist_t
+{
+	CreateInterfaceFn appSystemFactory;
+};
+
+// Store off the factories
+void FactoryList_Store( const factorylist_t &sourceData );
+
+// retrieve the stored factories
+void FactoryList_Retrieve( factorylist_t &destData );
+
+#endif // CLIENT_FACTORYLIST_H

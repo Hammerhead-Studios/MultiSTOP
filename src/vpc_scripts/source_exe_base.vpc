@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:99c3d44c18a08c56830294f811ac7dd976e5d7e68fad177a93d749502821acfb
-size 603
+$Include "$SRCDIR\vpc_scripts\platform_dirs.vpc"
+$include "$SRCDIR\vpc_scripts\source_base.vpc"
+
+$Include "$SRCDIR\vpc_scripts\source_exe_win_win32_base.vpc" 	[$WIN32 || $WIN64]
+
+$Include "$SRCDIR\vpc_scripts\source_video_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$PreprocessorDefinitions			"$BASE;DEV_BUILD"						[!$PUBLISH]
+		$PreprocessorDefinitions			"$BASE;_PROFILE"						[$PROFILE && !$RETAIL]
+		$PreprocessorDefinitions			"$BASE;RETAIL_ASSERTS"					[$RETAIL && $RETAILASSERTS]
+		$PreprocessorDefinitions			"$BASE;FRAME_POINTER_OMISSION_DISABLED" // This is now always true.
+	}
+}

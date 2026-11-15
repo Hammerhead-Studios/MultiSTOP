@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1684faa1640164a99cd97d13863997018d582271fb0e831cd5609a41118b0c34
-size 968
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//===========================================================================//
+
+#ifndef IGAMEUIFUNCS_H
+#define IGAMEUIFUNCS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "vgui/KeyCode.h"
+
+abstract_class IGameUIFuncs
+{
+public:
+	virtual bool		IsKeyDown( const char *keyname, bool& isdown ) = 0;
+	virtual const char	*GetBindingForButtonCode( ButtonCode_t code ) = 0;
+	virtual ButtonCode_t GetButtonCodeForBind( const char *pBind, int userId = -1 ) = 0;
+	virtual void		GetVideoModes( struct vmode_s **liststart, int *count ) = 0;
+	virtual void		SetFriendsID( uint friendsID, const char *friendsName ) = 0;
+	virtual void		GetDesktopResolution( int &width, int &height ) = 0;
+	virtual bool		IsConnectedToVACSecureServer() = 0;
+};
+
+#define VENGINE_GAMEUIFUNCS_VERSION "VENGINE_GAMEUIFUNCS_VERSION005"
+
+#endif // IGAMEUIFUNCS_H

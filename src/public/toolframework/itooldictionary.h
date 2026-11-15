@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:004a4c45fdc0afb0357e198a54fbf46a7b6daa3db60af796e56bf3df7115b12d
-size 1299
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef ITOOLDICTIONARY_H
+#define ITOOLDICTIONARY_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "appframework/IAppSystem.h"
+
+//-----------------------------------------------------------------------------
+// Forward declaration
+//-----------------------------------------------------------------------------
+class IToolSystem;
+
+
+//-----------------------------------------------------------------------------
+// Purpose: Every tool dll sitting in bin\tools must expose this interface
+//  The engine will load the .dll, get this interface, and then ask for all
+//  tools in the .dll
+// The engine will call CreateTools just before querying for the tools, so you 
+//  can instance any dynamically instanced tools during that call
+//-----------------------------------------------------------------------------
+class IToolDictionary : public IAppSystem
+{
+public:
+	virtual void		CreateTools() = 0;
+	virtual int			GetToolCount() const = 0;
+	virtual IToolSystem	*GetTool( int index ) = 0;
+};
+
+#define VTOOLDICTIONARY_INTERFACE_VERSION "VTOOLDICTIONARY003"
+
+#endif // ITOOLDICTIONARY_H

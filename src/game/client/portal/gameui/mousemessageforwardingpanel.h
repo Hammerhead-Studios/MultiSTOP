@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2da292ce6ef5178f458a8b6a8359eb49d501561c18e8318bde710024ed1053b5
-size 966
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef MOUSEMESSAGEFORWARDINGPANEL_H
+#define MOUSEMESSAGEFORWARDINGPANEL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "vgui_controls/Panel.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Invisible panel that forwards up mouse movement
+//-----------------------------------------------------------------------------
+class CMouseMessageForwardingPanel : public vgui::Panel
+{
+	DECLARE_CLASS_SIMPLE( CMouseMessageForwardingPanel, vgui::Panel );
+public:
+	CMouseMessageForwardingPanel( Panel *parent, const char *name );
+
+	virtual void PerformLayout( void );
+	virtual void OnMousePressed( vgui::MouseCode code );
+	virtual void OnMouseDoublePressed( vgui::MouseCode code );
+};
+
+#endif //MOUSEMESSAGEFORWARDINGPANEL_H

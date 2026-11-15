@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4827945f2b8a2c8f11b339fe25f42c6a99dd1584de330dfec3d30e032522cf47
-size 1011
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=====================================================================================//
+
+#ifndef __VADDONASSOCIATION_H__
+#define __VADDONASSOCIATION_H__
+
+#include "vgui_controls/CvarToggleCheckButton.h"
+#include "gameui_util.h"
+
+#include "basemodui.h"
+
+namespace BaseModUI {
+
+class AddonAssociation : public CBaseModFrame
+{
+	DECLARE_CLASS_SIMPLE( AddonAssociation, CBaseModFrame );
+public:
+	enum EAssociation
+	{
+		kAssociation_None,
+		kAssociation_Other,
+		kAssociation_Ok
+	};
+	
+	AddonAssociation(vgui::Panel *parent, const char *panelName);
+	~AddonAssociation();
+
+	static EAssociation VPKAssociation();
+	static bool CheckAndSeeIfShouldShow();
+
+protected:
+	virtual void OnCommand(const char *command);
+	virtual void OnThink();
+
+private:
+	vgui::CvarToggleCheckButton<CGameUIConVarRef> *m_pDoNotAskForAssociation;
+
+};
+
+};
+
+#endif // __VADDONASSOCIATION_H__

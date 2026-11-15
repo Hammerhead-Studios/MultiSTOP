@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77c4b610680dc4c8ac6945f9b396ad2865a6aa3c9da9bb213c6de02e898f40fe
-size 602
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef LUMPFILES_H
+#define LUMPFILES_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#define MAX_LUMPFILES	128
+
+//-----------------------------------------------------------------------------
+// Lump files
+//-----------------------------------------------------------------------------
+void GenerateLumpFileName( const char *bspfilename, char *lumpfilename, int iBufferSize, int iIndex );
+
+#endif // LUMPFILES_H

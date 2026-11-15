@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:07e1b55ed7179d5f5c5ed7b070936d50ec6a89136eed82140490ed88a69d9b65
-size 977
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef AI_RESPONSESYSTEM_H
+#define AI_RESPONSESYSTEM_H
+
+#include "utlvector.h"
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "ai_criteria.h"
+#include "../../public/responserules/response_types.h"
+
+// using ResponseRules::IResponseFilter;
+// using ResponseRules::IResponseSystem;
+
+ResponseRules::IResponseSystem *PrecacheCustomResponseSystem( const char *scriptfile );
+ResponseRules::IResponseSystem *BuildCustomResponseSystemGivenCriteria( const char *pszBaseFile, const char *pszCustomName, AI_CriteriaSet &criteriaSet, float flCriteriaScore );
+void DestroyCustomResponseSystems();
+
+class ISaveRestoreBlockHandler *GetDefaultResponseSystemSaveRestoreBlockHandler();
+class ISaveRestoreOps *GetResponseSystemSaveRestoreOps();
+
+#endif // AI_RESPONSESYSTEM_H

@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1dbc78a08128df5f5b3a22bc0cbeb61a2f4c218a761301fdbb0207c750fd76f2
-size 547
+#ifndef _INCLUDED_ASW_SYSTEM_H
+#define _INCLUDED_ASW_SYSTEM_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "filesystem.h"
+
+bool ASW_System_GetCurrentTimeAndDate(int *year, int *month, int *dayOfWeek, int *day, int *hour, int *minute, int *second);
+
+const char *Sys_FindFirst (FileFindHandle_t &searchhandle, const char *path, char *basename, int namelength );
+const char* Sys_FindNext (FileFindHandle_t &searchhandle, char *basename, int namelength);
+void Sys_FindClose (FileFindHandle_t &searchhandle);
+
+#endif _INCLUDED_ASW_SYSTEM_H

@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e2953131ee5e6a1fd2ed29d5d7851efd63df315a0e82d1fdfbef6d960d865037
-size 888
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef KEYTOGGLECHECKBUTTON_H
+#define KEYTOGGLECHECKBUTTON_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/CheckButton.h>
+
+class CKeyToggleCheckButton : public vgui::CheckButton
+{
+public:
+	CKeyToggleCheckButton( vgui::Panel *parent, const char *panelName, const char *text, 
+		char const *keyname, char const *cmdname );
+	~CKeyToggleCheckButton();
+
+	//virtual void	SetSelected( bool state );
+	virtual void	Paint();
+
+	void			Reset();
+	void			ApplyChanges();
+	bool			HasBeenModified();
+
+private:
+	typedef vgui::CheckButton BaseClass;
+
+	char			*m_pszKeyName;
+	char			*m_pszCmdName;
+
+	bool			m_bStartValue;
+};
+#endif // KEYTOGGLECHECKBUTTON_H

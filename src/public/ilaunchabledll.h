@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:53d0c66dbad51a7b1f24280fc2e9329e01772cecf5aa374b647c43cd39c251f1
-size 662
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef ILAUNCHABLEDLL_H
+#define ILAUNCHABLEDLL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#define LAUNCHABLE_DLL_INTERFACE_VERSION "launchable_dll_1"
+
+
+// vmpi_service can use this to debug worker apps in-process,
+// and some of the launchers (like texturecompile) use this.
+class ILaunchableDLL
+{
+public:
+	// All vrad.exe does is load the VRAD DLL and run this.
+	virtual int			main( int argc, char **argv ) = 0;
+};
+
+
+
+#endif // ILAUNCHABLEDLL_H

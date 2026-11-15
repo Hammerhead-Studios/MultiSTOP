@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dbd4d8a7aaacb407b9866a99c0b8d9936e4de7b39b66d0608aced467807ad1d6
-size 1018
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:		Dynamic light at the end of a spotlight 
+//
+// $Workfile:     $
+// $Date:         $
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef	SPOTLIGHTEND_H
+#define	SPOTLIGHTEND_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "baseentity.h"
+
+class CSpotlightEnd : public CBaseEntity
+{
+	DECLARE_DATADESC();
+public:
+	DECLARE_CLASS( CSpotlightEnd, CBaseEntity );
+
+	void				Spawn( void );
+
+	int					ObjectCaps( void )
+	{
+		// Don't save and don't go across transitions
+		return (BaseClass::ObjectCaps() & ~FCAP_ACROSS_TRANSITION) | FCAP_DONT_SAVE; 
+	}
+
+	DECLARE_SERVERCLASS();
+
+public:
+	CNetworkVar( float, m_flLightScale );
+	CNetworkVar( float, m_Radius );
+//	CNetworkVector( m_vSpotlightDir );
+//	CNetworkVector( m_vSpotlightOrg );
+	Vector			m_vSpotlightDir;
+	Vector			m_vSpotlightOrg;
+};
+
+#endif	//SPOTLIGHTEND_H
+
+

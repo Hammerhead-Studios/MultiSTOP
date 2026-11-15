@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ae17205185ff22c7695a144409c3694e6baa6b9fe7b0ec5e42dcfb9b70d9ad20
-size 633
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef SHARED_CLASSNAMES_H
+#define SHARED_CLASSNAMES_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+// Hacky macros to allow shared code to work without even worse macro-izing
+#if defined( CLIENT_DLL )
+
+#define CBaseEntity				C_BaseEntity
+#define CBaseCombatCharacter	C_BaseCombatCharacter
+#define CBaseAnimating			C_BaseAnimating
+#define CBasePlayer				C_BasePlayer
+
+#endif
+
+
+#endif // SHARED_CLASSNAMES_H

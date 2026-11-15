@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b3f75d2df7705c5f21bf313b075c42b396d7d73f57b0fdc042052c55d177e282
-size 548
+#ifndef _INCLUDED_ASW_CLIENT_CORPSE_H
+#define _INCLUDED_ASW_CLIENT_CORPSE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "gib.h"
+
+class CASW_Client_Corpse : public CRagGib
+{
+public:
+	DECLARE_CLASS( CASW_Client_Corpse, CRagGib );
+	DECLARE_SERVERCLASS();
+	DECLARE_DATADESC();
+
+	virtual void Spawn();
+	virtual void Precache();
+	virtual int ShouldTransmit( const CCheckTransmitInfo *pInfo );
+	virtual bool BecomeRagdollOnClient( const Vector &force );
+
+	string_t m_szRagdollSequence;
+};
+
+#endif /* _INCLUDED_ASW_CLIENT_CORPSE_H */

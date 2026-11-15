@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:09283e9242770801c7f0b58930b2a74bd716816eb21beaeb3fdbd2a7b8157f5a
-size 1089
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifdef CLIENT_DLL
+	#define CEnvDetailController C_EnvDetailController
+#endif // CLIENT_DLL
+
+//-----------------------------------------------------------------------------
+// Implementation of the class that controls detail prop fade distances
+//-----------------------------------------------------------------------------
+class CEnvDetailController : public CBaseEntity
+{
+public:
+	DECLARE_CLASS( CEnvDetailController, CBaseEntity );
+	DECLARE_NETWORKCLASS();
+
+	CEnvDetailController();
+	virtual ~CEnvDetailController();
+
+#ifndef CLIENT_DLL
+	virtual bool KeyValue( const char *szKeyName, const char *szValue );
+#endif // !CLIENT_DLL
+
+	CNetworkVar( float, m_flFadeStartDist );
+	CNetworkVar( float, m_flFadeEndDist );
+
+	// ALWAYS transmit to all clients.
+	virtual int UpdateTransmitState( void );
+};
+
+CEnvDetailController * GetDetailController();

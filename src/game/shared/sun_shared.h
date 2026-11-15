@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a20b4e5e69ca246fe45990b1d4ec7cd8d6773462ba32cc6d011268cf19902b58
-size 501
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef SUN_SHARED_H
+#define SUN_SHARED_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+//FIXME: It strikes me that the usefulness of this header file is now diminished
+
+#define MAX_SUN_LAYERS 4
+
+#define	SF_LIGHTGLOW_DIRECTIONAL	(1<<0)
+#define	SF_MODULATE_BY_DIRECTION	(1<<1)
+
+#endif // SUN_SHARED_H

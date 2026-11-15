@@ -1,3 +1,49 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9c9c05954cd9233a3cc51eb856b0592a7446506f91b7912efc32821f1775ec12
-size 1379
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Header: $
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef SHADERDLL_H
+#define SHADERDLL_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <materialsystem/IShader.h>
+
+//-----------------------------------------------------------------------------
+// forward declarations
+//-----------------------------------------------------------------------------
+class IShader;
+class ICvar;
+
+//-----------------------------------------------------------------------------
+// The standard implementation of CShaderDLL
+//-----------------------------------------------------------------------------
+class IShaderDLL
+{
+public:
+	// Adds a shader to the list of shaders
+	virtual void InsertShader( IShader *pShader ) = 0;
+};
+
+
+//-----------------------------------------------------------------------------
+// Singleton interface
+//-----------------------------------------------------------------------------
+IShaderDLL *GetShaderDLL();
+
+//-----------------------------------------------------------------------------
+// Singleton interface for CVars
+//-----------------------------------------------------------------------------
+ICvar *GetCVar();
+
+
+
+
+
+#endif // SHADERDLL_H

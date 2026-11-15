@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8e219c20033ea663e797b848fad74c57d8170d8a981c2dcd5abdc0a0b39b37db
-size 652
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef MAP_UTILS_H
+#define MAP_UTILS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "mathlib/vector.h"
+
+
+// angles comes from the "angles" property
+//
+// yaw and pitch will override the values in angles if they are nonzero
+// yaw comes from the (obsolete) "angle" property
+// pitch comes from the "pitch" property
+void SetupLightNormalFromProps( const QAngle &angles, float yaw, float pitch, Vector &output );
+
+
+#endif // MAP_UTILS_H

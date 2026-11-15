@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:48da1be0f3f94b1fb2b93b2b007b1973b55c8c77b8f89def06b443dbd17159ce
-size 466
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef PHYSICS_FX_H
+#define PHYSICS_FX_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+class CBaseEntity;
+class IPhysicsFluidController;
+
+void PhysicsSplash( IPhysicsFluidController *pFluid, IPhysicsObject *pObject, CBaseEntity *pEntity );
+
+#endif // PHYSICS_FX_H

@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:885605199fcd80186f5ef3fd7c2597e2078ca3e65f2339637d7b73b1a671fcda
-size 894
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef ISOUNDCOMBINER_H
+#define ISOUNDCOMBINER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "utlvector.h"
+
+class IFileSystem;
+
+struct CombinerEntry
+{
+	CombinerEntry()
+	{
+		wavefile[ 0 ] = 0;
+		startoffset = 0.0f;
+	}
+
+	char	wavefile[ MAX_PATH ];
+	float	startoffset;
+};
+
+abstract_class ISoundCombiner
+{
+public:
+	virtual ~ISoundCombiner() {}
+
+	virtual bool CombineSoundFiles( IFileSystem *filesystem, char const *outfile, CUtlVector< CombinerEntry >& info ) = 0;
+	virtual bool IsCombinedFileChecksumValid( IFileSystem *filesystem, char const *outfile, CUtlVector< CombinerEntry >& info ) = 0;
+};
+
+extern ISoundCombiner *soundcombiner;
+
+#endif // ISOUNDCOMBINER_H

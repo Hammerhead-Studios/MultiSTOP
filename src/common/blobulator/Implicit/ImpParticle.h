@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0846eac1c48c6b18fb5cadfb4a015928d910f871dc3fecd7aa98ffa68b24b146
-size 867
+//==== Blobulator. Copyright © 2004-2024, Ilya D. Rosenberg, All rights reserved. ====//
+#pragma once
+#include "..\Point3D.h"
+
+class ImpParticle {
+public:
+
+	ImpParticle();
+
+	void setFieldScale(float fscale)
+	{
+		scale = fscale;
+	}
+
+	Point3D center;
+	float fieldRScaleSq;	// particle scale (0.25f - 1.0f == safe range)
+	float scale;			// texture influence scale 
+};
+
+class ImpParticleWithOneInterpolant : public ImpParticle {
+public:
+
+	ImpParticleWithOneInterpolant();
+	
+	Point3D interpolants1;
+};
+
+class ImpParticleWithTwoInterpolants : public ImpParticleWithOneInterpolant {
+public:
+
+	ImpParticleWithTwoInterpolants();
+
+	Point3D interpolants2;
+};
+
+class ImpParticleWithFourInterpolants : public ImpParticleWithTwoInterpolants {
+public:
+
+	ImpParticleWithFourInterpolants();
+
+	Point3D interpolants3;
+	Point3D interpolants4;
+};

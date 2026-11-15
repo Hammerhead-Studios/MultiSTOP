@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0e9a592c6db162865287848983594011c8bfc91bfe29f8a30ada3d1888bda65b
-size 443
+#include "cbase.h"
+#include "c_func_brush.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+IMPLEMENT_CLIENTCLASS_DT( C_FuncBrush, DT_FuncBrush, CFuncBrush )
+END_RECV_TABLE()
+
+
+void C_FuncBrush::OnDataChanged( DataUpdateType_t type )
+{
+	BaseClass::OnDataChanged( type );
+
+	bool bCreate = (type == DATA_UPDATE_CREATED) ? true : false;
+	VPhysicsShadowDataChanged(bCreate, this);
+}
+
+

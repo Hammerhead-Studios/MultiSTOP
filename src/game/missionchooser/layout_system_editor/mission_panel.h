@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:78ca3f282b5fb613b2cb1f25017ea47178281465382cb6f7f817f8d5c3d383bd
-size 777
+//============ Copyright (c) Valve Corporation, All rights reserved. ============
+//
+// Root panel of a layout system definition (aka mission)
+//
+//===============================================================================
+
+#ifndef MISSION_PANEL_H
+#define MISSION_PANEL_H
+
+#if defined( COMPILER_MSVC )
+#pragma once
+#endif
+
+#include "vgui_controls/EditablePanel.h"
+#include "node_panel.h"
+
+class KeyValues;
+namespace vgui
+{
+	class Button;
+}
+
+class CMissionPanel : public CNodePanel
+{
+	DECLARE_CLASS_SIMPLE( CMissionPanel, CNodePanel );
+
+public:
+	CMissionPanel( Panel *pParent, const char *pName );
+
+	virtual void PerformLayout();
+	virtual void UpdateState();
+
+protected:
+	virtual void CreatePanelContents();
+};
+
+#endif // MISSION_PANEL_H

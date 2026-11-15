@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a01350e473151be33d0a63e32a3808bc56bd96497510b17f122c614db6054759
-size 894
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef BASE_TRANSMIT_PROXY_H
+#define BASE_TRANSMIT_PROXY_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "ehandle.h"
+
+
+class CBaseEntity;
+
+
+class CBaseTransmitProxy
+{
+public:
+
+	CBaseTransmitProxy( CBaseEntity *pEnt );
+	virtual ~CBaseTransmitProxy();
+
+	// Override this to control the ShouldTransmit behavior of whatever entity the proxy is attached to.
+	// bPrevShouldTransmitResult is what the proxy's entity's ShouldTransmit() returned.
+	virtual int ShouldTransmit( const CCheckTransmitInfo *pInfo, int nPrevShouldTransmitResult );
+
+
+	void AddRef();
+	void Release();
+
+private:
+	EHANDLE m_hEnt;
+	unsigned short m_refCount;
+};
+
+
+#endif // BASE_TRANSMIT_PROXY_H

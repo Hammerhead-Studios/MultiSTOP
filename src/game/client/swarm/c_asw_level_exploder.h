@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e407001fe8e0778e086a944641d96d0ba7214cf4189d048f51f9403d6e42280e
-size 456
+#ifndef _INCLUDED_C_ASW_LEVEL_EXPLODER_H
+#define _INCLUDED_C_ASW_LEVEL_EXPLODER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class C_ASW_Level_Exploder : public C_BaseEntity
+{
+	DECLARE_CLASS( C_ASW_Level_Exploder, C_BaseEntity );	
+
+public:
+	C_ASW_Level_Exploder();
+
+	virtual void ClientThink();
+	
+	static C_ASW_Level_Exploder *CreateClientsideLevelExploder();
+
+	bool m_bFlashed;
+	float m_fDieTime;
+};
+
+#endif //_INCLUDED_C_ASW_LEVEL_EXPLODER_H

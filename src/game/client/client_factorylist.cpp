@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c0a2dfe6969f8b3f66cbff32056e3c88db4af9f5acd804a36501739d8d685f18
-size 642
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#include "cbase.h"
+#include "client_factorylist.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+static factorylist_t s_factories;
+
+// Store off the factories
+void FactoryList_Store( const factorylist_t &sourceData )
+{
+	s_factories = sourceData;
+}
+
+// retrieve the stored factories
+void FactoryList_Retrieve( factorylist_t &destData )
+{
+	destData = s_factories;
+}

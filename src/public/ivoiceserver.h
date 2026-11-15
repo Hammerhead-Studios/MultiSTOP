@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d9476f09af894c61c0fb6977a16be03d4e2678fa04c92cc1bd1e4f3530b37713
-size 960
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: This module defines the IVoiceServer interface, which is used by
+//			game code to control which clients are listening to which other
+//			clients' voice streams.
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef IVOICESERVER_H
+#define IVOICESERVER_H
+
+
+#include "interface.h"
+
+
+#define INTERFACEVERSION_VOICESERVER	"VoiceServer002"
+
+
+abstract_class IVoiceServer
+{
+public:
+	virtual			~IVoiceServer()	{}
+
+	// Use these to setup who can hear whose voice.
+	// Pass in client indices (which are their ent indices - 1).
+	virtual bool	GetClientListening(int iReceiver, int iSender) = 0;
+	virtual bool	SetClientListening(int iReceiver, int iSender, bool bListen) = 0;
+	virtual bool	SetClientProximity(int iReceiver, int iSender, bool bUseProximity) = 0;
+};
+
+
+#endif
+

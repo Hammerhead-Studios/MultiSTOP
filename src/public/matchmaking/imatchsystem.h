@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb5575ee30310e8d869e84b984f2b4175be3fc1594c46cb68c9e4b7420e399f8
-size 615
+//========= Copyright © 1996-2009, Valve Corporation, All rights reserved. ============//
+
+#ifndef _IMATCHSYSTEM_H_
+#define _IMATCHSYSTEM_H_
+
+class IPlayerManager;
+class IGameManager;
+class IServerManager;
+class ISearchManager;
+class IMatchVoice;
+class IDatacenter;
+
+class IMatchSystem
+{
+public:
+	virtual IPlayerManager * GetPlayerManager() = 0;
+
+	virtual IMatchVoice * GetMatchVoice() = 0;
+
+	virtual IServerManager * GetUserGroupsServerManager() = 0;
+
+	virtual ISearchManager * CreateGameSearchManager( KeyValues *pParams ) = 0;
+
+	virtual IDatacenter * GetDatacenter() = 0;
+};
+
+#endif
+

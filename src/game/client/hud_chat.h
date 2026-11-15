@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:29d1015f7209e7613f9e176563337f794189aaf1946f440dabe7d11a9ceb1dba
-size 648
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef HUD_CHAT_H
+#define HUD_CHAT_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <hud_basechat.h>
+
+class CHudChat : public CBaseHudChat
+{
+	DECLARE_CLASS_SIMPLE( CHudChat, CBaseHudChat );
+
+public:
+	CHudChat( const char *pElementName );
+
+	virtual void	Init( void );
+
+	void			MsgFunc_SayText(bf_read &msg);
+	void			MsgFunc_SayText2( bf_read &msg );
+	void			MsgFunc_TextMsg(bf_read &msg);
+};
+
+#endif	//HUD_CHAT_H

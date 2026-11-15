@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e6f1ec55a86b5f13cb1b7a14d8ae5a6310ed0e3447020a723a7bcc13c2da547a
-size 721
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef PHYSICS_NPC_SOLVER_H
+#define PHYSICS_NPC_SOLVER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+extern CBaseEntity *NPCPhysics_CreateSolver( CAI_BaseNPC *pNPC, CBaseEntity *pPhysicsObject, bool disableCollisions, float separationDuration );
+extern CBaseEntity *EntityPhysics_CreateSolver( CBaseEntity *pMovingEntity, CBaseEntity *pPhysicsBlocker, bool disableCollisions, float separationDuration );
+bool NPCPhysics_SolverExists( CAI_BaseNPC *pNPC, CBaseEntity *pPhysicsObject );
+
+
+#endif // PHYSICS_NPC_SOLVER_H

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ebefcae800f734fc62459c39519e52aa4290879f5f9ba84da6aa2865f6f7f73a
-size 457
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef BASEPANEL_H
+#define BASEPANEL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "swarm/basemodpanel.h"
+inline BaseModUI::CBaseModPanel * BasePanel() { return &BaseModUI::CBaseModPanel::GetSingleton(); }
+
+#endif // BASEPANEL_H

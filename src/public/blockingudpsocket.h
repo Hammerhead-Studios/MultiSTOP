@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bc10258a923b07839b5b77b1b83714ab26d8c561c84c09d5ff50365c2973919e
-size 912
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef BLOCKINGUDPSOCKET_H
+#define BLOCKINGUDPSOCKET_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "netadr.h"
+
+class CBlockingUDPSocket
+{
+public:
+	explicit CBlockingUDPSocket();
+	virtual ~CBlockingUDPSocket();
+
+	bool WaitForMessage( float timeOutInSeconds );
+	unsigned int ReceiveSocketMessage( struct sockaddr_in *packet_from, unsigned char *buf, size_t bufsize );
+	bool SendSocketMessage( const struct sockaddr_in& rRecipient, const unsigned char *buf, size_t bufsize );
+
+	bool	IsValid() const { return m_Socket != 0; }
+
+protected:
+	bool CreateSocket (void);
+
+	class CImpl;
+	CImpl				*m_pImpl;
+
+	netadr_t			m_cserIP;
+	unsigned int		m_Socket;
+
+
+};
+
+#endif // BLOCKINGUDPSOCKET_H

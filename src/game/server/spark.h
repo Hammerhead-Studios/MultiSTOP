@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9548fac759604d7036f5d430bbe098f9698456db54eeeeff84c6ff4ff6bbb9fe
-size 441
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef SPARK_H
+#define SPARK_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+void DoSpark( CBaseEntity *ent, const Vector &location, int nMagnitude, int nTrailLength, bool bPlaySound, const Vector &vecDir );
+#endif // SPARK_H

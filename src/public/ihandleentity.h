@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b7e2e31402cef803e2f9a4f01e7ba71799a61973824f7376ae81882d14207e1a
-size 714
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef IHANDLEENTITY_H
+#define IHANDLEENTITY_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+class CBaseHandle;
+
+
+// An IHandleEntity-derived class can go into an entity list and use ehandles.
+class IHandleEntity
+{
+public:
+	virtual ~IHandleEntity() {}
+	virtual void SetRefEHandle( const CBaseHandle &handle ) = 0;
+	virtual const CBaseHandle& GetRefEHandle() const = 0;
+#ifdef _X360
+	IHandleEntity() :
+		m_bIsStaticProp( false )
+	{
+	}
+
+	bool m_bIsStaticProp;
+#endif
+};
+
+
+#endif // IHANDLEENTITY_H

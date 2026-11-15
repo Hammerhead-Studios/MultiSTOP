@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f9a4d4d35d7912964f8e3d2744120aea9f559787d624b4e083702a14205e53a4
-size 338
+#ifndef _INCLUDED_ASW_PROP_PHYSICS_H
+#define _INCLUDED_ASW_PROP_PHYSICS_H
+
+#include "props.h"
+
+
+class CASW_Prop_Dynamic : public CDynamicProp
+{
+public:
+	DECLARE_CLASS( CASW_Prop_Dynamic, CDynamicProp );
+
+protected:
+	virtual int		OnTakeDamage( const CTakeDamageInfo &inputInfo );
+};
+
+
+#endif // _INCLUDED_ASW_PROP_PHYSICS_H

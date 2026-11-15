@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c86da39905d267d99c350d1fcf37efa40bea1bd8bdd41eb29ba2b87cefd4ce91
-size 543
+#ifndef WRAPPEDLABEL_H
+#define WRAPPEDLABEL_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+#include <vgui_controls/Label.h>
+
+// a vgui label that defaults to wrapped text
+
+namespace vgui
+{
+
+class WrappedLabel : public Label
+{
+	DECLARE_CLASS_SIMPLE( WrappedLabel, Label );
+public:
+	WrappedLabel(Panel *parent, const char *panelName, const char *text);
+	WrappedLabel(Panel *parent, const char *panelName, const wchar_t *wszText);
+	virtual ~WrappedLabel();
+};
+
+} // namespace vgui
+
+#endif // WRAPPEDLABEL_H

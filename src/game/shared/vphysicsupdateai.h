@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:258988029bcd5c44896d6d6787b18bfe99f994790b51536757ed816390fecb99
-size 590
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef VPHYSICSUPDATEAI_H
+#define VPHYSICSUPDATEAI_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+// this is used to temporarily allow the vphysics shadow object to update the entity's position
+// for entities that typically ignore those updates.
+struct vphysicsupdateai_t
+{
+	float	startUpdateTime;
+	float	stopUpdateTime;
+	float	savedShadowControllerMaxSpeed;
+};
+
+
+#endif // VPHYSICSUPDATEAI_H

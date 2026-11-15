@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a6fbc0e85417358ab8d9ae5185f27121674501ce85b687a97bfc9b3536844a3
-size 1059
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:	This turns off all Valve-specific #defines.  Because we sometimes
+//			call external include files from inside .cpp files, we need to
+//			wrap those includes like this:
+//			#include "tier0/valve_off.h"
+//			#include <external.h>
+//			#include "tier0/valve_on.h"
+//
+// $NoKeywords: $
+//=============================================================================//
+
+
+#ifdef STEAM
+
+//-----------------------------------------------------------------------------
+// Unicode-related #defines (see wchartypes.h)
+//-----------------------------------------------------------------------------
+#undef char
+
+
+//-----------------------------------------------------------------------------
+// Memory-related #defines
+//-----------------------------------------------------------------------------
+#undef malloc
+#undef realloc
+#undef _expand
+#undef free
+
+#endif // STEAM
+
+// Allow long to be used in 3rd-party headers
+#undef long

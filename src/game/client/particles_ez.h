@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d97c5e66abd37756437bafe24199cf041c6d6dc9a56748de2b3d2b106f65df00
-size 1167
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef PARTICLES_EZ_H
+#define PARTICLES_EZ_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "particles_simple.h"
+#include "particle_litsmokeemitter.h"
+
+
+// Use these to fire and forget particles.
+// pParticle should be ON THE STACK - ie: don't allocate it from a CSimpleEmitter or from the particle manager.
+// Just make one on the stack, fill in its parameters, and pass it in here.
+void AddSimpleParticle( const SimpleParticle *pParticle, PMaterialHandle hMaterial, bool bInSkybox=false );
+void AddEmberParticle( const SimpleParticle *pParticle, PMaterialHandle hMaterial, bool bInSkybox=false );
+void AddFireSmokeParticle( const SimpleParticle *pParticle, PMaterialHandle hMaterial, bool bInSkybox=false );
+void AddFireParticle( const SimpleParticle *pParticle, PMaterialHandle hMaterial, bool bInSkybox=false );
+
+
+// Called by the renderer to draw all the particles.
+void DrawParticleSingletons( bool bInSkybox );
+
+
+#endif // PARTICLES_EZ_H

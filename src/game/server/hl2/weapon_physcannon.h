@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:89d94a8f6daf083609b7afb621d2152d338eb6894a971ffbedf587a79eb2d91e
-size 1318
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef WEAPON_PHYSCANNON_H
+#define WEAPON_PHYSCANNON_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+
+//-----------------------------------------------------------------------------
+// Do we have the super-phys gun?
+//-----------------------------------------------------------------------------
+bool PlayerHasMegaPhysCannon();
+
+// force the physcannon to drop an object (if carried)
+void PhysCannonForceDrop( CBaseCombatWeapon *pActiveWeapon, CBaseEntity *pOnlyIfHoldingThis );
+void PhysCannonBeginUpgrade( CBaseAnimating *pAnim );
+
+bool PlayerPickupControllerIsHoldingEntity( CBaseEntity *pPickupController, CBaseEntity *pHeldEntity );
+float PlayerPickupGetHeldObjectMass( CBaseEntity *pPickupControllerEntity, IPhysicsObject *pHeldObject );
+float PhysCannonGetHeldObjectMass( CBaseCombatWeapon *pActiveWeapon, IPhysicsObject *pHeldObject );
+
+CBaseEntity *PhysCannonGetHeldEntity( CBaseCombatWeapon *pActiveWeapon );
+CBaseEntity *GetPlayerHeldEntity( CBasePlayer *pPlayer );
+
+bool PhysCannonAccountableForObject( CBaseCombatWeapon *pPhysCannon, CBaseEntity *pObject );
+
+#endif // WEAPON_PHYSCANNON_H

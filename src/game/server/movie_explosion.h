@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb73471006badaaea976397579a2282f04289b096cd085a0d3794c1b479e214e
-size 548
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+#ifndef MOVIE_EXPLOSION_H
+#define MOVIE_EXPLOSION_H
+
+
+#include "baseparticleentity.h"
+
+
+class MovieExplosion : public CBaseParticleEntity
+{
+public:
+	DECLARE_CLASS( MovieExplosion, CBaseParticleEntity );
+	DECLARE_SERVERCLASS();
+
+	static MovieExplosion* CreateMovieExplosion(const Vector &pos);
+};
+
+
+#endif
+
+

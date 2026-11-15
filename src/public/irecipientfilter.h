@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:36282c3ebb6fe198f2cd8310f6f2cf19eae9ea2cf3a1e395cc1c99238c034a1f
-size 847
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef IRECIPIENTFILTER_H
+#define IRECIPIENTFILTER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+//-----------------------------------------------------------------------------
+// Purpose: Generic interface for routing messages to users
+//-----------------------------------------------------------------------------
+class IRecipientFilter
+{
+public:
+	virtual			~IRecipientFilter() {}
+
+	virtual bool	IsReliable( void ) const = 0;
+	virtual bool	IsInitMessage( void ) const = 0;
+
+	virtual int		GetRecipientCount( void ) const = 0;
+	virtual int		GetRecipientIndex( int slot ) const = 0;
+};
+
+#endif // IRECIPIENTFILTER_H

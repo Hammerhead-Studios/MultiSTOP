@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2cf02b291e6565d362ba20546c061e015031682ae916e2e3e07e24497ba7d8b2
-size 757
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+//===========================================================================//
+
+#include "cbase.h"
+#include "modelentities.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+class CFuncReflectiveGlass : public CFuncBrush
+{
+	DECLARE_DATADESC();
+	DECLARE_CLASS( CFuncReflectiveGlass, CFuncBrush );
+	DECLARE_SERVERCLASS();
+};
+
+// automatically hooks in the system's callbacks
+BEGIN_DATADESC( CFuncReflectiveGlass )
+END_DATADESC()
+
+LINK_ENTITY_TO_CLASS( func_reflective_glass, CFuncReflectiveGlass );
+
+IMPLEMENT_SERVERCLASS_ST( CFuncReflectiveGlass, DT_FuncReflectiveGlass )
+END_SEND_TABLE()

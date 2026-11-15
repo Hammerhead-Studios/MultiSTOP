@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:00c3c0f63a9c95ad1d60749fe94b73fcf68fe8522af32af92214636b86a9649e
-size 966
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef HUD_CROSSHAIR_H
+#define HUD_CROSSHAIR_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "hudelement.h"
+#include <vgui_controls/Panel.h>
+
+namespace vgui
+{
+	class IScheme;
+};
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+class CHudVehicle : public CHudElement, public vgui::Panel
+{
+	DECLARE_CLASS_SIMPLE( CHudVehicle, vgui::Panel );
+public:
+	CHudVehicle( const char *pElementName );
+
+	virtual bool	ShouldDraw();
+
+	virtual void	ApplySchemeSettings( vgui::IScheme *scheme );
+	virtual void	Paint( void );
+
+private:
+
+	IClientVehicle	*GetLocalPlayerVehicle();
+};
+
+#endif // HUD_CROSSHAIR_H

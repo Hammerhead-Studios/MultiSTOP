@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f5d28dbcea7a97df2955dfb60798120330a39b5ce04b20f09441091b2416b8ab
-size 1000
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose:		Things thrown from the hand 
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef	GRENADEBRICKBAT_H
+#define	GRENADEBRICKBAT_H
+
+#include "basegrenade_shared.h"
+
+enum BrickbatAmmo_t;
+
+class CGrenade_Brickbat : public CBaseGrenade
+{
+public:
+	DECLARE_CLASS( CGrenade_Brickbat, CBaseGrenade );
+
+	virtual void	Spawn( void );
+	virtual void	SpawnBrickbatWeapon( void );
+	virtual void	Detonate( void ) { return;};
+	virtual bool	CreateVPhysics();
+	void			BrickbatTouch( CBaseEntity *pOther );
+	void			BrickbatThink( void );
+
+	BrickbatAmmo_t	m_nType;
+	bool			m_bExplodes;
+	bool			m_bBounceToFlat;	// Bouncing to flatten
+
+public:
+	DECLARE_DATADESC();
+};
+
+#endif	//GRENADEBRICKBAT_H

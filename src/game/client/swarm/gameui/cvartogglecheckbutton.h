@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:df8b082b4962544a8d67afa7059b9a5ae5217859f64086b99574ae53604d2641
-size 1012
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CVARTOGGLECHECKBUTTON_H
+#define CVARTOGGLECHECKBUTTON_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/CheckButton.h>
+
+class CCvarToggleCheckButton : public vgui::CheckButton
+{
+	DECLARE_CLASS_SIMPLE( CCvarToggleCheckButton, vgui::CheckButton );
+
+public:
+	CCvarToggleCheckButton( vgui::Panel *parent, const char *panelName, const char *text, 
+		char const *cvarname );
+	~CCvarToggleCheckButton();
+
+	virtual void	SetSelected( bool state );
+
+	virtual void	Paint();
+
+	void			Reset();
+	void			ApplyChanges();
+	bool			HasBeenModified();
+	virtual void	ApplySettings( KeyValues *inResourceData );
+
+private:
+	MESSAGE_FUNC( OnButtonChecked, "CheckButtonChecked" );
+
+	char			*m_pszCvarName;
+	bool			m_bStartValue;
+};
+
+#endif // CVARTOGGLECHECKBUTTON_H

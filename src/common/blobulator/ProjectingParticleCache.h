@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b3e0dde9433fa379b617dcfd152ba2235f29f3fbe6a3b28d1808e6e304fde225
-size 1016
+//==== Blobulator. Copyright © 2004-2024, Ilya D. Rosenberg, All rights reserved. ====//
+#pragma once
+#include "Implicit/ImpParticle.h"
+#include "Point3D.h"
+#include "SmartArray.h"
+
+struct PCacheElem_t {
+	short center_x;
+	unsigned char bot_x, top_x;
+
+	PCacheElem_t* prev, *next;
+	ImpParticle* p;
+};
+
+struct pcache_YZ_t {
+	unsigned char y, z;
+};
+
+class ProjectingParticleCache {
+public:
+
+	ProjectingParticleCache();
+	~ProjectingParticleCache();
+
+	void beginTile();
+	void endTile();
+
+	void addParticle(ImpParticle* pParticle);
+	void buildCache(float p1, float p2, Point3D& p3, Point3D& p4);
+	
+	PCacheElem_t* cachePlane[101];
+
+private:
+
+	void insertIntoCache(ImpParticle* p1, float p2, float p3, Point3D& p4, Point3D& p5);
+
+	PCacheElem_t* botSentinel;
+	PCacheElem_t* midSentinel;
+	PCacheElem_t* topSentinel;
+
+	SmartArray<ImpParticle*, 0, 16> particles;
+	SmartArray<PCacheElem_t*, 0, 16> cacheElements;
+	SmartArray<pcache_YZ_t, 0, 16> clearList;
+
+	int curCacheElement;
+
+};

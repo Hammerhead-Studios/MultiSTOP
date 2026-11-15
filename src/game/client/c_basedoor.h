@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6477b8b5c50ae2186701ee43e2b631baf2e7f518e39df4bb696c241ac43022b6
-size 664
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( C_BASEDOOR_H )
+#define C_BASEDOOR_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "c_baseentity.h"
+#include "c_basetoggle.h"
+
+#if defined( CLIENT_DLL )
+#define CBaseDoor C_BaseDoor
+#endif
+
+class C_BaseDoor : public C_BaseToggle
+{
+public:
+	DECLARE_CLASS( C_BaseDoor, C_BaseToggle );
+	DECLARE_CLIENTCLASS();
+
+	C_BaseDoor( void );
+	~C_BaseDoor( void );
+
+public:
+	float		m_flWaveHeight;
+};
+
+#endif // C_BASEDOOR_H

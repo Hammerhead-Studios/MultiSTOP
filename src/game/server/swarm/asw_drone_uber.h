@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f6967ac1d8967330e0e152499cb744d6dd05e3ee55940d6fff55041a5a64afb1
-size 658
+#ifndef _INCLUDED_ASW_DRONE_UBER_H
+#define _INCLUDED_ASW_DRONE_UBER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "asw_drone_advanced.h"
+
+class CASW_Drone_Uber : public CASW_Drone_Advanced
+{
+public:
+	DECLARE_CLASS( CASW_Drone_Uber, CASW_Drone_Advanced  );	
+	DECLARE_DATADESC();
+
+	CASW_Drone_Uber( void );
+	virtual ~CASW_Drone_Uber( void );
+
+	virtual void Spawn();
+	virtual void Precache();
+	virtual void SetHealthByDifficultyLevel();
+	virtual float GetIdealSpeed() const;
+	virtual int OnTakeDamage_Alive( const CTakeDamageInfo &info );
+	virtual bool ModifyAutoMovement( Vector &vecNewPos );
+};
+
+#endif // _INCLUDED_ASW_DRONE_UBER_H

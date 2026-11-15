@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4afd137d7748d15eeccd14ef6cf9e4cec1ba4cbce79a7901ebb23ba2729fad85
-size 991
+//====== Copyright © 1996-2008, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef KEYBINDINGLISTENER_H
+#define KEYBINDINGLISTENER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+enum ButtonCode_t;
+
+class IKeyBindingListener
+{
+public:
+	virtual void OnKeyBindingChanged( int nSplitScreenSlot, ButtonCode_t buttonCode, char const *pchKeyName, char const *pchNewBinding ) = 0;
+};
+
+class IKeyBindingListenerMgr
+{
+public:
+	// Callback when button is bound
+	virtual void AddListenerForCode( IKeyBindingListener *pListener, ButtonCode_t buttonCode ) = 0;
+	// Callback whenver binding is set to a button
+	virtual void AddListenerForBinding( IKeyBindingListener *pListener, char const *pchBindingString ) = 0;
+
+	virtual void RemoveListener( IKeyBindingListener *pListener ) = 0;
+};
+
+extern IKeyBindingListenerMgr *g_pKeyBindingListenerMgr;
+
+#endif // KEYBINDINGLISTENER_H

@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:baec76fb466e01a686bc3e35138aabe265078718adb005467edfb27b6e3a1879
-size 496
+#include "cbase.h"
+#include "asw_objective_dummy.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+LINK_ENTITY_TO_CLASS( asw_objective_dummy, CASW_Objective_Dummy );
+
+BEGIN_DATADESC( CASW_Objective_Dummy )
+	
+END_DATADESC()
+
+
+// dummy objectives are complete automatically
+CASW_Objective_Dummy::CASW_Objective_Dummy() : CASW_Objective()
+{
+	m_bDummy = true;
+	m_bComplete = true;
+}
+
+
+CASW_Objective_Dummy::~CASW_Objective_Dummy()
+{
+}

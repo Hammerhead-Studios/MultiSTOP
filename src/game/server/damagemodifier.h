@@ -1,3 +1,46 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:42cace33e30ccf90af98a67a73833df2b0130300db20a87bdbbd764dd58a02bf
-size 1138
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef DAMAGEMODIFIER_H
+#define DAMAGEMODIFIER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+class CBaseEntity;
+
+
+#include "ehandle.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Class handling generic damage modification to & from a player
+//-----------------------------------------------------------------------------
+class CDamageModifier
+{
+public:
+				CDamageModifier();
+
+	void		AddModifierToEntity( CBaseEntity *pChar );
+	void		RemoveModifier();
+
+	void		SetModifier( float flDamageScale );
+	float		GetModifier() const;
+
+	void		SetDoneToMe( bool bDoneToMe );
+	bool		IsDamageDoneToMe() const;
+
+	CBaseEntity	*GetCharacter() const;
+
+private:
+	float							m_flModifier;
+	CHandle<CBaseEntity>			m_hEnt;
+	bool							m_bDoneToMe;	// True = modifies damage done to the entity, false = damage done by the entity
+};
+
+
+#endif // DAMAGEMODIFIER_H

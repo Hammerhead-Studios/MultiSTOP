@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cbd846fdc992ff422c093564daa8c5192eb1d34faf0dde0c3c1146ed33e2b57e
-size 345
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Builds the precompiled header for the game DLL
+//
+// $NoKeywords: $
+//=============================================================================//
+
+
+#include "rrbase.h"
+
+// NOTE: DO NOT ADD ANY CODE OR HEADERS TO THIS FILE!!!

@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8111382c312c7bd50489906aa40e9b97404ac79ada617f87997feef838f5565b
-size 369
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+#ifndef CLIENTMODE_H
+#define CLIENTMODE_H
+
+#include "iclientmode.h"
+
+typedef struct
+{
+	char *name;
+	bool draw;
+} ModeElements;
+
+#endif 

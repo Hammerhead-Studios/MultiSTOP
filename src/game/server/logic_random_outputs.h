@@ -1,3 +1,51 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0bf08f6e681de231e9bd0d19227ad958378349b9578efa07fbcc06bbbd3750cd
-size 1365
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#ifndef LOGICRANDOMOUTPUTS_H
+#define LOGICRANDOMOUTPUTS_H
+
+#include "cbase.h"
+#include "entityinput.h"
+#include "entityoutput.h"
+#include "eventqueue.h"
+
+#define NUM_RANDOM_OUTPUTS 8
+
+class CLogicRandomOutputs : public CLogicalEntity
+{
+public:
+	DECLARE_CLASS( CLogicRandomOutputs, CLogicalEntity );
+
+	CLogicRandomOutputs();
+
+	void Activate();
+	void Think();
+	virtual bool KeyValue( const char *szKeyName, const char *szValue );
+
+	// Input handlers
+	void InputEnable( inputdata_t &inputdata );
+	void InputEnableRefire( inputdata_t &inputdata );  // Private input handler, not in FGD
+	void InputDisable( inputdata_t &inputdata );
+	void InputToggle( inputdata_t &inputdata );
+	void InputTrigger( inputdata_t &inputdata );
+	void InputCancelPending( inputdata_t &inputdata );
+
+	DECLARE_DATADESC();
+
+	// Outputs
+	COutputEvent m_Output[ NUM_RANDOM_OUTPUTS ];
+	COutputEvent m_OnSpawn;
+
+	float m_flOnTriggerChance[ NUM_RANDOM_OUTPUTS ];
+	
+private:
+
+	bool m_bDisabled;
+	bool m_bWaitForRefire;			// Set to disallow a refire while we are waiting for our outputs to finish firing.
+};
+
+#endif //LOGICRANDOMOUTPUTS_H

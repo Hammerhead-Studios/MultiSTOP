@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cc3ca5863d0782d78c446261fbf0571b2f2c93df0084ff13047db24a2433f7e0
-size 793
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Provides access to cvars that are bounded in the client DLL.
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CDLL_BOUNDED_CVARS_H
+#define CDLL_BOUNDED_CVARS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "convar_serverbounded.h"
+
+
+extern ConVar_ServerBounded *cl_predict;
+extern ConVar_ServerBounded *cl_interp;
+
+// Returns cl_interp_ratio / cl_updaterate.
+float GetClientInterpAmount();
+
+
+#if !defined( NO_ENTITY_PREDICTION )
+extern bool g_bForceCLPredictOff;	// If this is set to true, then prediction is forced off. Used temporarily for kill cam.
+#endif
+
+
+
+#endif // CDLL_BOUNDED_CVARS_H
+

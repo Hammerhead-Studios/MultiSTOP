@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:66d45b9faf4a2335f4c9b60aaf92c1034524bf3c43eaa3cb191c25d12a56e33a
-size 1524
+//===== Copyright © 2005-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: Helper methods + classes for choreo
+//
+//===========================================================================//
+
+#ifndef CHOREOUTILS_H
+#define CHOREOUTILS_H
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+
+//-----------------------------------------------------------------------------
+// Forward declarations
+//-----------------------------------------------------------------------------
+class CChoreoScene;
+class CChoreoEvent;
+class CStudioHdr;
+
+
+//-----------------------------------------------------------------------------
+// Finds sound files associated with events
+//-----------------------------------------------------------------------------
+const char *GetSoundForEvent( CChoreoEvent *pEvent, CStudioHdr *pStudioHdr );
+
+
+//-----------------------------------------------------------------------------
+// Fixes up the duration of a choreo scene based on wav files + animations
+// Returns true if a change needed to be made
+//-----------------------------------------------------------------------------
+bool AutoAddGestureKeys( CChoreoEvent *e, CStudioHdr *pStudioHdr, float *pPoseParameters, bool bCheckOnly );
+bool UpdateGestureLength( CChoreoEvent *e, CStudioHdr *pStudioHdr, float *pPoseParameters, bool bCheckOnly );
+bool UpdateSequenceLength( CChoreoEvent *e, CStudioHdr *pStudioHdr, float *pPoseParameters, bool bCheckOnly, bool bVerbose );
+
+
+#endif // CHOREOUTILS_H
+

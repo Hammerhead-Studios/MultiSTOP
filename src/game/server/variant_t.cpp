@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:207c73ab11b48ddc941b73e98ad1a369dc4217a84379a679552894e72e8be04a
-size 439
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "cbase.h"
+#include "variant_t.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+void variant_t::SetEntity( CBaseEntity *val ) 
+{ 
+	eVal = val;
+	fieldType = FIELD_EHANDLE; 
+}
+
+

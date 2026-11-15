@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8e740bfde0bb5cab9f2920460de549401e14ffe704757f4495e2382a7f04feae
-size 688
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( C_CORPSE_H )
+#define C_CORPSE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class C_Corpse : public C_BaseAnimating
+{
+public:
+	DECLARE_CLASS( C_Corpse, C_BaseAnimating );
+	DECLARE_CLIENTCLASS();
+
+						C_Corpse( void );
+
+	virtual int			DrawModel( int flags, const RenderableInstance_t &instance );
+
+public:
+	// The player whom we are copying our data from
+	int					m_nReferencePlayer;
+
+private:
+						C_Corpse( const C_Corpse & );
+};
+
+
+#endif // C_CORPSE_H

@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:702523882273331d0928eb249e960e3788e2ba2693b9ec40c759fc9ed62f1092
-size 1116
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( EVENT_TEMPENTITY_TESTER_H )
+#define EVENT_TEMPENTITY_TESTER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class CBaseTempEntity;
+
+
+//-----------------------------------------------------------------------------
+// Purpose: A server object that is used to test all registered temp entities
+//-----------------------------------------------------------------------------
+class CTempEntTester : public CPointEntity
+{
+public:
+	DECLARE_CLASS( CTempEntTester, CPointEntity );
+
+	void				Spawn( void );
+	void				Think( void );
+
+	static	CBaseEntity *Create( const Vector &vecOrigin, const QAngle &vecAngles, const char *lifetime, const char *single_te );
+private:
+	// Current temp entity to test
+	CBaseTempEntity		*m_pCurrent;
+
+	// Lifetime
+	float				m_fLifeTime;
+
+	char				m_szClass[ 64 ];
+};
+
+#endif // EVENT_TEMPENTITY_TESTER_H

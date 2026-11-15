@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:205277aebebe98d4efec090d716f8003dce6a2a55536d00dbecf56279930a797
-size 346
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Builds the precompiled header for the client DLL
+//
+// $NoKeywords: $
+//=============================================================================//
+
+
+#include "cbase.h"
+
+// NOTE: DO NOT ADD ANY CODE OR HEADERS TO THIS FILE!!!

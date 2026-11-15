@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1cceb1d6eb69102eb5665c8a783909188dfb0dadaf3e934ef190b0cc5d2d006f
-size 682
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+//===========================================================================//
+
+#ifndef NPC_ADVISOR_ROAMING_SHAREDDEFS_H
+#define NPC_ADVISOR_ROAMING_SHAREDDEFS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#define ADVISOR_ROAMING_MSG_BIG_SHOT			1
+#define ADVISOR_ROAMING_MSG_STREAKS				2
+#define ADVISOR_ROAMING_MSG_HIGHTLIGHT_ON		3
+#define ADVISOR_ROAMING_MSG_HIGHTLIGHT_OFF		4
+#define ADVISOR_ROAMING_MSG_HIGHTLIGHT_PULL_ON	5
+#define ADVISOR_ROAMING_MSG_HIGHTLIGHT_PULL_OFF	6
+
+#define ADVISOR_ROAMING_NUM_DAMAGE_OUTPUTS		4
+
+#endif // NPC_ADVISOR_ROAMING_SHAREDDEFS_H

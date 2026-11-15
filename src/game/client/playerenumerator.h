@@ -1,3 +1,71 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:18d5e67b907092eb90e24f4e3d9a9efb080c8a7f3f02f4e8c8035bb0015586e4
-size 1638
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef PLAYERENUMERATOR_H
+#define PLAYERENUMERATOR_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "UtlVector.h"
+#include "ehandle.h"
+#include "ISpatialPartition.h"
+
+class C_BaseEntity;
+
+class CPlayerEnumerator : public IPartitionEnumerator
+{
+	DECLARE_CLASS_NOBASE( CPlayerEnumerator );
+public:
+	//Forced constructor
+	CPlayerEnumerator( float radius, Vector vecOrigin )
+	{
+		m_flRadiusSquared = radius * radius;
+		m_vecOrigin = vecOrigin;
+		m_Objects.RemoveAll();
+	}
+
+	int	GetObjectCount() { return m_Objects.Size(); }
+
+	C_BaseEntity *GetObject( int index )
+	{
+		if ( index < 0 || index >= GetObjectCount() )
+			return NULL;
+
+		return m_Objects[ index ];
+	}
+
+	//Actual work code
+	virtual IterationRetval_t EnumElement( IHandleEntity *pHandleEntity )
+	{
+		C_BaseEntity *pEnt = ClientEntityList().GetBaseEntityFromHandle( pHandleEntity->GetRefEHandle() );
+		if ( pEnt == NULL )
+			return ITERATION_CONTINUE;
+
+		if ( !pEnt->IsPlayer() )
+			return ITERATION_CONTINUE;
+
+		Vector	deltaPos = pEnt->GetAbsOrigin() - m_vecOrigin;
+		if ( deltaPos.LengthSqr() > m_flRadiusSquared )
+			return ITERATION_CONTINUE;
+
+		CHandle< C_BaseEntity > h;
+		h = pEnt;
+		m_Objects.AddToTail( h );
+
+		return ITERATION_CONTINUE;
+	}
+
+public:
+	//Data members
+	float	m_flRadiusSquared;
+	Vector m_vecOrigin;
+
+	CUtlVector< CHandle< C_BaseEntity > > m_Objects;
+};
+
+#endif // PLAYERENUMERATOR_H

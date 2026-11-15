@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:97c4088fd0facc45c36e998587de37be376adc1287da65ab95e693e726bf08f6
-size 808
+#ifndef C_ASW_FLAMER_PROJECTILE_H
+#define C_ASW_FLAMER_PROJECTILE_H
+
+#include "c_basecombatcharacter.h"
+#include "asw_shareddefs.h"
+
+struct dlight_t;
+
+class C_ASW_Flamer_Projectile : public C_BaseCombatCharacter
+{
+public:
+	DECLARE_CLASS( C_ASW_Flamer_Projectile, C_BaseCombatCharacter );
+	DECLARE_CLIENTCLASS();
+	DECLARE_PREDICTABLE();
+
+					C_ASW_Flamer_Projectile();
+	virtual			~C_ASW_Flamer_Projectile();
+	void ClientThink(void);
+	void OnDataChanged(DataUpdateType_t updateType);
+	void CreateLight();
+	dlight_t* m_pDynamicLight;
+
+	// Classification
+	virtual Class_T Classify( void ) { return (Class_T)CLASS_ASW_FLAMER_PROJECTILE; }
+
+private:
+	C_ASW_Flamer_Projectile( const C_ASW_Flamer_Projectile & ); // not defined, not accessible
+};
+
+#endif /* C_ASW_FLAMER_PROJECTILE_H */

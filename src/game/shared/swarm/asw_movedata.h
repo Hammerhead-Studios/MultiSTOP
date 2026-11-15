@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8bf68601393322307d4373e918d2dad3f4c7719d9d76f64e4b817b5fa85956b7
-size 525
+//========= Copyright © 1996-2009, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef ASW_MOVEDATA_H
+#define ASW_MOVEDATA_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "igamemovement.h"
+
+// This class contains ASW-specific prediction data.
+class CASW_MoveData : public CMoveData
+{
+public:
+	int		m_iForcedAction;
+
+	Vector	m_vecSkillDest;
+};
+
+#endif // ASW_MOVEDATA_H

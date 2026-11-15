@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:19b8dcf605e642b44f647ba6b24b08cac2d30234de555266f8fda58ea7ab58e6
-size 677
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+//=============================================================================//
+
+#ifndef WEAPON_PROFICIENCY_H
+#define WEAPON_PROFICIENCY_H
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+struct WeaponProficiencyInfo_t
+{
+	float	spreadscale;
+	float	bias;
+};
+
+enum WeaponProficiency_t
+{
+	WEAPON_PROFICIENCY_POOR = 0,
+	WEAPON_PROFICIENCY_AVERAGE,
+	WEAPON_PROFICIENCY_GOOD,
+	WEAPON_PROFICIENCY_VERY_GOOD,
+	WEAPON_PROFICIENCY_PERFECT,
+};
+
+const char *GetWeaponProficiencyName( WeaponProficiency_t proficiency );
+
+
+#endif // WEAPON_PROFICIENCY_H

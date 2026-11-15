@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b01b5471a75bd7c6e627572d8b7cc92fb3fb94de6bb243b19a2ad9cf7fab44b7
-size 557
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+// A set of collision rules
+// NOTE: Defaults to all indices disabled
+class IPhysicsCollisionSet
+{
+public:
+	~IPhysicsCollisionSet() {}
+
+	virtual void EnableCollisions( int index0, int index1 ) = 0;
+	virtual void DisableCollisions( int index0, int index1 ) = 0;
+
+	virtual bool ShouldCollide( int index0, int index1 ) = 0;
+};

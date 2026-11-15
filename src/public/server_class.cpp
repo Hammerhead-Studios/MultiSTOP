@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:980e27dcd2fa14a19462a911fa855d51dfb297199c1dd9df478bff1d3575ac3f
-size 382
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+#include "server_class.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+ServerClass *g_pServerClassHead=0;
+
+

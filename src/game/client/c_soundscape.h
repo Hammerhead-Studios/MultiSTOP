@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0838070ec9988c83d9ef72c25217c18ebd7a0dbef2445ea0a7b6b9c0282e4985
-size 689
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef C_SOUNDSCAPE_H
+#define C_SOUNDSCAPE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+class IGameSystem;
+struct audioparams_t;
+
+extern IGameSystem *ClientSoundscapeSystem();
+
+// call when audio params may have changed
+extern void Soundscape_Update( audioparams_t &audio );
+
+// Called on round restart, otherwise the soundscape system thinks all its
+// sounds are still playing when they're not.
+void Soundscape_OnStopAllSounds();
+
+#endif // C_SOUNDSCAPE_H

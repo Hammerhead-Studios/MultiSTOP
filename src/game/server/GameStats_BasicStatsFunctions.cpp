@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4c184f54ec75eab757ab0d16f87851fc67d20eaadee97bfd84d7ffb3a6043f60
-size 313
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#include "cbase.h"
+#include "GameStats.h"
+
+// NOTE: This has to be the last file included!
+#include "tier0/memdbgon.h"
+

@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:290d7eb06bbea75ba489f4b0e63fbcee4d3aa97a3e7f8563636cbf92f17b2579
-size 472
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef COMPRESSED_LIGHT_CUBE_H
+#define COMPRESSED_LIGHT_CUBE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "mathlib/mathlib.h"
+
+
+struct CompressedLightCube
+{
+	DECLARE_BYTESWAP_DATADESC();
+	ColorRGBExp32 m_Color[6];
+};
+
+
+#endif // COMPRESSED_LIGHT_CUBE_H

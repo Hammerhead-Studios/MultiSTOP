@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5f669b34a4e8268ecac2e9817bf1e50a4e7633c7215c69b4c29c66f76a034f0f
-size 571
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "basehlcombatweapon.h"
+
+#ifndef WEAPON_GAUSS_H
+#define WEAPON_GAUSS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#define GAUSS_BEAM_SPRITE "sprites/laserbeam.vmt"
+
+#define	GAUSS_CHARGE_TIME			0.2f
+#define	MAX_GAUSS_CHARGE			16
+#define	MAX_GAUSS_CHARGE_TIME		3
+#define	DANGER_GAUSS_CHARGE_TIME	10
+#define GAUSS_NUM_BEAMS				4
+
+
+#endif // WEAPON_GAUSS_H

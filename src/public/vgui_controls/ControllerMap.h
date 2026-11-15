@@ -1,3 +1,48 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6ecf6c6b19ebbed4715bfe2e243ad50a3bbbf45a90e1ed1c8041031b03f1c249
-size 980
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CONTROLLERMAP_H
+#define CONTROLLERMAP_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "Panel.h"
+#include "UtlMap.h"
+#include "UtlSymbol.h"
+
+class CControllerMap : public vgui::Panel
+{
+	DECLARE_CLASS_SIMPLE( CControllerMap, vgui::Panel )
+
+	virtual void OnKeyCodeTyped( vgui::KeyCode code );
+
+public:
+	CControllerMap( vgui::Panel *parent, const char *name );
+
+	virtual void ApplySettings( KeyValues *inResourceData );
+
+	int NumButtons( void )
+	{
+		return m_buttonMap.Count();
+	}
+
+	const char *GetBindingText( int idx );
+	const char *GetBindingIcon( int idx );
+
+private:
+
+	struct button_t
+	{
+		CUtlSymbol	cmd;
+		CUtlSymbol	text;
+		CUtlSymbol	icon;
+	};
+	CUtlMap< int, button_t > m_buttonMap;
+};
+
+#endif // CONTROLLERMAP_H

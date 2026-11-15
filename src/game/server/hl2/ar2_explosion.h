@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2d89c4c22d40493437fa20ff94f441640a7fa3babd8a6fac491c51fd561bf3d0
-size 867
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+#ifndef AR2_EXPLOSION_H
+#define AR2_EXPLOSION_H
+
+
+#include "baseparticleentity.h"
+
+
+class AR2Explosion : public CBaseParticleEntity
+{
+	DECLARE_DATADESC();
+
+public:
+	DECLARE_CLASS( AR2Explosion, CBaseParticleEntity );
+	DECLARE_SERVERCLASS();
+
+	static AR2Explosion* CreateAR2Explosion(const Vector &pos);
+
+	inline void SetMaterialName(const char *szMaterialName);
+
+private:
+
+	CNetworkString( m_szMaterialName, 255 );
+};
+
+
+void AR2Explosion::SetMaterialName(const char *szMaterialName)
+{
+	if (szMaterialName)
+	{
+		Q_strncpy(m_szMaterialName.GetForModify(), szMaterialName, sizeof(m_szMaterialName));
+	}
+}
+
+
+#endif

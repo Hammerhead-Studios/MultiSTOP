@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3c66974cc4bb22b3f8ecc4ce8e7c7bb3b3005499038b8a432d5ce64afcdcdd97
-size 364
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef FOUNDRYHELPERS_CLIENT_H
+#define FOUNDRYHELPERS_CLIENT_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+void FoundryHelpers_DrawAll();
+
+
+#endif // FOUNDRYHELPERS_CLIENT_H

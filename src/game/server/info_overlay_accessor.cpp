@@ -1,3 +1,50 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5ecef918b029a3a7fc88045a2a02f33a7d6371066804927d6d32d5797535fc0b
-size 1419
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#include "cbase.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+// -------------------------------------------------------------------------------- //
+// An entity used to access overlays (and change their texture)
+// -------------------------------------------------------------------------------- //
+
+class CInfoOverlayAccessor : public CPointEntity
+{
+public:
+
+	DECLARE_CLASS( CInfoOverlayAccessor, CPointEntity );
+
+	int  	UpdateTransmitState();
+
+	DECLARE_SERVERCLASS();
+	DECLARE_DATADESC();
+
+private:
+
+	CNetworkVar( int, m_iOverlayID );
+};
+							  
+
+// This table encodes the CBaseEntity data.
+IMPLEMENT_SERVERCLASS_ST_NOBASE(CInfoOverlayAccessor, DT_InfoOverlayAccessor)
+	SendPropInt	(	SENDINFO(m_iTextureFrameIndex),		8,	SPROP_UNSIGNED ),
+	SendPropInt	(	SENDINFO(m_iOverlayID),				32,	SPROP_UNSIGNED ),
+END_SEND_TABLE()
+
+LINK_ENTITY_TO_CLASS( info_overlay_accessor, CInfoOverlayAccessor );
+
+BEGIN_DATADESC( CInfoOverlayAccessor )
+	DEFINE_KEYFIELD( m_iOverlayID,	FIELD_INTEGER, "OverlayID" ),
+END_DATADESC()
+
+
+int CInfoOverlayAccessor::UpdateTransmitState()
+{
+	return SetTransmitState( FL_EDICT_ALWAYS );
+}

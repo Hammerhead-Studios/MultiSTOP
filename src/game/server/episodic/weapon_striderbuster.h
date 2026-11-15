@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d1da1827dad4e032a06291d2a3ca9e8565f8e41c2104c187b2a7a001f7dd82fb
-size 803
+//========= Copyright © 1996-2007, Valve Corporation, All rights reserved. ====
+//
+// Helper functions for the striderbuster weapon.
+//
+//=============================================================================
+
+#ifndef WEAPON_STRIDERBUSTER_H
+#define WEAPON_STRIDERBUSTER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+bool StriderBuster_IsAttachedStriderBuster( CBaseEntity *pEntity, CBaseEntity *pAttachedTo = NULL );
+void StriderBuster_OnAddToCargoHold( CBaseEntity *pEntity );
+bool StriderBuster_OnFlechetteAttach( CBaseEntity *pEntity,  Vector &vecForceDir );
+int StriderBuster_NumFlechettesAttached( CBaseEntity *pEntity );
+float StriderBuster_GetPickupTime( CBaseEntity *pEntity );
+bool StriderBuster_WasKnockedOffStrider( CBaseEntity *pEntity );
+
+#endif // WEAPON_STRIDERBUSTER_H

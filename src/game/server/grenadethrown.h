@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab69b5c8a96bbd126ab4547e0595646dfdcb99457f94c0326081ae8d43544cee
-size 1018
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Header file for player-thrown grenades.
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef GRENADE_BASE_H
+#define GRENADE_BASE_H
+#pragma once
+
+#include "basegrenade_shared.h"
+
+class CSprite;
+
+#define GRENADE_TIMER		5		// Try 5 seconds instead of 3?
+
+//-----------------------------------------------------------------------------
+// Purpose: Base Thrown-Grenade class
+//-----------------------------------------------------------------------------
+class CThrownGrenade : public CBaseGrenade
+{
+public:
+	DECLARE_CLASS( CThrownGrenade, CBaseGrenade );
+
+	void	Spawn( void );
+	void	Thrown( Vector vecOrigin, Vector vecVelocity, float flExplodeTime );
+};
+
+
+
+#endif // GRENADE_BASE_H

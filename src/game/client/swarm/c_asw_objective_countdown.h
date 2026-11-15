@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0be8fb9b66b3b52e4af0aaf0f0e66505a29269b1aac939ec483942c041d79f2d
-size 826
+#ifndef _INCLUDED_C_ASW_OBJECTIVE_COUNTDOWN_H
+#define _INCLUDED_C_ASW_OBJECTIVE_COUNTDOWN_H
+
+#include "c_asw_objective.h"
+
+class CASW_VGUI_Countdown_Panel;
+
+class C_ASW_Objective_Countdown : public C_ASW_Objective
+{
+public:
+	DECLARE_CLASS( C_ASW_Objective_Countdown, C_ASW_Objective );
+	DECLARE_CLIENTCLASS();
+
+					C_ASW_Objective_Countdown();
+	virtual			~C_ASW_Objective_Countdown();
+
+	virtual void OnDataChanged( DataUpdateType_t updateType );
+	virtual float GetCountdownFinishTime() { return m_fCountdownFinishTime;  }
+	CNetworkVar(float, m_fCountdownFinishTime);
+
+	bool m_bLaunchedPanel;
+	CASW_VGUI_Countdown_Panel* m_pCountdownPanel;
+
+private:
+	C_ASW_Objective_Countdown( const C_ASW_Objective_Countdown & ); // not defined, not accessible
+};
+
+
+#endif // _INCLUDED_C_ASW_OBJECTIVE_COUNTDOWN_H

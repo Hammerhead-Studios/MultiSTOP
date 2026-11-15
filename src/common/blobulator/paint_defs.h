@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9c4250bb34eaaeb405d2a97169c68dc456830258ffd55ef05931c0455525a897
-size 571
+#pragma once
+#include "materialsystem/imaterial.h"
+#include "parented_func.h"
+
+class IPaintStream {
+public:
+
+	void SetMaterial(const char* material) { m_strMatName = material; m_pMaterial = materials->FindMaterial(material, TEXTURE_GROUP_OTHER); }
+	IMaterial* GetMaterial() { return m_pMaterial; }
+
+protected:
+
+	const char* m_strMatName;
+	IMaterial* m_pMaterial;
+};
+
+class CornerInfo;
+class IndexTriVertexBuffer;
+class ProjectingParticleCache;
+
+enum PaintBlobType_t {
+	BOUNCE_POWER = 0,
+	REFLECT_POWER,
+	SPEED_POWER,
+	PORTAL_POWER,
+	NO_POWER,
+};

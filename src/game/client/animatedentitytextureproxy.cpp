@@ -1,3 +1,52 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dff43416685dafa1fd1d171aed186abf10c888742a988e0e792c21581d861416
-size 1384
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#include "cbase.h"
+#include "BaseAnimatedTextureProxy.h"
+
+#include "imaterialproxydict.h"
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+class CAnimatedEntityTextureProxy : public CBaseAnimatedTextureProxy
+{
+public:
+	CAnimatedEntityTextureProxy() {}
+	virtual ~CAnimatedEntityTextureProxy() {}
+
+	virtual float GetAnimationStartTime( void* pBaseEntity );
+	virtual void AnimationWrapped( void* pC_BaseEntity );
+
+};
+
+EXPOSE_MATERIAL_PROXY( CAnimatedEntityTextureProxy, AnimatedEntityTexture );
+
+float CAnimatedEntityTextureProxy::GetAnimationStartTime( void* pArg )
+{
+	IClientRenderable *pRend = (IClientRenderable *)pArg;
+	if (!pRend)
+		return 0.0f;
+
+	C_BaseEntity* pEntity = pRend->GetIClientUnknown()->GetBaseEntity();
+	if (pEntity)
+	{
+		return pEntity->GetTextureAnimationStartTime();
+	}
+	return 0.0f;
+}
+
+void CAnimatedEntityTextureProxy::AnimationWrapped( void* pArg )
+{
+	IClientRenderable *pRend = (IClientRenderable *)pArg;
+	if (!pRend)
+		return;
+
+	C_BaseEntity* pEntity = pRend->GetIClientUnknown()->GetBaseEntity();
+	if (pEntity)
+	{
+		pEntity->TextureAnimationWrapped();
+	}
+}

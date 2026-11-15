@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9f2b8eb51f57ff38b2f779863e7e04f3da8569f958180591396829a10dfbfb34
-size 359
+#include "cbase.h"
+#include "c_baseprojector.h"
+
+#undef CBaseProjector
+
+IMPLEMENT_CLIENTCLASS_DT( C_BaseProjector, DT_BaseProjector, CBaseProjector )
+
+	RecvPropEHandle( RECVINFO( m_hFirstChild ) ),
+	RecvPropBool( RECVINFO( m_bEnabled ) ),
+
+END_RECV_TABLE()
+
+C_BaseProjector::C_BaseProjector()
+{
+
+}
+
+C_BaseProjector::~C_BaseProjector()
+{
+
+}

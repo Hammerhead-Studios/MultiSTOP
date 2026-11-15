@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2ab903a7fa41e246e236c4f397a9ce2dcc6b7a850265c0bd708f9f12b8b50077
-size 644
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: This header, which must be the final line of a .h file,
+// causes all crt methods to stop using debugging versions of the memory allocators.
+// NOTE: Use memdbgon.h to re-enable memory debugging.
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifdef MEM_OVERRIDE_ON
+
+#undef malloc
+#undef realloc
+#undef calloc
+#undef free
+#undef _expand
+#undef _msize
+#undef new
+#undef _aligned_malloc
+#undef _aligned_free
+#undef _malloc_dbg
+
+#undef MEM_OVERRIDE_ON
+
+#endif

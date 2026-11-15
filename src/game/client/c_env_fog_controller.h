@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2f956b3d006248dba31587d9a51b4acd48c464c631556974ac7bb5a39236563a
-size 793
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef C_ENV_FOG_CONTROLLER_H
+#define C_ENV_FOG_CONTROLLER_H
+
+#define CFogController C_FogController
+
+//=============================================================================
+//
+// Class Fog Controller:
+// Compares a set of integer inputs to the one main input
+// Outputs true if they are all equivalant, false otherwise
+//
+class C_FogController : public C_BaseEntity
+{
+public:
+	DECLARE_NETWORKCLASS();
+	DECLARE_CLASS( C_FogController, C_BaseEntity );
+
+	C_FogController();
+
+public:
+
+	fogparams_t				m_fog;
+};
+
+
+#endif // C_ENV_FOG_CONTROLLER_H

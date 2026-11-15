@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:41076e09e227860416ddf697b63662455b0e09df30fe9ebbe811862a10590833
-size 383
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: Uploads KeyValue stats to the new SteamWorks gamestats system.
+//
+//=============================================================================
+
+#include "cbase.h"
+#include "steamworks_gamestats.h"
+
+// NOTE: This has to be the last file included!
+#include "tier0/memdbgon.h"

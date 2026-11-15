@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3679702847feb29cebc2b28750568ac5867930f235992c8bbb1c3d837e9387f3
-size 551
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=====================================================================================//
+
+#ifndef __VDOWNLOADS_H__
+#define __VDOWNLOADS_H__
+
+#include "basemodui.h"
+
+namespace BaseModUI {
+
+class Downloads : public CBaseModFrame
+{
+	DECLARE_CLASS_SIMPLE( Downloads, CBaseModFrame );
+
+public:
+	Downloads(vgui::Panel *parent, const char *panelName);
+	~Downloads();
+
+	void OnCommand(const char *command);
+};
+
+};
+
+#endif

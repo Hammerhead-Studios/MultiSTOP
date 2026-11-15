@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ae6db86f107c7e080451f8a6edff737a2c34838f14acaa753dbdcc7fbc746cd6
-size 702
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( IPROFILING_H )
+#define IPROFILING_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+
+namespace vgui
+{
+	class Panel;
+}
+
+abstract_class IProfiling
+{
+public:
+	virtual void		Create( vgui::VPANEL parent ) = 0;
+	virtual void		Destroy( void ) = 0;
+};
+
+extern IProfiling *profiling;
+
+#endif // IPROFILING_H

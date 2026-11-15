@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:498ed49127a2a290ba0f0c38bdc81db56ad7badd1d17aef02f932a6c28e210c2
-size 678
+#ifndef _DEFINED_ASW_SENTRY_TOP_MACHINEGUN_H
+#define _DEFINED_ASW_SENTRY_TOP_MACHINEGUN_H
+#pragma once
+
+#include "asw_sentry_top.h"
+
+class CASW_Sentry_Top_Machinegun : public CASW_Sentry_Top
+{
+public:
+	DECLARE_CLASS( CASW_Sentry_Top_Machinegun, CASW_Sentry_Top );
+	// DECLARE_SERVERCLASS();
+	DECLARE_DATADESC();
+
+	virtual void Spawn( void );
+
+	virtual void Fire();
+	virtual void SetTopModel();
+
+	// Classification
+	virtual Class_T Classify( void ) { return (Class_T) CLASS_ASW_SENTRY_GUN; }
+
+protected:
+	float m_flFireHysteresisTime; // some turrets have a mechanism to continue shooting without an enemy
+	 
+};
+
+
+#endif /* _DEFINED_ASW_SENTRY_TOP_H */

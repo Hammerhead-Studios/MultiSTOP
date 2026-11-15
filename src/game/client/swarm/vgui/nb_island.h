@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ce2068f2f53ce7e55e88f52c02a6cfb796de7ec135fa27727db27b2ced877bbc
-size 753
+#ifndef _INCLUDED_NB_ISLAND_H
+#define _INCLUDED_NB_ISLAND_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+#include <vgui_controls/EditablePanel.h>
+
+class vgui::Label;
+
+// a box with rounded corners and a title
+
+class CNB_Island : public vgui::EditablePanel
+{
+	DECLARE_CLASS_SIMPLE( CNB_Island, vgui::EditablePanel );
+public:
+	CNB_Island( vgui::Panel *parent, const char *name );
+	virtual ~CNB_Island();
+	
+	virtual void ApplySchemeSettings( vgui::IScheme *pScheme );
+	virtual void PerformLayout();
+
+	vgui::Panel	*m_pBackground;
+	vgui::Panel	*m_pBackgroundInner;
+	vgui::Panel	*m_pTitleBG;
+	vgui::Panel	*m_pTitleBGBottom;
+	vgui::Label	*m_pTitle;
+	vgui::Panel	*m_pTitleBGLine;
+};
+
+#endif // _INCLUDED_NB_ISLAND_H

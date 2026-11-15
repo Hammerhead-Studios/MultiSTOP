@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:664f4c2de4bbf2daf9c15ce505932f7e97bc42e5fdfd4e4b555ecbd6675ea4c3
-size 370
+#ifndef _DEFINED_ASW_SIMPLE_ALIEN_SHARED_DATA_H
+#define _DEFINED_ASW_SIMPLE_ALIEN_SHARED_DATA_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class CASW_Simple_Alien_Shared_Data
+{
+public:
+
+	DECLARE_CLASS_NOBASE( CASW_Simple_Alien_Shared_Data );
+	DECLARE_DATADESC();
+	CASW_Simple_Alien_Shared_Data( void );
+	
+};
+
+
+#endif // _DEFINED_ASW_SIMPLE_ALIEN_SHARED_DATA_H

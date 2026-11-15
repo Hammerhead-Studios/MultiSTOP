@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:68a665988dd941b495dac4fbf4a750da9d92816e1adcc69e96ae16033e0be988
-size 1047
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef OPTIONS_SUB_DIFFICULTY_H
+#define OPTIONS_SUB_DIFFICULTY_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "vgui_controls/PropertyPage.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Difficulty selection options
+//-----------------------------------------------------------------------------
+class COptionsSubDifficulty : public vgui::PropertyPage
+{
+	DECLARE_CLASS_SIMPLE( COptionsSubDifficulty, vgui::PropertyPage );
+
+public:
+	COptionsSubDifficulty(vgui::Panel *parent);
+
+	virtual void OnResetData();
+	virtual void OnApplyChanges();
+
+	MESSAGE_FUNC( OnRadioButtonChecked, "RadioButtonChecked" );
+
+private:
+	vgui::RadioButton *m_pEasyRadio;
+	vgui::RadioButton *m_pNormalRadio;
+	vgui::RadioButton *m_pHardRadio;
+};
+
+
+#endif // OPTIONS_SUB_DIFFICULTY_H

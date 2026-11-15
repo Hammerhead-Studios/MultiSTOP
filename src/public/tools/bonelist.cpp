@@ -1,3 +1,72 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5075124d4ba1b8e67771cc51d9948321de8cdcbb48852a8b04ea6d2a1c6227a9
-size 1340
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#include "cbase.h"
+#include "bonelist.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+CBoneList::CBoneList()
+{
+	m_bShouldDelete = false;
+	m_nBones = 0;
+	Q_memset( m_vecPos, 0, sizeof( m_vecPos ) );
+	Q_memset( m_quatRot, 0, sizeof( m_quatRot ) );
+}
+
+void CBoneList::Release()
+{
+	if (m_bShouldDelete )
+	{
+		delete this;
+	}
+	else
+	{
+		Warning( "Called Release() on CBoneList not allocated via Alloc() method\n" );
+	}
+}
+
+CBoneList *CBoneList::Alloc()
+{
+	CBoneList *newList = new CBoneList;
+	Assert( newList );
+	if ( newList )
+	{
+		newList->m_bShouldDelete = true;
+	}
+	return newList;
+}
+
+CFlexList::CFlexList()
+{
+	m_bShouldDelete = false;
+	m_nNumFlexes = 0;
+	Q_memset( m_flexWeights, 0, sizeof( m_flexWeights ) );
+}
+
+void CFlexList::Release()
+{
+	if (m_bShouldDelete )
+	{
+		delete this;
+	}
+	else
+	{
+		Warning( "Called Release() on CFlexList not allocated via Alloc() method\n" );
+	}
+}
+
+CFlexList *CFlexList::Alloc()
+{
+	CFlexList *newList = new CFlexList;
+	Assert( newList );
+	if ( newList )
+	{
+		newList->m_bShouldDelete = true;
+	}
+	return newList;
+}

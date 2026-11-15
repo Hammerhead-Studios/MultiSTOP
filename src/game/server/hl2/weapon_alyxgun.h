@@ -1,3 +1,60 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3f3dadd58af8ec3b19bd218fae6050e1583ef5ec20c8058a2e274a9f74ef774d
-size 1558
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+//=============================================================================//
+
+#ifndef WEAPON_ALYXGUN_H
+#define WEAPON_ALYXGUN_H
+
+#include "basehlcombatweapon.h"
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+class CWeaponAlyxGun : public CHLSelectFireMachineGun
+{
+	DECLARE_DATADESC();
+public:
+	DECLARE_CLASS( CWeaponAlyxGun, CHLSelectFireMachineGun );
+
+	CWeaponAlyxGun();
+	~CWeaponAlyxGun();
+
+	DECLARE_SERVERCLASS();
+	
+	void	Precache( void );
+
+	virtual int		GetMinBurst( void ) { return 4; }
+	virtual int		GetMaxBurst( void ) { return 7; }
+	virtual float	GetMinRestTime( void );
+	virtual float	GetMaxRestTime( void );
+
+	virtual void Equip( CBaseCombatCharacter *pOwner );
+
+	float	GetFireRate( void ) { return 0.1f; }
+	int		CapabilitiesGet( void ) { return bits_CAP_WEAPON_RANGE_ATTACK1; }
+	int		WeaponRangeAttack1Condition( float flDot, float flDist );
+	int		WeaponRangeAttack2Condition( float flDot, float flDist );
+
+	virtual const Vector& GetBulletSpread( void );
+
+	void FireNPCPrimaryAttack( CBaseCombatCharacter *pOperator, bool bUseWeaponAngles );
+
+	void Operator_ForceNPCFire( CBaseCombatCharacter  *pOperator, bool bSecondary );
+	void Operator_HandleAnimEvent( animevent_t *pEvent, CBaseCombatCharacter *pOperator );
+
+	virtual void SetPickupTouch( void )
+	{
+		// Alyx gun cannot be picked up
+		SetTouch(NULL);
+	}
+
+	float m_flTooCloseTimer;
+
+	DECLARE_ACTTABLE();
+
+};
+
+#endif // WEAPON_ALYXGUN_H

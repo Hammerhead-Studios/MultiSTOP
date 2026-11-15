@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d0643579691f3ad1ff173b2cae8c5b399a04b2941eebc244cb9f3c37c952a2e8
-size 361
+#ifndef _INCLUDED_C_ASW_ORDER_ARROW_H
+#define _INCLUDED_C_ASW_ORDER_ARROW_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class C_ASW_Order_Arrow : public C_BaseAnimating
+{
+	typedef C_BaseAnimating BaseClass;
+public:
+	
+	static C_ASW_Order_Arrow* CreateOrderArrow();
+	void RefreshArrow();
+
+	float m_fCreatedTime;
+};
+
+#endif // _INCLUDED_C_ASW_ORDER_ARROW_H

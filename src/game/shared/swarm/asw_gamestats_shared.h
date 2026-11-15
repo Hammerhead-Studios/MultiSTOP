@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:113f10b5a6634f2353892d64d104b7b5d116a06d4e02d9a68106f742a09e5188
-size 405
+//============ Copyright (c) Valve Corporation, All rights reserved. ============
+//
+// Purpose: Contains everything needed to create different gamestats tracking
+//			systems.
+//
+//===============================================================================
+#ifndef ASW_GAMESTATS_SHARED_H
+#define ASW_GAMESTATS_SHARED_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#endif // ASW_GAMESTATS_SHARED_H

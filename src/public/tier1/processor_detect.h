@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bffe9649d59b0ec43022c2b0f49cf35d19c4053d58f67a839abe0e8a8fdd234b
-size 386
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: functions to expose CPU capabilities
+//
+// $NoKeywords: $
+//=============================================================================//
+
+bool CheckMMXTechnology(void);
+bool CheckSSETechnology(void);
+bool CheckSSE2Technology(void);
+bool Check3DNowTechnology(void);
+

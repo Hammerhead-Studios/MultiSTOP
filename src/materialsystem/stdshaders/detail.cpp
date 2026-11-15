@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f5545709db48dacb5aed6ade3c5bee32032b719b27dd8064a05028e3d81888d7
-size 609
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//===========================================================================//
+
+#include "BaseVSShader.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+BEGIN_VS_SHADER( Detail, "Help for Detail" )
+
+	BEGIN_SHADER_PARAMS
+	END_SHADER_PARAMS
+
+	SHADER_INIT_PARAMS()
+	{
+		SET_FLAGS( MATERIAL_VAR_TRANSLUCENT );
+	}
+
+	SHADER_FALLBACK
+	{
+		return "UnlitGeneric";
+	}
+
+	SHADER_INIT
+	{
+	}
+
+	SHADER_DRAW
+	{
+	}
+
+END_SHADER
+

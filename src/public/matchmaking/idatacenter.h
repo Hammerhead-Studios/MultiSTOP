@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:335309845f9dccf48658fcbb54d102d98120228f7d8bf39874e9f61bade24ba6
-size 290
+#ifndef _IDATACENTER_H_
+#define _IDATACENTER_H_
+
+class IDatacenter;
+
+#include "imatchsystem.h"
+
+abstract_class IDatacenter
+{
+public:
+	//
+	// GetStats
+	//	retrieves the last received datacenter stats
+	//
+	virtual KeyValues * GetStats() = 0;
+};
+
+
+#endif // _IDATACENTER_H_

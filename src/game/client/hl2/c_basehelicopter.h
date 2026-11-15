@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:48423af986ee5048014408873e57b26695ff914922fea344fb021e9e9382f72d
-size 672
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef C_BASEHELICOPTER_H
+#define C_BASEHELICOPTER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "c_ai_basenpc.h"
+
+
+class C_BaseHelicopter : public C_AI_BaseNPC
+{
+public:
+	DECLARE_CLASS( C_BaseHelicopter, C_AI_BaseNPC );
+	DECLARE_CLIENTCLASS();
+
+	C_BaseHelicopter();
+
+	float StartupTime() const { return m_flStartupTime; }
+
+private:
+	C_BaseHelicopter( const C_BaseHelicopter &other ) {}
+	float m_flStartupTime;
+};
+
+
+#endif // C_BASEHELICOPTER_H

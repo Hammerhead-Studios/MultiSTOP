@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:610c5bfd81c86af91d434a995a921ec77c01ec17b468c91a66d1c2951463495a
-size 888
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef DEATH_POSE_H
+#define DEATH_POSE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+enum
+{
+	DEATH_FRAME_HEAD = 1,
+	DEATH_FRAME_STOMACH,
+	DEATH_FRAME_LEFTARM,
+	DEATH_FRAME_RIGHTARM,
+	DEATH_FRAME_LEFTLEG,
+	DEATH_FRAME_RIGHTLEG,
+	MAX_DEATHPOSE_FRAMES  = DEATH_FRAME_RIGHTLEG
+};
+
+#ifdef CLIENT_DLL
+
+void GetRagdollCurSequenceWithDeathPose( C_BaseAnimating *entity, matrix3x4a_t *curBones, float flTime, int activity, int frame );
+
+#else // !CLIENT_DLL
+
+/// Calculates death pose activity and frame
+void SelectDeathPoseActivityAndFrame( CBaseAnimating *entity, const CTakeDamageInfo &info, int hitgroup, Activity& activity, int& frame );
+
+#endif // !CLIENT_DLL
+
+#endif // DEATH_POSE_H

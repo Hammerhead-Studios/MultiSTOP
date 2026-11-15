@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:94550bff2d1cab02bec6d34048801bf6070f7dd67d3bc5a825933213dd53c298
-size 883
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Header: $
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef SHADERDLL_GLOBAL_H
+#define SHADERDLL_GLOBAL_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+//-----------------------------------------------------------------------------
+// forward declarations
+//-----------------------------------------------------------------------------
+class IShaderSystem;
+
+
+//-----------------------------------------------------------------------------
+// forward declarations
+//-----------------------------------------------------------------------------
+inline IShaderSystem *GetShaderSystem()
+{
+	extern IShaderSystem* g_pSLShaderSystem;
+	return g_pSLShaderSystem;
+}
+
+
+#endif	// SHADERDLL_GLOBAL_H

@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ea9d69df306dc891b1288eb684c442395c9ba66041ff3ed453f51b56df9b98b9
-size 957
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include <vgui/ISystem.h>
+#include <vgui_controls/Controls.h>
+
+#define STEAM_OFFLINE_MODE "HKEY_CURRENT_USER\\Software\\Valve\\Steam\\Offline"
+#define STEAM_AFS_MODE "HKEY_CURRENT_USER\\Software\\Valve\\Steam\\OfflineAFS"
+#define OFFLINE_FILE "Steam\\cached\\offline_" // first part of filename
+
+inline bool IsSteamInOfflineMode()
+{
+	int offline = 0;
+	vgui::system()->GetRegistryInteger( STEAM_OFFLINE_MODE, offline );
+	return ( offline == 1 );
+}inline bool IsSteamInAuthenticationFailSafeMode()
+{
+	int offline = 0;
+	vgui::system()->GetRegistryInteger( STEAM_AFS_MODE, offline );
+	return ( offline == 1 );
+}
+
+inline bool IsSteamGameServerBrowsingEnabled()
+{
+	return (IsSteamInAuthenticationFailSafeMode() || !IsSteamInOfflineMode());
+}

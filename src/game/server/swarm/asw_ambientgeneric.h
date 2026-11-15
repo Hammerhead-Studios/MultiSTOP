@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:45d3444f5eb1acc8fc51ecf02c6e8a8ecaf87f703a4361446903018d1cb832b9
-size 770
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef ASW_AMBIENTGENERIC_H
+#define ASW_AMBIENTGENERIC_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "ambientgeneric.h"
+
+class CASW_AmbientGeneric : public CAmbientGeneric
+{
+public:
+	DECLARE_CLASS( CASW_AmbientGeneric, CAmbientGeneric );
+	DECLARE_DATADESC();
+
+	virtual bool KeyValue( const char *szKeyName, const char *szValue );
+	virtual void Activate( void );
+	virtual void ToggleSound( void );
+	virtual void SendSound( SoundFlags_t flags );
+
+	float m_fPreventStimMusicDuration;
+	bool m_bStartedNonLoopingSound;
+};
+
+#endif // ASW_AMBIENTGENERIC_H

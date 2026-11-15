@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ff4dfe9b94d529f44843770cc5d1758dfe23d17bdd7d12a33e577a3c00f4bc87
-size 550
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//===========================================================================//
+
+#ifndef VOICE_COMMON_H
+#define VOICE_COMMON_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "bitvec.h"
+#include "const.h"
+
+
+#define VOICE_MAX_PLAYERS		MAX_PLAYERS
+#define VOICE_MAX_PLAYERS_DW	((VOICE_MAX_PLAYERS / 32) + !!(VOICE_MAX_PLAYERS & 31))
+#define VOICE_DEFAULT_PROXIMITY_RANGE 1200 //100 feet
+
+
+#endif // VOICE_COMMON_H

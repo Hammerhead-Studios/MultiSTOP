@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0709b4b52a934bb56c71dc6e0b8bff96e80751eae509d820bbcc7e0f6580a230
-size 801
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#ifndef CLIENT_H
+#define CLIENT_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+class CCommand;
+class CUserCmd;
+class CBasePlayer;
+
+
+void ClientActive( edict_t *pEdict, bool bLoadGame );
+void ClientFullyConnect( edict_t *pEdict );
+void ClientPutInServer( edict_t *pEdict, const char *playername );
+void ClientCommand( CBasePlayer *pSender, const CCommand &args );
+void ClientPrecache( void );
+// Game specific precaches
+void ClientGamePrecache( void );
+const char *GetGameDescription( void );
+void Host_Say( edict_t *pEdict, bool teamonly );
+
+
+
+#endif		// CLIENT_H

@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eefd360b371b7b0f155a12d090e3ad4dd499a727b9dd85388ef5d54c142bec8e
-size 898
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=====================================================================================//
+
+#ifndef __VTRANSITIONSCREEN_H__
+#define __VTRANSITIONSCREEN_H__
+
+#include "basemodui.h"
+
+namespace BaseModUI 
+{
+
+class CTransitionScreen : public CBaseModFrame
+{
+	DECLARE_CLASS_SIMPLE( CTransitionScreen, CBaseModFrame );
+
+public:
+	CTransitionScreen( vgui::Panel *parent, const char *panelName );
+	~CTransitionScreen();
+
+	virtual void ApplySchemeSettings( vgui::IScheme *pScheme );
+	virtual void PaintBackground();
+
+	// returns true when transition screen has finalized its presentation
+	bool IsTransitionComplete();
+
+private:
+	int			m_iImageID;
+	float		m_flTransitionStartTime;
+	vgui::HFont	m_hFont;
+	bool		m_bComplete;
+};
+
+};
+
+#endif // __VTRANSITIONSCREEN_H__

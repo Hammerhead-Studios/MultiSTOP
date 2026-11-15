@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:054b2fc1842134e2cb1573dc850900ffc925b746fa6b3a89ab33d425ed194002
-size 301
+#include "cbase.h"
+#include "c_asw_pickup_money.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+IMPLEMENT_CLIENTCLASS_DT( C_ASW_Pickup_Money, DT_ASW_Pickup_Money, CASW_Pickup_Money )
+END_RECV_TABLE()
+
+C_ASW_Pickup_Money::C_ASW_Pickup_Money()
+{
+}

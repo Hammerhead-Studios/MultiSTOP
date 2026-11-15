@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b4cf1c1e4cfaea0ae94714993d311afabff9d2bc23730cf980e03226907201f4
-size 807
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef ICLASSMAP_H
+#define ICLASSMAP_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class C_BaseEntity;
+typedef C_BaseEntity* (*DISPATCHFUNCTION)( void );
+
+abstract_class IClassMap
+{
+public:
+	virtual					~IClassMap() {}
+
+	virtual void			Add( const char *mapname, const char *classname, int size, DISPATCHFUNCTION factory = 0 ) = 0;
+	virtual char const		*Lookup( const char *classname ) = 0;
+	virtual C_BaseEntity	*CreateEntity( const char *mapname ) = 0;
+	virtual int				GetClassSize( const char *classname ) = 0;
+};
+
+extern IClassMap& GetClassMap();
+
+
+#endif // ICLASSMAP_H

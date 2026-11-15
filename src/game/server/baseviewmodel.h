@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:80561e395a9fc4b1f6538f247c8afc0f42e017a364e4ac61654ebedd6ff6daf9
-size 447
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Server side view model object
+//
+// $Workfile:     $
+// $Date:         $
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( BASEVIEWMODEL_H )
+#define BASEVIEWMODEL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "baseviewmodel_shared.h"
+
+#endif // BASEVIEWMODEL_H

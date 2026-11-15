@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:40b60573a14f5fbc8c3a24ef6073bb801915dbd41171115e7087aae7cd2d15f5
-size 304
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#if !defined(_STATIC_LINKED) || defined(_SHARED_LIB)
+
+
+bool g_bUseNetworkVars = true;
+
+#endif
+
+
+

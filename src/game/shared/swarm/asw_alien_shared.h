@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d803c9aa69c082c4d6e45415ee2a2ddbfe367f1a3e5958c9e7f6414da06cc3e1
-size 224
+#ifndef _INCLUDED_ASW_ALIEN_SHARED_H
+#define _INCLUDED_ASW_ALIEN_SHARED_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#if defined( CLIENT_DLL )
+#define CASW_Alien C_ASW_Alien
+#endif
+
+#endif // _INCLUDED_ASW_ALIEN_SHARED_H

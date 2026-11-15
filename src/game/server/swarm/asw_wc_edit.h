@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ae13b5e49b1947f10d22c464cef853abf9898272ceb21e431f5ddf8664bb3dc8
-size 291
+#ifndef _DEFINED_ASW_WC_EDIT_H
+#define _DEFINED_ASW_WC_EDIT_H
+
+// Alien Swarm functions for interfacing with Hammer
+//   - Modifying a generic particle system interactively
+
+namespace ASW_WCEdit
+{	
+	void	EditEmitter(	CBasePlayer *pPlayer );
+};
+
+#endif /* _DEFINED_ASW_WC_EDIT_H */

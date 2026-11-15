@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f436147792da650f7e8c6c40106eb0b4eacb04400a6fb0d0874a96c752da04b9
-size 657
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef PHYS_CONTROLLER_H
+#define PHYS_CONTROLLER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+CBaseEntity *CreateKeepUpright( const Vector &vecOrigin, const QAngle &vecAngles, CBaseEntity *pOwner, float flAngularLimit, bool bActive );
+
+AngularImpulse ComputeRotSpeedToAlignAxes( const Vector &testAxis, const Vector &alignAxis, const AngularImpulse &currentSpeed, 
+										  float damping, float scale, float maxSpeed );
+
+#endif // PHYS_CONTROLLER_H

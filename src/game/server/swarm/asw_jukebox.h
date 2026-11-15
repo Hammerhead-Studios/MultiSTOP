@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:43aba1d02643336342aee20b0f148cb0230442dab1f0e0e5467419f9765e8bd5
-size 419
+#ifndef _DEFINED_ASW_JUKEBOX_H
+#define _DEFINED_ASW_JUKEBOX_H
+
+class CASW_Jukebox : public CBaseEntity
+{
+public:
+	DECLARE_CLASS( CASW_Jukebox, CBaseEntity );
+	DECLARE_DATADESC();
+
+	void InputMusicStart( inputdata_t &inputdata );
+	void InputMusicStop( inputdata_t &inputdata );
+protected:
+	float m_fFadeInTime;
+	float m_fFadeOutTime;
+	char *m_szDefaultMusic;
+};
+
+#endif // #ifndef _DEFINED_ASW_JUKEBOX_H

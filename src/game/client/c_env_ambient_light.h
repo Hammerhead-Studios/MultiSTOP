@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:16e6e550e8c2a679fa2f4784b679e1f869e0c9714946c02fd568a09078bd85df
-size 991
+#ifndef _INCLUDED_C_ENV_AMBIENT_LIGHT_H
+#define _INCLUDED_C_ENV_AMBIENT_LIGHT_H
+
+#include "c_spatialentity.h"
+
+//------------------------------------------------------------------------------
+// Purpose : Ambient light controller entity with radial falloff
+//------------------------------------------------------------------------------
+class C_EnvAmbientLight : public C_SpatialEntityTemplate<Vector>
+{
+public:
+	DECLARE_CLASS( C_EnvAmbientLight, C_SpatialEntityTemplate<Vector> );
+	DECLARE_CLIENTCLASS();
+
+	virtual void ApplyAccumulation( void );
+	virtual void ClientThink( void );
+
+	void SetColor( const Vector &vecColor, float flLerpTime = 0 );
+	Vector GetTargetColor() { return m_vecTargetColor * 255.0f; }
+
+protected:
+	virtual void AddToPersonalSpatialEntityMgr( void );
+	virtual void RemoveFromPersonalSpatialEntityMgr( void );
+
+	Vector m_vecStartColor;
+	Vector m_vecTargetColor;
+	CountdownTimer m_colorTimer;
+};
+
+#endif // _INCLUDED_C_ENV_AMBIENT_LIGHT_H

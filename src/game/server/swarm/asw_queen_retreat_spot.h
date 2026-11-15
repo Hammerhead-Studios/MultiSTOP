@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:21882571e62353b820b9f88c363b9efcc356aea81b06f8b36d339fbc36975ecf
-size 350
+#ifndef _INCLUDED_ASW_QUEEN_RETREAT_SPOT_H
+#define _INCLUDED_ASW_QUEEN_RETREAT_SPOT_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "baseentity.h"
+
+class CASW_Queen_Retreat_Spot : public CPointEntity
+{
+public:
+	DECLARE_CLASS( CASW_Queen_Retreat_Spot, CPointEntity );
+	DECLARE_DATADESC();
+};
+#endif /* _INCLUDED_ASW_QUEEN_RETREAT_SPOT_H */

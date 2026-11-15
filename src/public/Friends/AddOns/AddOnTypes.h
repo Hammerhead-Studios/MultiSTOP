@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e8e7a0e69bd7685ab77030d6dc33874e5c37bf9ffc229a636219fb03e2713fe5
-size 402
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef ADDONTYPES_H
+#define ADDONTYPES_H
+#pragma once
+
+#ifndef WIN32
+  typedef unsigned long long SessionInt64;
+#else
+  typedef unsigned __int64 SessionInt64;
+#endif
+
+#endif // ADDONTYPES_H
+

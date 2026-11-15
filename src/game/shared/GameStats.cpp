@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:393b492ea57eba283b7967926dbdfe7cd93a25fd5db0e5efa95f9e807ebc2f13
-size 574
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#include "cbase.h"
+#include "GameStats.h"
+
+// NOTE: This has to be the last file included!
+#include "tier0/memdbgon.h"
+
+static CBaseGameStats s_GameStats_Singleton;
+CBaseGameStats *gamestats = &s_GameStats_Singleton; //start out pointing at the basic version which does nothing by default
+
+void UpdatePerfStats( void ) { }
+void SetGameStatsHandler( CGameStats *pGameStats ) { }

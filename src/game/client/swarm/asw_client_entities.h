@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:aa801837d99229227ec4de2753cd4263f14be3e5815dd2acbf263242ca9b64a9
-size 982
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose : Manages creating clientside entities
+//
+// $NoKeywords: $
+//===========================================================================//
+
+#ifndef _INCLUDED_ASW_CLIENT_ENTITIES_H
+#define _INCLUDED_ASW_CLIENT_ENTITIES_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "igamesystem.h"
+
+
+//------------------------------------------------------------------------------
+// Purpose : Manages creating clientside entities
+//------------------------------------------------------------------------------
+
+class CASW_Client_Entities : public CAutoGameSystem
+{
+	// Inherited from IGameSystemPerFrame
+public:
+	virtual char const *Name() { return "Infested clientside entities"; }
+
+	// Other public methods
+public:
+	CASW_Client_Entities();
+	virtual void LevelInitPostEntity();
+	virtual void LevelShutdownPreEntity();
+};
+
+
+#endif // _INCLUDED_ASW_CLIENT_ENTITIES_H

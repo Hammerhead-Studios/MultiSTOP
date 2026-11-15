@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e8d57f532d60723c3c482310bfe194f3834a18a90243aab2239b265c16c8731a
-size 715
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: This module implements functions to support ehandles.
+//
+//=============================================================================//
+
+#include "cbase.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+#if defined( GAME_DLL )
+	
+	#include "entitylist.h"
+
+
+	void DebugCheckEHandleAccess( void *pEnt )
+	{
+		extern bool g_bDisableEhandleAccess;
+
+		if ( g_bDisableEhandleAccess )
+		{
+			Msg( "Access of EHANDLE/CHandle for class %s:%p in destructor!\n",
+				STRING(((CBaseEntity*)pEnt)->m_iClassname ), pEnt );
+		}
+	}
+
+#else
+	
+#endif
+
+

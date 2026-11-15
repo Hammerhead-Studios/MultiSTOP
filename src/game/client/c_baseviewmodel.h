@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8da4d98df0579a068aef42c111e1f4ac0c52b0b39340b9192c6c8048811a55ab
-size 516
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Client side view model implementation. Responsible for drawing
+//			the view model.
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef C_BASEVIEWMODEL_H
+#define C_BASEVIEWMODEL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "c_baseanimating.h"
+#include "UtlVector.h"
+#include "baseviewmodel_shared.h"
+
+
+#endif // C_BASEVIEWMODEL_H

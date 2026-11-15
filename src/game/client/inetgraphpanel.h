@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dd540f8f08555dd85a0d44cab32132378045db4ad3478f6a62f65dea7bbc50fc
-size 629
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+// $NoKeywords: $
+//=============================================================================//
+
+#if !defined( INETGRAPHPANEL_H )
+#define INETGRAPHPANEL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+
+namespace vgui
+{
+	class Panel;
+}
+
+abstract_class INetGraphPanel
+{
+public:
+	virtual void			Create( vgui::VPANEL parent ) = 0;
+	virtual void			Destroy( void ) = 0;
+};
+
+extern INetGraphPanel *netgraphpanel;
+
+#endif // INETGRAPHPANEL_H

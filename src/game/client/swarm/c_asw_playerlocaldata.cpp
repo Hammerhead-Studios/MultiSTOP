@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab466c5462b1c51ab3395377963f1db05a92b2aa775b97c6cb6f41bc2d6b27a2
-size 747
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#include "cbase.h"
+#include "c_asw_playerlocaldata.h"
+#include "dt_recv.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+BEGIN_RECV_TABLE_NOBASE( C_ASWPlayerLocalData, DT_ASWLocal )
+	RecvPropEHandle( RECVINFO(m_hAutoAimTarget) ),
+	RecvPropVector( RECVINFO(m_vecAutoAimPoint) ),
+	RecvPropBool( RECVINFO(m_bAutoAimTarget) ),
+END_RECV_TABLE()
+
+BEGIN_PREDICTION_DATA_NO_BASE( C_ASWPlayerLocalData )
+END_PREDICTION_DATA()
+
+C_ASWPlayerLocalData::C_ASWPlayerLocalData()
+{
+}
+

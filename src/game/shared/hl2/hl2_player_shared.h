@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:accfb0d0665f393918959a00423439da582690d77bbfc6aa37a52921bafa3dde
-size 556
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef HL2_PLAYER_SHARED_H
+#define HL2_PLAYER_SHARED_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+// Shared header file for players
+#if defined( CLIENT_DLL )
+#define CHL2_Player C_BaseHLPlayer	//FIXME: Lovely naming job between server and client here...
+#include "c_basehlplayer.h"
+#else
+#include "hl2_player.h"
+#endif
+
+#endif // HL2_PLAYER_SHARED_H

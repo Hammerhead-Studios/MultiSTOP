@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6d673ce4e44ac8f008402ab3f7933b964eb1b460ffb74d9840474fcff35ffdc5
-size 1138
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#include "cbase.h"
+#include "weapon_citizenpackage.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Old Man Harpoon - Lost Coast.
+//-----------------------------------------------------------------------------
+class CWeaponOldManHarpoon : public CWeaponCitizenPackage
+{
+	DECLARE_CLASS( CWeaponOldManHarpoon, CWeaponCitizenPackage );
+public:
+	DECLARE_SERVERCLASS();
+	DECLARE_DATADESC();	
+	DECLARE_ACTTABLE();
+};
+
+IMPLEMENT_SERVERCLASS_ST( CWeaponOldManHarpoon, DT_WeaponOldManHarpoon )
+END_SEND_TABLE()
+
+BEGIN_DATADESC( CWeaponOldManHarpoon )
+END_DATADESC()
+
+LINK_ENTITY_TO_CLASS( weapon_oldmanharpoon, CWeaponOldManHarpoon );
+PRECACHE_WEAPON_REGISTER( weapon_oldmanharpoon );
+
+acttable_t	CWeaponOldManHarpoon::m_acttable[] = 
+{
+	{ ACT_IDLE,						ACT_IDLE_SUITCASE,					false },
+	{ ACT_WALK,						ACT_WALK_SUITCASE,					false },
+};
+IMPLEMENT_ACTTABLE( CWeaponOldManHarpoon );

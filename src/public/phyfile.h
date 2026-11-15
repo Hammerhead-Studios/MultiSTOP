@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:47c053679629f64b9f942871bf344d2b8b0e8c861992110fab3decb533f249cf
-size 488
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef PHYFILE_H
+#define PHYFILE_H
+#pragma once
+
+#include "datamap.h"
+
+typedef struct phyheader_s
+{
+	DECLARE_BYTESWAP_DATADESC();
+	int		size;
+	int		id;
+	int		solidCount;
+	long	checkSum;	// checksum of source .mdl file
+} phyheader_t;
+
+#endif // PHYFILE_H

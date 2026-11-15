@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:db28545264603281ad245353f271dacfabaab5058099d15bee8b0ae66d457924
-size 875
+#include "vgui_controls/ImagePanel.h"
+#include "VFlyoutMenu.h"
+
+using namespace BaseModUI;
+using namespace vgui;
+
+//-----------------------------------------------------------------------------
+// Purpose: Same as an image panel, but closes flyouts on click (most of the menu backgrounds are image panels)
+//-----------------------------------------------------------------------------
+class BaseModMenuBackground : public ImagePanel
+{
+	DECLARE_CLASS_SIMPLE( BaseModMenuBackground, ImagePanel );
+public:
+	BaseModMenuBackground(Panel *parent, const char *name) : BaseClass( parent, name ) {}
+	virtual void OnMousePressed( vgui::MouseCode code )
+	{
+		if( FlyoutMenu::GetActiveMenu() )
+			FlyoutMenu::CloseActiveMenu( FlyoutMenu::GetActiveMenu()->GetNavFrom() );
+
+		BaseClass::OnMousePressed( code );
+	}
+};
+DECLARE_BUILD_FACTORY( BaseModMenuBackground );

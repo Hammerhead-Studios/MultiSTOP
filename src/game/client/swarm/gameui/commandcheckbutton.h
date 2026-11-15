@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f95175ae07f0564bc2187edcc0107b5b21ef49730a712c039f1171aa8c4033f2
-size 807
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef COMMANDCHECKBUTTON_H
+#define COMMANDCHECKBUTTON_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/CheckButton.h>
+
+class CCommandCheckButton : public vgui::CheckButton
+{
+public:
+	CCommandCheckButton( vgui::Panel *parent, const char *panelName, const char *text, const char *downcmd, const char *upcmd );
+	~CCommandCheckButton();
+
+//	virtual void	OnCheckButtonChecked(vgui::Panel *panel);
+	virtual void	SetSelected( bool state );
+private:
+	typedef vgui::CheckButton BaseClass;
+
+	char			*m_pszDown;
+	char			*m_pszUp;
+};
+#endif // COMMANDCHECKBUTTON_H

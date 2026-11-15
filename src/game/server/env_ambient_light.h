@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ddf34841e1db327f17616056399ebb82aa96a050750760f20f85e7909d6a3d1e
-size 715
+#ifndef _INCLUDED_ENV_AMBIENT_LIGHT_H
+#define _INCLUDED_ENV_AMBIENT_LIGHT_H
+
+#include "spatialentity.h"
+
+//------------------------------------------------------------------------------
+// Purpose : Ambient light controller entity
+//------------------------------------------------------------------------------
+class CEnvAmbientLight : public CSpatialEntity
+{
+	DECLARE_CLASS( CEnvAmbientLight, CSpatialEntity );
+
+public:
+	DECLARE_SERVERCLASS();
+	DECLARE_DATADESC();
+
+	virtual void Spawn( void );
+
+	void InputSetColor(inputdata_t &inputdata);
+	void SetColor( const Vector &vecColor );
+
+private:
+	color32	m_Color;
+
+	CNetworkVector( m_vecColor );
+};
+
+#endif // _INCLUDED_ENV_AMBIENT_LIGHT_H

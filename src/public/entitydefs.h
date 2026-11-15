@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ae95015d4dbfacd06d206a512904d9f748113c3888dd538ac5b67fe51688283d
-size 551
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ====
+//
+// Entity definitions needed by hammer, compile tools, and the game.
+//
+//=============================================================================
+
+#ifndef ENTITYDEFS_H
+#define ENTITYDEFS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#define MAX_ENTITY_NAME_LEN			   256
+#define MAX_IO_NAME_LEN				      256
+
+#define VMF_IOPARAM_STRING_DELIMITER   0x1b // Use ESC as a delimiter so we can pass commas etc. in I/O parameters
+
+
+#endif // ENTITYDEFS_H
+

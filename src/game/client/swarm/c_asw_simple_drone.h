@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb7d5974e24f91ea21274cab0045b8adf7d936de8b8d3669f20465520c2a37d1
-size 681
+#ifndef _INCLUDED_C_ASW_SIMPLE_DRONE_H
+#define _INCLUDED_C_ASW_SIMPLE_DRONE_H
+
+#include "c_asw_simple_alien.h"
+
+class C_ASW_Simple_Drone : public C_ASW_Simple_Alien
+{
+public:
+	DECLARE_CLASS( C_ASW_Simple_Drone, C_ASW_Simple_Alien );
+	DECLARE_CLIENTCLASS();
+
+					C_ASW_Simple_Drone();
+	virtual			~C_ASW_Simple_Drone();
+
+	float GetRunSpeed();
+	virtual void ClientThink();
+	virtual void OnDataChanged( DataUpdateType_t updateType );
+	void UpdatePoseParams();
+
+private:
+	C_ASW_Simple_Drone( const C_ASW_Simple_Drone & ); // not defined, not accessible
+	float m_flCurrentTravelYaw;
+	float m_flCurrentTravelSpeed;
+};
+
+#endif /* _INCLUDED_C_ASW_SIMPLE_DRONE_H */

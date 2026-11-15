@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4d2f55da07efc2f04e62171a67992c872f00db838526dcb39d3c2912376572b3
-size 784
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+//=============================================================================//
+
+#ifndef AI_OBSTACLE_TYPE_H
+#define AI_OBSTACLE_TYPE_H
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+//-------------------------------------
+// AI_MoveSuggType_t
+//
+// Purpose: Specifies the type of suggestion. Different types have different weights
+//-------------------------------------
+enum AI_MoveSuggType_t
+{
+	// Positive suggestions
+	AIMST_MOVE,
+
+	// Negative suggestions
+	AIMST_AVOID_DANGER,
+	AIMST_AVOID_OBJECT,
+	AIMST_AVOID_NPC,
+	AIMST_AVOID_WORLD,
+
+	AIMST_NO_KNOWLEDGE,
+	AIMST_OSCILLATION_DETERRANCE,
+
+	AIMS_INVALID
+};
+
+#endif // AI_OBSTACLE_TYPE_H

@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2cd02d0c7c565f5038d2af4f2381cc494e1e008d6f088d6dd4d247f3eaa3aea3
-size 763
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================
+#ifndef WEAPON_CITIZENPACKAGE_H
+#define WEAPON_CITIZENPACKAGE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "basehlcombatweapon.h"
+
+//=============================================================================
+//
+// Weapon - Citizen Package Class
+//
+class CWeaponCitizenPackage : public CBaseHLCombatWeapon
+{
+	DECLARE_CLASS( CWeaponCitizenPackage, CBaseHLCombatWeapon );
+public:
+
+	DECLARE_SERVERCLASS();
+	DECLARE_DATADESC();	
+	DECLARE_ACTTABLE();
+
+	void ItemPostFrame( void );
+	void Drop( const Vector &vecVelocity );
+};
+
+#endif // WEAPON_CITIZENPACKAGE_H

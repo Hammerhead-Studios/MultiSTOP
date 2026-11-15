@@ -1,3 +1,51 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fc6305907aa8c1bfa421b902d975828dfbfeef9971d2e9bbe6f7e305d1407346
-size 1499
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef IFILESYSTEMOPENDIALOG_H
+#define IFILESYSTEMOPENDIALOG_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+
+#define FILESYSTEMOPENDIALOG_VERSION	"FileSystemOpenDlg003"
+
+
+class IFileSystem;
+
+
+abstract_class IFileSystemOpenDialog
+{
+public:
+	// You must call this first to set the hwnd.
+	virtual void Init( CreateInterfaceFn factory, void *parentHwnd ) = 0;
+
+	// Call this to free the dialog.
+	virtual void Release() = 0;
+
+	// Use these to configure the dialog.
+	virtual void AddFileMask( const char *pMask ) = 0;
+	virtual void SetInitialDir( const char *pDir, const char *pPathID = NULL ) = 0;
+	virtual void SetFilterMdlAndJpgFiles( bool bFilter ) = 0;
+	virtual void GetFilename( char *pOut, int outLen ) const = 0;	// Get the filename they chose.
+
+	// Call this to make the dialog itself. Returns true if they clicked OK and false 
+	// if they canceled it.
+	virtual bool DoModal() = 0;
+
+	// This uses the standard windows file open dialog.
+	virtual bool DoModal_WindowsDialog() = 0;
+
+	// Mark the dialog as allowing us to multi-select
+	virtual void AllowMultiSelect( bool bAllow ) = 0;
+
+	// Request the length of the buffer sufficient enough to hold the entire filename result
+	virtual int GetFilenameBufferSize() const = 0;
+};
+
+
+#endif // IFILESYSTEMOPENDIALOG_H

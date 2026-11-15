@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77975f2ef1b13865a9b48c19a15d4e26cb961a44762d992e0535c57e5a4068ae
-size 660
+//======= Copyright © 1996-2008, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: Add a specially formatted string to each debug DLL of the form 
+//          "%DLLNAME%.dll is built debug!". We can search for this string via
+//			a Perforce trigger to ensure that debug LIBs are not checked in.
+//
+//=============================================================================//
+
+#if defined(DEBUG) || defined(_DEBUG)
+#include "tier0/platform.h"
+
+#define _DEBUGONLYSTRING(x) #x
+#define DEBUGONLYSTRING(x) _DEBUGONLYSTRING(x) 
+DLL_GLOBAL_EXPORT char const *pDebugString = DEBUGONLYSTRING(DLLNAME) ".dll is built debug!";
+
+#endif

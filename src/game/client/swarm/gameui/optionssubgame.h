@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d10c5863a6679b3b224cf30b40cfbd49664277a6450f39bf6867385ef047ae62
-size 897
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef OPTIONS_SUB_GAME_H
+#define OPTIONS_SUB_GAME_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "vgui_controls/Frame.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Game Settings, Part of OptionsDialog
+//-----------------------------------------------------------------------------
+class COptionsSubGame : public vgui::Frame
+{
+	DECLARE_CLASS_SIMPLE( COptionsSubGame, vgui::Frame );
+
+public:
+	COptionsSubGame( vgui::Panel *parent, const char *name );
+	~COptionsSubGame( void );
+
+	virtual void OnCommand( const char *command );
+	virtual void OnClose( void );
+
+private:
+};
+
+
+
+#endif // OPTIONS_SUB_GAME_H

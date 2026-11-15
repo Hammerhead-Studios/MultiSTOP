@@ -1,3 +1,61 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8ed462af9729d1234c14a97c88d8d0cbb4056985f70761deb270b4d0803702c3
-size 1011
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef POINT_H
+#define POINT_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+
+namespace vgui
+{
+
+//-----------------------------------------------------------------------------
+// Purpose: Basic handler for a Points in 2 dimensions
+//			This class is fully inline
+//-----------------------------------------------------------------------------
+class Point
+{
+public:
+	// constructors
+	Point()
+	{
+		SetPoint(0, 0);
+	}
+	Point(int x,int y)
+	{
+		SetPoint(x,y);
+	}
+
+	void SetPoint(int x1, int y1)
+	{
+		x=x1;
+		y=y1;	
+	}
+
+	void GetPoint(int &x1, int &y1) const
+	{
+		x1 = x;
+		y1 = y;
+	
+	}
+
+	bool operator == (Point &rhs) const
+	{
+		return (x == rhs.x && y == rhs.y);
+	}
+
+private:
+	int x, y;
+};
+
+} // namespace vgui
+
+#endif // POINT_H

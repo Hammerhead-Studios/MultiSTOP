@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e45c99cb9ecb954d826db20e758aca8e5fa735463d91061f82ff5d3306fd75b0
-size 535
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Client's CBaseCombatWeapon entity
+//
+// $Workfile:     $
+// $Date:         $
+// $NoKeywords: $
+//=============================================================================//
+#ifndef C_BASECOMBATWEAPON_H
+#define C_BASECOMBATWEAPON_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "basecombatweapon_shared.h"
+#include "weapons_resource.h"
+
+class CViewSetup;
+class C_BaseViewModel;
+
+#endif // C_BASECOMBATWEAPON

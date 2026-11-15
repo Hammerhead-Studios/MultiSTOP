@@ -1,3 +1,46 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e1d3cb3ef5248c067922c9795bc641595bc7b18f94991c3a63f22c4142f2339d
-size 871
+//-----------------------------------------------------------------------------
+//	MESHUTILS.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$macro SRCDIR		".."
+$include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
+
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories	"$BASE;..\public\meshutils"
+	}
+}
+
+$Project "meshutils"
+{
+	$Folder	"Source Files"
+	{
+		$File	"atlas.cpp"
+		$File	"clipmesh.cpp"
+		$File	"convexhull.cpp"
+		$File	"mesh.cpp"
+		$File	"simplify.cpp"
+		$File	"vertexops.cpp"
+		$File	"uvparam.cpp"
+	}
+
+	$Folder "External Source Files"
+	{
+		$File	"$SRCDIR\public\interpolatortypes.cpp"
+	}
+	
+	$Folder	"Public Header Files"
+	{
+		$File	"$SRCDIR\public\meshutils\simplify.h"
+		$File	"$SRCDIR\public\meshutils\mesh.h"
+	}
+
+	$Folder	"Header Files"
+	{
+	}
+}

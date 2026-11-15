@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7077ab44dece612e13c4a65bc8f586190c4fc8a9e62f67a254007938aa59e014
-size 1124
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=====================================================================================//
+
+#ifndef __VFOUND_GROUP_GAMES_H__
+#define __VFOUND_GROUP_GAMES_H__
+
+#include "VFoundGames.h"
+
+namespace BaseModUI {
+
+	class GenericPanelList;
+	class FoundGames;
+	class BaseModHybridButton;
+
+
+	//=============================================================================
+
+	class FoundGroupGames : public FoundGames
+	{
+		DECLARE_CLASS_SIMPLE( FoundGroupGames, FoundGames );
+
+	public:
+		FoundGroupGames( vgui::Panel *parent, const char *panelName );
+	
+		virtual void PaintBackground();
+		virtual void OnEvent( KeyValues *pEvent );
+
+		virtual bool CanCreateGame() { return false; }
+		
+	protected:
+
+		virtual void StartSearching( void );
+		virtual void AddServersToList( void );
+		virtual void SortListItems();
+		virtual bool IsADuplicateServer( FoundGameListItem *item, FoundGameListItem::Info const &fi );
+
+		bool ShouldAddServerToList( KeyValues *pGameSettings );
+	};
+
+};
+
+#endif

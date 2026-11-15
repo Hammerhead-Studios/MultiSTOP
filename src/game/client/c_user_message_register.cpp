@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cf159e9ebf598de99c8772d8795c4718f5eafa15238bdb969138bd4855e3b5b5
-size 840
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "cbase.h"
+#include "c_user_message_register.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+CUserMessageRegister *CUserMessageRegister::s_pHead = NULL;
+
+
+CUserMessageRegister::CUserMessageRegister( const char *pMessageName, pfnUserMsgHook pHookFn )
+{
+	m_pMessageName = pMessageName;
+	m_pHookFn = pHookFn;
+	
+	// Link it in.
+	m_pNext = s_pHead;
+	s_pHead = this;
+}
+
+
+void CUserMessageRegister::RegisterAll()
+{
+	for ( CUserMessageRegister *pCur=s_pHead; pCur; pCur=pCur->m_pNext )
+	{
+		usermessages->HookMessage( pCur->m_pMessageName, pCur->m_pHookFn );
+	}
+}
+
+
+

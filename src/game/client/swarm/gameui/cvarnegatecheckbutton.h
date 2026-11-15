@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1652d5d8b81bbb48bdcc969475a915d190d407926997168d9a269c1e35bf241c
-size 951
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CVARNEGATECHECKBUTTON_H
+#define CVARNEGATECHECKBUTTON_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/CheckButton.h>
+
+class CCvarNegateCheckButton : public vgui::CheckButton
+{
+	DECLARE_CLASS_SIMPLE( CCvarNegateCheckButton, vgui::CheckButton );
+
+public:
+	CCvarNegateCheckButton( vgui::Panel *parent, const char *panelName, const char *text, 
+		char const *cvarname );
+	~CCvarNegateCheckButton();
+
+	virtual void	SetSelected( bool state );
+	virtual void	Paint();
+
+	void			Reset();
+	void			ApplyChanges();
+	bool			HasBeenModified();
+
+private:
+	MESSAGE_FUNC( OnButtonChecked, "CheckButtonChecked" );
+
+	char			*m_pszCvarName;
+	bool			m_bStartState;
+};
+
+#endif // CVARNEGATECHECKBUTTON_H

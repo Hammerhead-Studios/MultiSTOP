@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:91e9f17bb555c9198b77e75c15d61a60db079f8cfbdf057d33802049fa0d1105
-size 903
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CVARTEXTENTRY_H
+#define CVARTEXTENTRY_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/TextEntry.h>
+
+class CCvarTextEntry : public vgui::TextEntry
+{
+	DECLARE_CLASS_SIMPLE( CCvarTextEntry, vgui::TextEntry );
+
+public:
+	CCvarTextEntry( vgui::Panel *parent, const char *panelName, char const *cvarname );
+	~CCvarTextEntry();
+
+	MESSAGE_FUNC( OnTextChanged, "TextChanged" );
+	void			ApplyChanges(  bool immediate = false );
+	virtual void	ApplySchemeSettings(vgui::IScheme *pScheme);
+    void            Reset();
+    bool            HasBeenModified();
+
+private:
+	char			*m_pszCvarName;
+	char			m_pszStartValue[64];
+};
+
+#endif // CVARTEXTENTRY_H

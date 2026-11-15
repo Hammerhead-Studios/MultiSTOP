@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9dd19845365ec67daa8e80315e4c35f1331d55ad12f66b9bf1854eab9aa088bd
-size 897
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef CLIENT_RENDER_HANDLE_H
+#define CLIENT_RENDER_HANDLE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+//-----------------------------------------------------------------------------
+// Foward declarations
+//-----------------------------------------------------------------------------
+class IClientRenderable;
+
+
+//-----------------------------------------------------------------------------
+// Handle to an renderable in the client leaf system
+//-----------------------------------------------------------------------------
+typedef unsigned short ClientRenderHandle_t;
+
+enum
+{
+	INVALID_CLIENT_RENDER_HANDLE = (ClientRenderHandle_t)0xffff,
+};
+
+
+#endif // CLIENT_RENDER_HANDLE_H

@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3656341a99ef3e43e06bf708ca3129cfd56321235824a0b95f3c116fe2244b83
-size 522
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef FOUNDRYHELPERS_SERVER_H
+#define FOUNDRYHELPERS_SERVER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "foundry/iserverfoundry.h"
+#include "enginecallback.h"
+
+
+void FoundryHelpers_ClearEntityHighlightEffects();
+void FoundryHelpers_AddEntityHighlightEffect( CBaseEntity *pEnt );
+
+
+#endif // FOUNDRYHELPERS_SERVER_H

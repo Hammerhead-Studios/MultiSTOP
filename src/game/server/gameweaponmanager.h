@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:008f383900ad6a326d90573e3a5ea44ac2edbdf5980e26b42b21eb4f1a2bc2e5
-size 601
+//========== Copyright © 2005, Valve Corporation, All rights reserved. ========
+//
+// Purpose:
+//
+//=============================================================================
+
+#ifndef GAMEWEAPONMANAGER_H
+#define GAMEWEAPONMANAGER_H
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+void CreateWeaponManager( const char *pWeaponName, int iMaxPieces );
+
+class CBaseCombatWeapon;
+
+void WeaponManager_AmmoMod( CBaseCombatWeapon *pWeapon );
+
+void WeaponManager_AddManaged( CBaseEntity *pWeapon );
+void WeaponManager_RemoveManaged( CBaseEntity *pWeapon );
+
+#endif // GAMEWEAPONMANAGER_H

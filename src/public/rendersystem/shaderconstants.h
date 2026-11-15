@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b40a55167973d7233f341b91dc55fa822d3345bb8a205aac576e6eb3a0c75db2
-size 464
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//===========================================================================//
+
+#ifndef SHADERCONSTANTS_H
+#define SHADERCONSTANTS_H
+
+#ifdef COMPILER_MSVC
+#pragma once
+#endif
+
+#include "tier0/platform.h"
+
+enum RenderVertexShaderConstants_t
+{
+	VSREG_INSTANCE_INDEX_COUNT = 255,	// 360 only
+};
+
+#endif // SHADERCONSTANTS_H

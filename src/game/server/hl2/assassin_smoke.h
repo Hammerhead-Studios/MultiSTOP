@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:807c268a3a08249e5f50c33f95e3fbaec205c5e1498fa0580eadc314de303612
-size 551
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+#ifndef ASSASSIN_SMOKE_H
+#define ASSASSIN_SMOKE_H
+
+
+#include "baseparticleentity.h"
+
+
+class CAssassinSmoke : public CBaseParticleEntity
+{
+public:
+	DECLARE_CLASS( CAssassinSmoke, CBaseParticleEntity );
+	DECLARE_SERVERCLASS();
+
+	static CAssassinSmoke* CreateAssassinSmoke (const Vector &pos);
+};
+
+
+#endif//ASSASSIN_SMOKE_H
+
+

@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e36b5120fbd97c2099e531a536b43ca6dcd04ec854982074f85ed2b515a58890
-size 785
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=====================================================================================//
+
+#ifndef __VOPTIONS_H__
+#define __VOPTIONS_H__
+
+#include "basemodui.h"
+
+namespace BaseModUI {
+
+class BaseModHybridButton;
+
+class Options : public CBaseModFrame
+{
+	DECLARE_CLASS_SIMPLE( Options, CBaseModFrame );
+
+public:
+	Options(vgui::Panel *parent, const char *panelName);
+	~Options();
+
+	void OnCommand(const char *command);
+
+private:
+	BaseModHybridButton* m_BtnGame;
+	BaseModHybridButton* m_BtnAudioVideo;
+	BaseModHybridButton* m_BtnController;
+	BaseModHybridButton* m_BtnStorage;
+	BaseModHybridButton* m_BtnCredits;
+};
+
+};
+
+#endif // __VOPTIONS_H__

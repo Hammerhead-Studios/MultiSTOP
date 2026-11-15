@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bd38d5bbd0fdd52ef6d34b6f3ef797e94ccdfc5beb2d9a75e38e72288e04ff50
-size 380
+//==== Blobulator. Copyright © 2004-2024, Ilya D. Rosenberg, All rights reserved. ====//
+#pragma once
+#include "..\Point3D.h"
+
+class PhysParticle {
+public:
+
+	PhysParticle();
+
+	Point3D center;
+	float radius;
+	int temp1;
+	
+	Point3D force;
+
+	short group;
+	short neighbor_count;
+};
+
+class PhysParticleAndDist {
+public:
+	PhysParticle* particle;
+	float distSq;
+};

@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:68d4b0a78747c30eee366f73db5edc9378a3fde95785c4a9b719a6f8c2c75f9f
-size 750
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#include "cbase.h"
+#include "actanimating.h"
+#include "animation.h"
+#include "activitylist.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+BEGIN_DATADESC( CActAnimating )
+	DEFINE_CUSTOM_FIELD( m_Activity, ActivityDataOps() ),
+END_DATADESC()
+
+
+void CActAnimating::SetActivity( Activity act ) 
+{ 
+	int sequence = SelectWeightedSequence( act ); 
+	if ( sequence != ACTIVITY_NOT_AVAILABLE )
+	{
+		ResetSequence( sequence );
+		m_Activity = act; 
+		SetCycle( 0 );
+	}
+}
+

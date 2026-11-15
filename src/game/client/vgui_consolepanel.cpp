@@ -1,3 +1,51 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2e61c0f3bc6d288365b300bf68c18190b9473beabc1b6f67b5f5b94c8f76dd15
-size 964
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+#include "cbase.h"
+#include "iconsole.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+class CConPanel;
+
+class CConsole : public IConsole
+{
+private:
+	CConPanel *conPanel;
+public:
+	CConsole( void )
+	{
+		conPanel = NULL;
+	}
+	
+	void Create( vgui::VPANEL parent )
+	{
+		/*
+		conPanel = new CConPanel( parent );
+		*/
+	}
+
+	void Destroy( void )
+	{
+		/*
+		if ( conPanel )
+		{
+			conPanel->SetParent( (vgui::Panel *)NULL );
+			delete conPanel;
+		}
+		*/
+	}
+};
+
+static CConsole g_Console;
+IConsole *console = ( IConsole * )&g_Console;

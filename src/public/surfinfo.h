@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:54dc218300d6a6ef82870e5799408c8994f356742d30d011eb740e7baa39fb80
-size 641
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#ifndef SURFINFO_H
+#define SURFINFO_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "mathlib/vplane.h"
+
+//#include "mathlib/vector.h"
+#define MAX_SURFINFO_VERTS	16
+class SurfInfo
+{
+public:
+	// Shape of the surface.
+	Vector			m_Verts[ MAX_SURFINFO_VERTS ];
+	unsigned long	m_nVerts;
+
+	// Plane of the surface.
+	VPlane			m_Plane;
+
+	// For engine use only..
+	void			*m_pEngineData;
+};
+
+#endif // SURFINFO_H

@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:28dea6b890e89ccc66b1e9949092212b3fe3b74c5e84e1b7d6f6c9933ef02ef5
-size 750
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( IDEBUGOVERLAYPANEL_H )
+#define IDEBUGOVERLAYPANEL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+
+namespace vgui
+{
+	class Panel;
+}
+
+abstract_class IDebugOverlayPanel
+{
+public:
+	virtual void		Create( vgui::VPANEL parent ) = 0;
+	virtual void		Destroy( void ) = 0;
+};
+
+extern IDebugOverlayPanel *debugoverlaypanel;
+
+#endif // IDEBUGOVERLAYPANEL_H

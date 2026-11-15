@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b80c504788840681c2b5dc71e28c4796c74b2a8dd4af741fc3a7ded0eeb8069b
-size 1135
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef COMMENTARYEXPLANATIONDIALOG_H
+#define COMMENTARYEXPLANATIONDIALOG_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "vgui_controls/Frame.h"
+#include "utlvector.h"
+#include <vgui/KeyCode.h>
+
+//-----------------------------------------------------------------------------
+// Purpose: Dialog that explains the commentary mode
+//-----------------------------------------------------------------------------
+class CCommentaryExplanationDialog : public vgui::Frame
+{
+	DECLARE_CLASS_SIMPLE( CCommentaryExplanationDialog, vgui::Frame );
+
+public:
+	CCommentaryExplanationDialog(vgui::Panel *parent, char *pszFinishCommand);
+	~CCommentaryExplanationDialog();
+
+	virtual void OnKeyCodeTyped(vgui::KeyCode code);
+	virtual void OnKeyCodePressed(vgui::KeyCode code);
+	virtual void OnCommand( const char *command );
+	virtual void OnClose( void );
+
+private:
+	char m_pszFinishCommand[ 512 ];
+};
+
+#endif // COMMENTARYEXPLANATIONDIALOG_H

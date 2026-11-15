@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:16530c9f5b393e9b4a70a309d06fe718969360722c6aeccbca78d2379da2dd48
-size 727
+//========= Copyright 1996-2009, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Declares the paint color manager class.
+//
+//=============================================================================//
+#ifndef PAINT_COLOR_MANAGER_H
+#define PAINT_COLOR_MANAGER_H
+
+// src/public/
+#include "paint_enum.h"
+
+PaintPowerType MapColorToPower( const color24& color );
+PaintPowerType MapColorToPower( const Color& color );
+PaintPowerType MapColorToPower( const CUtlVector<BYTE>& colors );
+PaintPowerType MapColorToPower( const CUtlVector<Color>& colors );
+Color MapPowerToColor( int paintPowerType );
+Color MapPowerToVisualColor( int paintPowerType );
+
+#endif // ifndef PAINT_COLOR_MANAGER_H

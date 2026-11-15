@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a16e64965229de03fa10e3b23dcfcc583cfa9709699999db5ad34866dff4e456
-size 377
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef MOVEHELPER_CLIENT_H
+#define MOVEHELPER_CLIENT_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "imovehelper.h"
+
+#endif // MOVEHELPER_CLIENT_H

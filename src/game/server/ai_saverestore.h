@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:173c14aa63ccb5a2e5c623c9ecc0bd9490503aa764a3429c21fc8bba883c357b
-size 406
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef AI_SAVERESTORE_H
+#define AI_SAVERESTORE_H
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+ISaveRestoreBlockHandler *GetAISaveRestoreBlockHandler();
+
+#endif // AI_SAVERESTORE_H

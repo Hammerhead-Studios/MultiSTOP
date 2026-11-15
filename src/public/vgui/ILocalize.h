@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bdb7a6c1f4cdaf49ca30b7af601383e0e17da5fe90a63e837fb03a1b086bd2ce
-size 658
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//===========================================================================//
+
+#ifndef VGUI_ILOCALIZE_H
+#define VGUI_ILOCALIZE_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "localize/ilocalize.h"
+
+// Everything moved to localize lib; this is here for backward compat.
+namespace vgui
+{
+// direct references to localized strings
+typedef uint32 StringIndex_t;
+const uint32 INVALID_STRING_INDEX = (uint32) -1;
+
+abstract_class ILocalize : public ::ILocalize
+{
+};
+
+}; // namespace vgui
+
+#endif // VGUI_ILOCALIZE_H

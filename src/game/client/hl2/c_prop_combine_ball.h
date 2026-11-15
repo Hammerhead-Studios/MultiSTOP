@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e65727a6090819d3958866cb8695fc77746875e03fbae162db4ce961173c89a7
-size 919
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef CPROPCOMBINEBALL_H_
+#define CPROPCOMBINEBALL_H_
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+class C_PropCombineBall : public C_BaseAnimating
+{
+	DECLARE_CLASS( C_PropCombineBall, C_BaseAnimating );
+	DECLARE_CLIENTCLASS();
+public:
+
+	C_PropCombineBall( void );
+
+	virtual void	OnDataChanged( DataUpdateType_t updateType );
+	virtual int		DrawModel( int flags, const RenderableInstance_t &instance );
+
+protected:
+
+	void	DrawMotionBlur( void );
+	void	DrawFlicker( void );
+	virtual bool	InitMaterials( void );
+
+	Vector	m_vecLastOrigin;
+	bool	m_bEmit;
+	float	m_flRadius;
+	bool	m_bHeld;
+	bool	m_bLaunched;
+
+	IMaterial	*m_pFlickerMaterial;
+	IMaterial	*m_pBodyMaterial;
+	IMaterial	*m_pBlurMaterial;
+};
+
+
+#endif

@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:81373cc6694607a674ac9a23dc9f64d3d2edee7ca37ad0a51cf164a2b757e85e
-size 668
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "cbase.h"
+#include <KeyValues.h>
+#include "portal_weapon_parse.h"
+#include "ammodef.h"
+
+FileWeaponInfo_t* CreateWeaponInfo()
+{
+	return new CPortalSWeaponInfo;
+}
+
+
+
+CPortalSWeaponInfo::CPortalSWeaponInfo()
+{
+	m_iPlayerDamage = 0;
+}
+
+
+void CPortalSWeaponInfo::Parse( KeyValues *pKeyValuesData, const char *szWeaponName )
+{
+	BaseClass::Parse( pKeyValuesData, szWeaponName );
+
+	m_iPlayerDamage = pKeyValuesData->GetInt( "damage", 0 );
+}
+
+

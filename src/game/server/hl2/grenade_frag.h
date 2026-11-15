@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cd989c43cbf66ebd47cffd318201b094ffafefac53a736c2615fbb4104347672
-size 661
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef GRENADE_FRAG_H
+#define GRENADE_FRAG_H
+#pragma once
+
+class CBaseGrenade;
+struct edict_t;
+
+CBaseGrenade *Fraggrenade_Create( const Vector &position, const QAngle &angles, const Vector &velocity, const AngularImpulse &angVelocity, CBaseEntity *pOwner, float timer, bool combineSpawned );
+bool	Fraggrenade_WasPunted( const CBaseEntity *pEntity );
+bool	Fraggrenade_WasCreatedByCombine( const CBaseEntity *pEntity );
+
+#endif // GRENADE_FRAG_H

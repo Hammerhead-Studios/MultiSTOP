@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:659db37faab47dcf056dbbeff6984877d328502ecebb45315ce07f7ba6ad0235
-size 432
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#error use basetypes.h
+#ifndef MINMAX_H
+#define MINMAX_H
+
+#ifndef min
+#define min(a,b)  (((a) < (b)) ? (a) : (b))
+#endif
+#ifndef max
+#define max(a,b)  (((a) > (b)) ? (a) : (b))
+#endif
+
+#endif // MINMAX_H

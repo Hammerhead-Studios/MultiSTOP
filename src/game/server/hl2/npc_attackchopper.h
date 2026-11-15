@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c857b6fc180ca9e1a09bbb3c2cdce85cd24a25fe6dbd0212decfd554c1230282
-size 963
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+
+#ifndef NPC_ATTACKCHOPPER_H
+#define NPC_ATTACKCHOPPER_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+//-----------------------------------------------------------------------------
+// Creates an avoidance sphere
+//-----------------------------------------------------------------------------
+CBaseEntity *CreateHelicopterAvoidanceSphere( CBaseEntity *pParent, int nAttachment, float flRadius, bool bAvoidBelow = false );
+
+// Chopper gibbage
+void Chopper_BecomeChunks( CBaseEntity *pChopper );
+void Chopper_CreateChunk( CBaseEntity *pChopper, const Vector &vecChunkPos, const QAngle &vecChunkAngles, const char *pszChunkName, bool bSmall );
+void Chopper_PrecacheChunks( CBaseEntity *pChopper );
+
+#endif // NPC_ATTACKCHOPPER_H
+
+

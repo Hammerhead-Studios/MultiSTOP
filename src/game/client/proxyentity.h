@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:38cca98a0b5f35b6b88ffe2f5dabf17bee41f104d79e670b8a9cd45be5bd3812
-size 901
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: A base class for all material proxies in the client dll
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef PROXY_ENTITY_H
+#define PROXY_ENTITY_H
+
+#include "materialsystem/IMaterialProxy.h"
+
+
+class IMaterialVar;
+
+//-----------------------------------------------------------------------------
+// Base class all material proxies should inherit from
+//-----------------------------------------------------------------------------
+abstract_class CEntityMaterialProxy : public IMaterialProxy
+{
+public:
+	virtual void Release( void );
+	void OnBind( void *pC_BaseEntity );
+
+protected:
+	// base classes should implement these
+	virtual void OnBind( C_BaseEntity *pBaseEntity ) = 0;
+};
+
+
+#endif // PROXY_ENTITY_H
+

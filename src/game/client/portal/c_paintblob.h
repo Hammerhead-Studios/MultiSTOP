@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cf38514c6b06b3c9d08ad6bd69068d83fb0eaf13fba2868990efc9ec63f23d82
-size 704
+//========= Copyright © Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//==========================================================================//
+#ifndef C_PAINTBLOB_H
+#define C_PAINTBLOB_H
+
+#define MAX_BLOB_RENDERABLES 32
+
+#include "paint_blobs_shared.h"
+
+class C_PaintBlobRenderable;
+
+class C_PaintBlob : public CBasePaintBlob
+{
+public:
+	C_PaintBlob();
+	~C_PaintBlob();
+
+	virtual void PaintBlobPaint( const trace_t &tr );
+
+	virtual void Init( const Vector &vecOrigin, const Vector &vecVelocity, int paintType, float flMaxStreakTime, float flStreakSpeedDampenRate, CBaseEntity* pOwner, bool bSilent, bool bDrawOnly );
+};
+
+#endif // C_PAINTBLOB_H

@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fc455d0893f20109a96e5383209462c7bc313ef5d5a7365083d89c45d7971473
-size 579
+//========= Copyright 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+//=============================================================================//
+#if !defined(_STATIC_LINKED) || defined(_SHARED_LIB)
+
+#include "stdlib.h"
+#include "vstdlib/random.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+#ifdef GNUC
+#define __cdecl 
+#endif
+
+void __cdecl srand(unsigned int)
+{
+}
+
+int __cdecl rand()
+{
+	return RandomInt( 0, 0x7fff );
+}
+
+#endif // !_STATIC_LINKED || _SHARED_LIB

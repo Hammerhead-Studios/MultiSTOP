@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:676d7036513a32a228151462b6151af806b3d991ad5d2aad2bcf12bd2f9f83d7
-size 827
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef DIVIDER_H
+#define DIVIDER_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/Panel.h>
+
+namespace vgui
+{
+
+//-----------------------------------------------------------------------------
+// Purpose: Thin line used to divide sections in dialogs
+//-----------------------------------------------------------------------------
+class Divider : public Panel
+{
+	DECLARE_CLASS_SIMPLE( Divider, Panel );
+
+public:
+	Divider(Panel *parent, const char *name);
+	~Divider();
+
+	virtual void ApplySchemeSettings(IScheme *pScheme);
+};
+
+
+} // namespace vgui
+
+
+#endif // DIVIDER_H

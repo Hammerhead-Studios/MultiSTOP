@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ba1d9c7cf2f056fdad53681f3a6f7b7eb1318c215c09067a0f552d8e9de44e58
-size 630
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//===========================================================================//
+
+#ifndef TOOLFRAMEWORK_SERVER_H
+#define TOOLFRAMEWORK_SERVER_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+//-----------------------------------------------------------------------------
+// Are tools enabled? 
+//-----------------------------------------------------------------------------
+#ifndef NO_TOOLFRAMEWORK
+bool ToolsEnabled();
+#else
+#define ToolsEnabled() 0
+#endif
+
+
+#endif // TOOLFRAMEWORK_SERVER_H 

@@ -1,3 +1,48 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62684ff415280cecf6f7d9176c9d18d3120f2c68db631bac8e319db74017ad66
-size 1108
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "mathlib/vector.h"
+#include "bspfile.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+void SetupLightNormalFromProps( const QAngle &angles, float angle, float pitch, Vector &output )
+{
+	if (angle == ANGLE_UP)
+	{
+		output[0] = output[1] = 0;
+		output[2] = 1;
+	}
+	else if (angle == ANGLE_DOWN)
+	{
+		output[0] = output[1] = 0;
+		output[2] = -1;
+	}
+	else
+	{
+		// if we don't have a specific "angle" use the "angles" YAW
+		if ( !angle )
+		{
+			angle = angles[YAW];
+		}
+		
+		output[2] = 0;
+		output[0] = (float)cos (angle/180*M_PI);
+		output[1] = (float)sin (angle/180*M_PI);
+	}
+	
+	if ( !pitch )
+	{
+		// if we don't have a specific "pitch" use the "angles" PITCH
+		pitch = angles[PITCH];
+	}
+	
+	output[2] = (float)sin(pitch/180*M_PI);
+	output[0] *= (float)cos(pitch/180*M_PI);
+	output[1] *= (float)cos(pitch/180*M_PI);
+}
+

@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9dac7e0c5be6c4a18d50b424ff50eb3f3e73e1e2c0839bdba6d8fb1c72b3cb0f
-size 555
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef MOVETYPE_PUSH_H
+#define MOVETYPE_PUSH_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+const int MAX_PUSHED_ENTITIES = 32;
+struct physicspushlist_t
+{
+	float	localMoveTime;
+	Vector	localOrigin;
+	QAngle	localAngles;
+	int		pushedCount;
+	EHANDLE	pushedEnts[MAX_PUSHED_ENTITIES];
+	Vector	pushVec[MAX_PUSHED_ENTITIES];
+};
+
+#endif // MOVETYPE_PUSH_H

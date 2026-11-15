@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:94decbd7948525a62c32cde80e9e35cb965d79ef3ad5336723697e5a86d574a6
-size 442
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef ACHIEVEMENT_SAVERESTORE_H
+#define ACHIEVEMENT_SAVERESTORE_H
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+ISaveRestoreBlockHandler *GetAchievementSaveRestoreBlockHandler();
+
+#endif // ACHIEVEMENT_SAVERESTORE_H

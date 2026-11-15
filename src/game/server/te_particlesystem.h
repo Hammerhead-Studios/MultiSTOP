@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0a2f23c90cf2b8f84cfdc7be686a3e914fe7f6dae35446c485cd6a59c9808472
-size 671
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef TE_PARTICLESYSTEM_H
+#define TE_PARTICLESYSTEM_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "basetempentity.h"
+
+
+class CTEParticleSystem : public CBaseTempEntity
+{
+public:
+	DECLARE_CLASS( CTEParticleSystem, CBaseTempEntity );
+	DECLARE_SERVERCLASS();
+
+	CTEParticleSystem(const char *pName) : BaseClass(pName)
+	{
+		m_vecOrigin.GetForModify().Init();
+	}
+
+	CNetworkVector( m_vecOrigin );
+};
+
+
+#endif // TE_PARTICLESYSTEM_H

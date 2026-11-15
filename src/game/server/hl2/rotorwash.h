@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a2519e4eaf0377c17263f93a045b9d77802bc017263cda3c14b116d8dcc8c5db
-size 437
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef ROTORWASH_H
+#define ROTORWASH_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+CBaseEntity *CreateRotorWashEmitter( const Vector &localOrigin, const QAngle &localAngles, CBaseEntity *pOwner, float flAltitude );
+
+#endif // ROTORWASH_H

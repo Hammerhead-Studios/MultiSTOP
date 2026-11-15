@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:851c13447f59fa19dee30f1d8a994182dabe8911580bf14bf2d621f3a644caca
-size 576
+#ifndef C_BASEPROJECTOR_H
+#define C_BASEPROJECTOR_H
+
+#include "cbase.h"
+#include "prop_portal_shared.h"
+
+#define CBaseProjector C_BaseProjector
+
+class C_BaseProjectedEntity;
+
+class C_BaseProjector : public C_BaseAnimating
+{
+public:
+	
+	DECLARE_CLASS( C_BaseProjector, C_BaseAnimating );
+	DECLARE_CLIENTCLASS();
+	
+	C_BaseProjector();
+	~C_BaseProjector();
+	
+	C_BaseProjectedEntity *GetFirstProjectedEntity() { return m_hFirstChild.Get(); }
+	
+protected:
+	
+	CHandle<C_BaseProjectedEntity> m_hFirstChild;
+	bool m_bEnabled;
+};
+
+#endif // C_BASEPROJECTOR_H

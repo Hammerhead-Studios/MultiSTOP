@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7c9af695532fce3752c94d044346bdc324185175255350b51c0dbc794eac5f3f
-size 957
+//====== Copyright © 1996-2003, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef TGAPREVIEWPANEL_H
+#define TGAPREVIEWPANEL_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "matsys_controls/proceduraltexturepanel.h"
+#include "tier1/utlstring.h"
+
+
+//-----------------------------------------------------------------------------
+//
+// TGA Preview panel
+//
+//-----------------------------------------------------------------------------
+class CTGAPreviewPanel : public CProceduralTexturePanel
+{
+	DECLARE_CLASS_SIMPLE( CTGAPreviewPanel, CProceduralTexturePanel );
+
+public:
+	// constructor
+	CTGAPreviewPanel( vgui::Panel *pParent, const char *pName );
+	void SetTGA( const char *pFullPath );
+	const char *GetTGA() const;
+
+	virtual void PerformLayout();
+
+private:
+	CUtlString m_TGAName;
+};
+
+
+#endif // TGAPREVIEWPANEL_H

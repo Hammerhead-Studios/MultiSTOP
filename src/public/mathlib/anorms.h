@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1fa3a609c17f9f3d2b6daa24277a219c315600935e9a12351f4e4368900464c7
-size 534
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef ANORMS_H
+#define ANORMS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "mathlib/vector.h"
+
+
+#define NUMVERTEXNORMALS	162
+
+// the angle between consecutive g_anorms[] vectors is ~14.55 degrees
+#define VERTEXNORMAL_CONE_INNER_ANGLE	DEG2RAD(7.275)
+
+extern Vector g_anorms[NUMVERTEXNORMALS];
+
+
+#endif // ANORMS_H

@@ -1,3 +1,50 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1967d0aa67a5dff4793e9f1fc92f8021fd00eeb7c75f1ce5b48282d61907d94d
-size 1098
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef EFFECT_COLOR_TABLES_H
+#define EFFECT_COLOR_TABLES_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+struct colorentry_t
+{
+	unsigned char	index;
+	
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+};
+
+#define COLOR_TABLE_SIZE(ct) sizeof(ct)/sizeof(colorentry_t)
+
+// Commander mode indicators (HL2)
+enum
+{
+	COMMAND_POINT_RED = 0,
+	COMMAND_POINT_BLUE,
+	COMMAND_POINT_GREEN,
+	COMMAND_POINT_YELLOW,
+};
+
+// Commander mode table
+static colorentry_t commandercolors[] =
+{
+	{ COMMAND_POINT_RED,	1.0,	0.0,	0.0	},
+	{ COMMAND_POINT_BLUE,	0.0,	0.0,	1.0	},
+	{ COMMAND_POINT_GREEN,	0.0,	1.0,	0.0	},
+	{ COMMAND_POINT_YELLOW,	1.0,	1.0,	0.0	},
+};
+
+static colorentry_t bloodcolors[] =
+{
+	{ BLOOD_COLOR_RED,		72,		0,		0	},
+	{ BLOOD_COLOR_YELLOW,	195,	195,	0	},
+	{ BLOOD_COLOR_MECH,		20,		20,		20	},
+	{ BLOOD_COLOR_BRIGHTGREEN,	0,		128,	0	},
+};
+
+#endif // EFFECT_COLOR_TABLES_H

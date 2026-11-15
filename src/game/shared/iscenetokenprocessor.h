@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2362e3506c4a7eaec47ba88cbcc0fbc198d1c6ec8dfe091ee37da526966546a5
-size 600
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef ISCENETOKENPROCESSOR_H
+#define ISCENETOKENPROCESSOR_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+abstract_class ISceneTokenProcessor
+{
+public:
+	virtual const char	*CurrentToken( void ) = 0;
+	virtual bool		GetToken( bool crossline ) = 0;
+	virtual bool		TokenAvailable( void ) = 0;
+	virtual void		Error( const char *fmt, ... ) = 0;
+};
+
+#endif // ISCENETOKENPROCESSOR_H

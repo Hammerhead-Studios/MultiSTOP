@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0b9bbaed672551d06a7f6246384616f6efdf5cb24cf5d297fffe61605a8d1652
-size 500
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//=============================================================================//
+
+#ifndef C_FUNC_BRUSH_H
+#define C_FUNC_BRUSH_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class C_FuncBrush : public C_BaseEntity
+{
+public:
+	DECLARE_CLASS( C_FuncBrush, C_BaseEntity );
+	DECLARE_CLIENTCLASS();
+
+	void OnDataChanged( DataUpdateType_t type );
+
+private:
+};
+
+#endif	// C_FUNC_BRUSH_H
+

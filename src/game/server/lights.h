@@ -1,3 +1,48 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a0123b96680d4171d5e0b850de58be028c61fc7fcb41cc76cd8f8022fe8bfd61
-size 1255
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef LIGHTS_H
+#define LIGHTS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+class CLight : public CPointEntity
+{
+public:
+	DECLARE_CLASS( CLight, CPointEntity );
+
+	bool	KeyValue( const char *szKeyName, const char *szValue );
+	void	Spawn( void );
+	void	FadeThink( void );
+	void	Use( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value );
+	
+	void	TurnOn( void );
+	void	TurnOff( void );
+	void	Toggle( void );
+
+	// Input handlers
+	void	InputSetPattern( inputdata_t &inputdata );
+	void	InputFadeToPattern( inputdata_t &inputdata );
+
+	void	InputToggle( inputdata_t &inputdata );
+	void	InputTurnOn( inputdata_t &inputdata );
+	void	InputTurnOff( inputdata_t &inputdata );
+
+	DECLARE_DATADESC();
+
+private:
+	int		m_iStyle;
+	int		m_iDefaultStyle;
+	string_t m_iszPattern;
+	char	m_iCurrentFade;
+	char	m_iTargetFade;
+};
+
+#endif // LIGHTS_H

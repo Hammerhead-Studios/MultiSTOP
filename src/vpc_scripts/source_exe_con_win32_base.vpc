@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b7c7586229481173db65b1f727edc217fb8644a60979faec669fe64442014048
-size 575
+//-----------------------------------------------------------------------------
+//	SOURCE_EXE_CON_WIN32_BASE.VPC
+//
+//	Base Settings for all Source(TM) Projects
+//-----------------------------------------------------------------------------
+
+$IgnoreRedundancyWarning	"ON"
+$MacroRequired				"SRCDIR"
+$MacroRequired				"OUTBINDIR"
+$MacroRequired				"PLATSUBDIR"
+
+
+$Include "$SRCDIR\vpc_scripts\source_exe_win_win32_base.vpc"
+
+$Configuration
+{
+	$General
+	{
+		$TargetName		"$OUTBINNAME"
+	}
+
+	$Linker
+	{
+		$SubSystem		"Console (/SUBSYSTEM:CONSOLE)"
+	}
+}

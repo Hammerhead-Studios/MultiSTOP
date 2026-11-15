@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9db706cd2e23ba86a2ba31ba12480e949c063812b0ed28cd9ed56115506bd960
-size 616
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+
+
+// Client-side CBasePlayer
+
+#ifndef C_PHYSBOX_H
+#define C_PHYSBOX_H
+#pragma once
+
+
+#include "c_baseentity.h"
+
+
+class C_PhysBox : public C_BaseEntity
+{
+public:
+	DECLARE_CLASS( C_PhysBox, C_BaseEntity );
+	DECLARE_CLIENTCLASS();
+
+					C_PhysBox();
+	virtual			~C_PhysBox();
+	virtual ShadowType_t ShadowCastType();
+	
+public:
+	float			m_mass;	// TEST..
+};
+
+
+#endif
+
+
+

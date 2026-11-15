@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:688382bac9a1848a92c3dada8e74d5e2245880001af196e3992dd1e143fb46aa
-size 670
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#ifndef POINT_BONUSMAPS_ACCESSOR_H
+#define POINT_BONUSMAPS_ACCESSOR_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+void BonusMapChallengeUpdate( const char *pchFileName, const char *pchMapName, const char *pchChallengeName, int iBest );
+void BonusMapChallengeNames( char *pchFileName, char *pchMapName, char *pchChallengeName );
+void BonusMapChallengeObjectives( int &iBronze, int &iSilver, int &iGold );
+
+
+#endif		// POINT_BONUSMAPS_ACCESSOR_H

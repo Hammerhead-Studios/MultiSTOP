@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:30f31d4886612d47b6c6c557b7c785d584a135fde93d62494b81dbdfb49a504d
-size 689
+#ifndef _INCLUDED_CAMPAIGN_MAP_SEARCH_LIGHTS_H
+#define _INCLUDED_CAMPAIGN_MAP_SEARCH_LIGHTS_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+#include <vgui_controls/Panel.h>
+
+#define ASW_NUM_SEARCH_LIGHTS 4
+
+// draws oscillating search lights over the campaign map
+
+class CampaignMapSearchLights : public vgui::Panel
+{
+	DECLARE_CLASS_SIMPLE( CampaignMapSearchLights, vgui::Panel );
+public:
+	CampaignMapSearchLights(vgui::Panel *parent, const char *panelName);
+	virtual void Paint();
+	void PaintSearchLights();
+	void PaintSearchLight(int x, int y, float angle);
+
+	static int s_nSearchLightTexture;
+};
+
+
+#endif // _INCLUDED_CAMPAIGN_MAP_SEARCH_LIGHTS_H

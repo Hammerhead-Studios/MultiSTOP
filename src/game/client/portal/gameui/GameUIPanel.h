@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d6b5cc15558dc9497a4964740a90b3c923cc8140cacb6f93d9f98ce966729d6f
-size 450
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef GAMEUIPANEL_H
+#define GAMEUIPANEL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+// Retrieve the root panel for the GameUI subsystem
+namespace vgui
+{
+class Panel;
+};
+
+vgui::Panel *GetGameUIRootPanel( void );
+
+#endif // GAMEUIPANEL_H

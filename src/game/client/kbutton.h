@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:653c5dd5c7cf1b8d7f578a62cc65bbe61a0af310fdb77662ff25e1c7e5e8ed00
-size 598
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#if !defined( KBUTTON_H )
+#define KBUTTON_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "shareddefs.h"
+
+struct kbutton_t
+{
+	struct Split_t
+	{
+		// key nums holding it down
+		int		down[ 2 ];		
+		// low bit is down state
+		int		state;			
+	};
+
+	Split_t		&GetPerUser( int nSlot = -1 );
+
+	Split_t		m_PerUser[ MAX_SPLITSCREEN_PLAYERS ];
+};
+
+#endif // KBUTTON_H

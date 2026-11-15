@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:addc505fdc2ba28b55d0daee2fb65a645cbb89724616f9881064b119aa83740f
-size 851
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Entity that simulates bullets that are underwater.
+//
+//=============================================================================//
+
+#ifndef WEAPON_WATERBULLET_H
+#define WEAPON_WATERBULLET_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#define WATER_BULLET_BUBBLES_PER_INCH 0.05f
+
+//=========================================================
+//=========================================================
+class CWaterBullet : public CBaseAnimating
+{
+	DECLARE_CLASS( CWaterBullet, CBaseAnimating );
+
+public:
+	void Precache();
+	void Spawn( const Vector &vecOrigin, const Vector &vecDir );
+	void Touch( CBaseEntity *pOther );
+	void BulletThink();
+
+	DECLARE_DATADESC();
+	DECLARE_SERVERCLASS();
+};
+
+#endif // WEAPON_WATERBULLET_H

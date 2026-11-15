@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:001babcfa8985209df32713cba59c82abbbb2156113dcfbc45e6207eb73d477f
-size 410
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef SHADERLIB_CVAR_H
+#define SHADERLIB_CVAR_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "interface.h"
+
+
+void InitShaderLibCVars( CreateInterfaceFn cvarFactory );
+
+
+#endif // SHADERLIB_CVAR_H

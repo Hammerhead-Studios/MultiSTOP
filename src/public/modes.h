@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7186be1889c175dbf840255fbb48c06bfc708700b8eafa3687625d0d29b93736
-size 421
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( MODES_H )
+#define MODES_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+typedef struct vmode_s
+{
+	int			width;
+	int			height;
+	int			bpp;
+	int			refreshRate;
+} vmode_t;
+
+#endif // MODES_H

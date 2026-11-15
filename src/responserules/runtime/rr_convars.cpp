@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:61aa745988026d67427b89c51fcd01e66cbb0c1b038e2aac57e362495a2e5ad3
-size 396
+//========= Copyright © 1996-2010, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Convars used by the response rule system.
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#include "rrbase.h"
+#include <convar.h>
+
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+

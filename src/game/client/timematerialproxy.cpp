@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5f1e07214b9a919e026808dd5211d4fc604113b297a132c3cbadc8be6badf49a
-size 674
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#include "cbase.h"
+#include "FunctionProxy.h"
+
+#include "imaterialproxydict.h"
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+class CTimeMaterialProxy : public CResultProxy
+{
+public:
+	virtual void OnBind( void *pC_BaseEntity );
+};					    
+
+void CTimeMaterialProxy::OnBind( void *pC_BaseEntity )
+{
+	SetFloatResult( gpGlobals->curtime );
+}
+
+EXPOSE_MATERIAL_PROXY( CTimeMaterialProxy, CurrentTime );

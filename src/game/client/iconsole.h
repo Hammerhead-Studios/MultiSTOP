@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:54b146efb64da4b8629eaaa9a649d0e6a04af5f70c3b16aea6b947c245be443b
-size 690
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( ICONSOLE_H )
+#define ICONSOLE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+
+namespace vgui
+{
+	class Panel;
+}
+
+abstract_class IConsole
+{
+public:
+	virtual void		Create( vgui::VPANEL parent ) = 0;
+	virtual void		Destroy( void ) = 0;
+};
+
+extern IConsole *console;
+
+#endif // ICONSOLE_H

@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:affe0423ce3efd658ced2122cb16302f0e7837b83555550dc683ba9a0ab976da
-size 1005
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef PORTAL_DYNAMICMESHRENDERINGUTILS_H
+#define PORTAL_DYNAMICMESHRENDERINGUTILS_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "materialsystem/IMaterial.h"
+#include "mathlib/mathlib.h"
+#include "portalrender.h"
+
+struct PortalMeshPoint_t
+{
+	Vector vWorldSpacePosition;
+	Vector2D texCoord;
+};
+
+int ClipPolyToPlane_LerpTexCoords( PortalMeshPoint_t *inVerts, int vertCount, PortalMeshPoint_t *outVerts, const Vector& normal, float dist, float fOnPlaneEpsilon );
+void RenderPortalMeshConvexPolygon( PortalMeshPoint_t *pVerts, int iVertCount, const IMaterial *pMaterial, void *pBind );
+
+void Clip_And_Render_Convex_Polygon( PortalMeshPoint_t *pVerts, int iVertCount, const IMaterial *pMaterial, void *pBind );
+
+
+#endif //#ifndef PORTAL_DYNAMICMESHRENDERINGUTILS_H
+

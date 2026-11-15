@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:18da9e104147fce3b751f0afa20951642943597ef4b39c8aa622cc82ac7962ac
-size 371
+//====== Copyright © 1996-2006, Valve Corporation, All rights reserved. =======//
+//
+// Purpose: Uploads gamestats via the SteamWorks API. 
+//
+//=============================================================================//
+
+#ifndef STEAMWORKS_GAMESTATS_H
+#define STEAMWORKS_GAMESTATS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#endif // STEAMWORKS_GAMESTATS_H

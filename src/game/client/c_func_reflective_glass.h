@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c0ca2ec7ecd24a1a15f44127aa10d88853f970a96730031f54a563d3d86c5ff7
-size 709
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//===========================================================================//
+
+#ifndef C_FUNC_REFLECTIVE_GLASS
+#define C_FUNC_REFLECTIVE_GLASS
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+struct cplane_t;
+class CViewSetup;
+
+
+//-----------------------------------------------------------------------------
+// Do we have reflective glass in view? If so, what's the reflection plane?
+//-----------------------------------------------------------------------------
+bool IsReflectiveGlassInView( const CViewSetup& view, cplane_t &plane );
+
+
+#endif // C_FUNC_REFLECTIVE_GLASS
+
+

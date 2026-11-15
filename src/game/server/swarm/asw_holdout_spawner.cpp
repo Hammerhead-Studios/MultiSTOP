@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:45382d2533d2a5eebaad591efb284c9d6b6d34f2eb73a279fdd931c726057cd1
-size 447
+#include "cbase.h"
+#include "asw_holdout_spawner.h"
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+LINK_ENTITY_TO_CLASS( asw_holdout_spawner, CASW_Holdout_Spawner );
+
+BEGIN_DATADESC( CASW_Holdout_Spawner )
+END_DATADESC()
+
+CASW_Holdout_Spawner::CASW_Holdout_Spawner()
+{
+}
+
+CASW_Holdout_Spawner::~CASW_Holdout_Spawner()
+{
+
+}
+
+void CASW_Holdout_Spawner::Spawn()
+{
+	BaseClass::Spawn();
+}

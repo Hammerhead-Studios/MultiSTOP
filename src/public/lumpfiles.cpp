@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5ba3b68c0ba7b32a9dc8b4736008b9c6abdfdd0b77e1c446666e7e9215b35659
-size 933
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#include "bspfile.h"
+#include "strtools.h"
+#include "filesystem.h"
+#include "lumpfiles.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Generate a lump file name for a given bsp & index
+// Input  : *bspfilename - 
+//			*lumpfilename - 
+//			iIndex - 
+//-----------------------------------------------------------------------------
+void GenerateLumpFileName( const char *bspfilename, char *lumpfilename, int iBufferSize, int iIndex )
+{
+	char lumppre[MAX_PATH];
+	V_StripExtension( bspfilename, lumppre, MAX_PATH );
+	Q_snprintf( lumpfilename, iBufferSize, "%s_l_%d.lmp", lumppre, iIndex );
+}
+

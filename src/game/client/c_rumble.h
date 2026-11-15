@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f0da502ad8c569cb56e99de41d84231ec51c6ed0b4a17fe9c22e0b98ae3a3037
-size 683
+//======= Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: Rumble effects mixer for XBox
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#pragma once
+#ifndef C_RUMBLE_H
+#define C_RUMBLE_H
+
+extern void RumbleEffect( int userID, unsigned char effectIndex, unsigned char rumbleData, unsigned char rumbleFlags );
+extern void UpdateRumbleEffects( int userID );
+extern void UpdateScreenShakeRumble( int userID, float shake, float balance = 0 );
+extern void EnableRumbleOutput( int userID, bool bEnable );
+extern void StopAllRumbleEffects( int userID );
+
+#endif//C_RUMBLE_H
+

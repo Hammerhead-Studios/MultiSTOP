@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3a909779910e75a725ac563228da203522db6c79abc3b9194535f233212b1ce4
-size 884
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef STATS_H
+#define STATS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+// internal counters to measure cost of physics simulation
+struct physics_stats_t
+{
+	float	maxRescueSpeed;
+	float	maxSpeedGain;
+	
+	int		impactSysNum;
+	int		impactCounter;
+	int		impactSumSys;
+	int		impactHardRescueCount;
+	int		impactRescueAfterCount;
+	int		impactDelayedCount;
+	int		impactCollisionChecks;
+	int		impactStaticCount;
+
+	double	totalEnergyDestroyed;
+	int		collisionPairsTotal;
+	int		collisionPairsCreated;
+	int		collisionPairsDestroyed;
+
+	int		potentialCollisionsObjectVsObject;
+	int		potentialCollisionsObjectVsWorld;
+
+	int		frictionEventsProcessed;
+};
+
+
+#endif // STATS_H

@@ -1,3 +1,59 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c873699770a0b8dc2cd9c58b3c17fe16d801b84f3539887546b5491b9b7ef2cc
-size 1994
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+#include "cbase.h"
+#include "fx.h"
+#include "c_te_effect_dispatch.h"
+#include "c_te_legacytempents.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void ShellEjectCallback( const CEffectData &data )
+{
+	// Use the gun angles to orient the shell
+	IClientRenderable *pRenderable = data.GetRenderable();
+	if ( pRenderable )
+	{
+		tempents->EjectBrass( data.m_vOrigin, data.m_vAngles, pRenderable->GetRenderAngles(), 0 );
+	}
+}
+
+DECLARE_CLIENT_EFFECT( ShellEject, ShellEjectCallback );
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void RifleShellEjectCallback( const CEffectData &data )
+{
+	// Use the gun angles to orient the shell
+	IClientRenderable *pRenderable = data.GetRenderable();
+	if ( pRenderable )
+	{
+		tempents->EjectBrass( data.m_vOrigin, data.m_vAngles, pRenderable->GetRenderAngles(), 1 );
+	}
+}
+
+DECLARE_CLIENT_EFFECT( RifleShellEject, RifleShellEjectCallback );
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void ShotgunShellEjectCallback( const CEffectData &data )
+{
+	// Use the gun angles to orient the shell
+	IClientRenderable *pRenderable = data.GetRenderable();
+	if ( pRenderable )
+	{
+		tempents->EjectBrass( data.m_vOrigin, data.m_vAngles, pRenderable->GetRenderAngles(), 2 );
+	}
+}
+
+DECLARE_CLIENT_EFFECT( ShotgunShellEject, ShotgunShellEjectCallback );
+
+

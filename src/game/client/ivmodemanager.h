@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fd62f23858bd8d3cd72c749d6dfdb2c3085125b4c00b0b902461cc15cb9b764c
-size 799
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( IVMODEMANAGER_H )
+#define IVMODEMANAGER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+abstract_class IVModeManager
+{
+public:
+	virtual void	Init( void ) = 0;
+	// HL2 will ignore, TF2 will change modes.
+	virtual void	SwitchMode( bool commander, bool force ) = 0;
+	virtual void	LevelInit( const char *newmap ) = 0;
+	virtual void	LevelShutdown( void ) = 0;
+};
+
+extern IVModeManager *modemanager;
+
+#endif // IVMODEMANAGER_H

@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d7bf17941e706aaf8ed65476c48ebadb82883951942e4c7acb885b09bf7ca2d7
-size 942
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#ifndef ICLIENTENTITYINTERNAL_H
+#define ICLIENTENTITYINTERNAL_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "IClientEntity.h"
+#include "ClientLeafSystem.h"
+
+//-----------------------------------------------------------------------------
+// Forward declarations
+//-----------------------------------------------------------------------------
+
+class ClientClass;
+
+
+//-----------------------------------------------------------------------------
+// represents a handle used only by the client DLL
+//-----------------------------------------------------------------------------
+
+typedef CBaseHandle ClientEntityHandle_t;
+typedef unsigned short SpatialPartitionHandle_t;
+
+
+
+#endif // ICLIENTENTITYINTERNAL_H

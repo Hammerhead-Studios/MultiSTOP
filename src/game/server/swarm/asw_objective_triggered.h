@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bcf40e9fec827ee95f7731ae8fc70dedd2e95e7c9af878c6e4545bb7864aafad
-size 628
+#ifndef _INCLUDED_ASW_OBJECTIVE_TRIGGERED_H
+#define _INCLUDED_ASW_OBJECTIVE_TRIGGERED_H
+#pragma once
+
+#include "asw_objective.h"
+
+// An objective controlled by mapper inputs
+
+class CASW_Objective_Triggered : public CASW_Objective
+{
+public:
+	DECLARE_CLASS( CASW_Objective_Triggered, CASW_Objective );
+	DECLARE_DATADESC();
+
+	CASW_Objective_Triggered();
+	virtual ~CASW_Objective_Triggered();
+	 
+	// inputs
+	void InputSetComplete( inputdata_t &inputdata );
+	void InputSetIncomplete( inputdata_t &inputdata );
+	void InputSetFailed( inputdata_t &inputdata );
+};
+
+#endif /* _INCLUDED_ASW_OBJECTIVE_TRIGGERED_H */

@@ -1,3 +1,53 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2a1a212742de3263a0f6f5be168e4fc07c6512efc5f9aabbdbd5f45f71be8c9e
-size 1278
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef PLAYERLISTDIALOG_H
+#define PLAYERLISTDIALOG_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/Frame.h>
+#include "steam/steamclientpublic.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: List of players, their ingame-name and their friends-name
+//-----------------------------------------------------------------------------
+class CPlayerListDialog : public vgui::Frame
+{
+	DECLARE_CLASS_SIMPLE( CPlayerListDialog, vgui::Frame ); 
+
+public:
+	CPlayerListDialog(vgui::Panel *parent);
+	~CPlayerListDialog();
+
+	virtual void Activate();
+
+private:
+  	MESSAGE_FUNC( OnItemSelected, "ItemSelected" );
+	virtual void OnCommand(const char *command);
+
+	void ToggleMuteStateOfSelectedUser();
+	void RefreshPlayerProperties();
+
+	void OnKeyCodePressed( vgui::KeyCode code )
+	{
+		if ( code == KEY_XBUTTON_B )
+		{
+			Close();
+		}
+		else
+		{
+			BaseClass::OnKeyCodePressed(code);
+		}
+	}
+
+	vgui::ListPanel *m_pPlayerList;
+	vgui::Button *m_pMuteButton;
+};
+
+#endif // PLAYERLISTDIALOG_H

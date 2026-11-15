@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ce6c9d5326a481736693de2a246339be83ecca35cc34308fcf4b194f60433c51
-size 1133
+//========= Copyright © 1996-2001, Valve LLC, All rights reserved. ============
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================
+
+#ifndef MARINE_COMMAND_H
+#define MARINE_COMMAND_H
+#pragma once
+
+
+#include "edict.h"
+#include "usercmd.h"
+
+
+class IMoveHelper;
+class CMoveData;
+class CBasePlayer;
+
+// Marine movement
+class CMarineMove
+{
+public:
+	DECLARE_CLASS_NOBASE( CMarineMove );
+	
+	// Construction/destruction
+					CMarineMove( void );
+	virtual			~CMarineMove( void ) {}
+	
+	// Prepare for running movement
+	virtual void	SetupMarineMove( const CBasePlayer *player, CBaseEntity *marine, CUserCmd *ucmd, IMoveHelper *pHelper, CMoveData *move );
+
+	// Finish movement
+	virtual void	FinishMarineMove( const CBasePlayer *player, CBaseEntity *marine, CUserCmd *ucmd, CMoveData *move );
+};
+
+
+//-----------------------------------------------------------------------------
+// Singleton accessor
+//-----------------------------------------------------------------------------
+CMarineMove *MarineMove();
+
+
+#endif // MARINE_COMMAND_H

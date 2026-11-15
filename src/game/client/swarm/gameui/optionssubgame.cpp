@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e845f803e45aed5b67836619c573a026ca6374b30654982dfa635ffb0b8101be
-size 1414
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "OptionsSubGame.h"
+#include "BasePanel.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Constructor
+//-----------------------------------------------------------------------------
+COptionsSubGame::COptionsSubGame( vgui::Panel *parent, const char *name ) : BaseClass( parent, name )
+{
+	SetDeleteSelfOnClose( true );
+	LoadControlSettings( "Resource/OptionsSubGame.res" );
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: Destructor
+//-----------------------------------------------------------------------------
+COptionsSubGame::~COptionsSubGame()
+{
+}
+
+void COptionsSubGame::OnClose( void )
+{
+#if defined( BASEPANEL_LEGACY_SOURCE1 )
+	BasePanel()->RunCloseAnimation( "CloseOptionsSubGame" );
+#endif
+	BaseClass::OnClose();
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void COptionsSubGame::OnCommand( const char *command )
+{
+	BaseClass::OnCommand( command );
+}

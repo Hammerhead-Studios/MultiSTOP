@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4fa30b4c247c2cc992b5402aa9cf35f1b2deea26f1b67970c131851ad7801c64
-size 833
+//========== Copyright © 2005, Valve Corporation, All rights reserved. ========
+//
+// Purpose:
+//
+//=============================================================================
+
+#ifndef VIEWDEBUG_H
+#define VIEWDEBUG_H
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+class CViewSetup;
+
+//-----------------------------------------------------------------------------
+// Purpose: Implements the debugging elements of view rendering
+//-----------------------------------------------------------------------------
+class CDebugViewRender
+{
+	DECLARE_CLASS_NOBASE( CDebugViewRender );
+public:
+	// Draws all the debugging info
+	static void	Draw3DDebuggingInfo( const CViewSetup &view );
+	static void	Draw2DDebuggingInfo( const CViewSetup &view );
+	static void GenerateOverdrawForTesting();
+};
+
+#endif // VIEWDEBUG_H

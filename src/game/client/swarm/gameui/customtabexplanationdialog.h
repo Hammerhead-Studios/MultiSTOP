@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8c83c243a4efbc7c061c81bcf94d7991fdf3486a5c60c86461de4a4ef49f5b0d
-size 1104
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef CUSTOMTABEXPLANATIONDIALOG_H
+#define CUSTOMTABEXPLANATIONDIALOG_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "vgui_controls/Frame.h"
+#include "UtlVector.h"
+#include <vgui/KeyCode.h>
+#include "vgui_controls/URLLabel.h"
+
+//-----------------------------------------------------------------------------
+// Purpose: Dialog that explains the custom tab
+//-----------------------------------------------------------------------------
+class CCustomTabExplanationDialog : public vgui::Frame
+{
+	DECLARE_CLASS_SIMPLE( CCustomTabExplanationDialog, vgui::Frame );
+
+public:
+	CCustomTabExplanationDialog(vgui::Panel *parent);
+	~CCustomTabExplanationDialog();
+
+	virtual void ApplySchemeSettings( vgui::IScheme *pScheme );
+	virtual void OnKeyCodePressed(vgui::KeyCode code);
+	virtual void OnCommand( const char *command );
+	virtual void OnClose( void );
+};
+
+#endif // CUSTOMTABEXPLANATIONDIALOG_H

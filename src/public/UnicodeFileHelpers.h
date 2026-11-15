@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1bb7b04d3462cbfefd7b66339654645fe10ff7f0c54159551d5bea119b059d53
-size 926
+//========= Copyright 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef UNICODEFILEHELPERS_H
+#define UNICODEFILEHELPERS_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <stdlib.h>
+
+// helper functions for parsing unicode file buffers
+ucs2 *AdvanceOverWhitespace(ucs2 *start);
+ucs2 *ReadUnicodeToken(ucs2 *start, ucs2 *token, int tokenBufferSize, bool &quoted);
+ucs2 *ReadUnicodeTokenNoSpecial(ucs2 *start, ucs2 *token, int tokenBufferSize, bool &quoted);
+ucs2 *ReadToEndOfLine(ucs2 *start);
+
+// writing to unicode files via CUtlBuffer
+class CUtlBuffer;
+void WriteUnicodeString(CUtlBuffer &buffer, const wchar_t *string, bool addQuotes = false);
+void WriteAsciiStringAsUnicode(CUtlBuffer &buffer, const char *string, bool addQuotes = false);
+
+
+
+#endif // UNICODEFILEHELPERS_H

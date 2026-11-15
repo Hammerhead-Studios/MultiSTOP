@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:96e5ef56b056d310409be70654bc92d223296159f1f9ecf4be1493325bb71414
-size 896
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef C_BREAKABLEPROP_H
+#define C_BREAKABLEPROP_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+class C_BreakableProp : public C_BaseAnimating
+{
+	typedef C_BaseAnimating BaseClass;
+public:
+	DECLARE_CLIENTCLASS();
+
+	C_BreakableProp();
+
+	virtual bool IsProp( void ) const
+	{
+		return true;
+	};
+
+	// Copy fade from another breakable prop
+	void CopyFadeFrom( C_BreakableProp *pSource );
+	virtual void OnDataChanged( DataUpdateType_t type );
+
+private:
+	bool m_bClientPhysics;
+};
+
+#endif // C_BREAKABLEPROP_H

@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b4eae053821e0c6d5c136dc964efdd03b380a3efde098c9f5d48ce91d8c39d33
-size 580
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+#include "cbase.h"
+
+// NOTE: This has to be the last file included!
+#include "tier0/memdbgon.h"
+
+
+PrototypeEffectLink *g_pPrototypeEffects = 0;
+
+PrototypeEffectLink::PrototypeEffectLink(PrototypeEffectCreateFn fn, const char *pName)
+{
+	m_CreateFn = fn;
+	m_pEffectName = pName;
+	m_pNext = g_pPrototypeEffects;
+	g_pPrototypeEffects = this;
+}
+
+

@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c1f046c95465c703440f1c316637855d62b301d1b08a0cccb4608fa750509c50
-size 686
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef NPC_ROLLERMINE_H
+#define NPC_ROLLERMINE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+//------------------------------------
+// Spawnflags
+//------------------------------------
+#define SF_ROLLERMINE_FRIENDLY		(1 << 16)
+#define SF_ROLLERMINE_PROP_COLLISION		(1 << 17)
+
+bool NPC_Rollermine_IsRollermine( CBaseEntity *pEntity );
+CBaseEntity *NPC_Rollermine_DropFromPoint( const Vector &originStart, CBaseEntity *pOwner, const char *pszTemplate );
+
+#endif // NPC_ROLLERMINE_H

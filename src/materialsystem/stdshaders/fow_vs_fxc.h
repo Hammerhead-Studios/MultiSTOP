@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d03da5eea121c677e3e83f48c8e87f221bdf8ef086272414b575d9e1a5a95237
-size 517
+//========== Copyright (c) Valve Corporation, All rights reserved. ==========//
+//
+// Purpose: This is where all common code for vertex shaders go.
+//
+// $NoKeywords: $
+//
+//===========================================================================//
+
+#ifndef _FOW_VS_FXC_H
+#define _FOW_VS_FXC_H
+
+
+#if ( FOW == 1 )
+
+
+float2 CalcFoWCoord( const float4 vFoWWorldSize, const float2 vWorldPos )
+{
+	return ( vWorldPos - vFoWWorldSize.xy ) / vFoWWorldSize.zw;
+}
+
+
+#endif
+
+
+#endif // _FOW_VS_FXC_H

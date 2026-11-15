@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e1f4dec73e8a1d2ba79d65cc4017306e88f7200b068e003137f8e319a3a579f7
-size 698
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "BasePanel.h"
+#include "ControllerDialog.h"
+
+using namespace vgui;
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include <tier0/memdbgon.h>
+
+
+CControllerDialog::CControllerDialog( vgui::Panel *parent ) : BaseClass( parent, true )	// TRUE second param says we want the controller options
+{
+}
+
+void CControllerDialog::ApplySchemeSettings( vgui::IScheme *pScheme )
+{
+	BaseClass::ApplySchemeSettings( pScheme );
+	
+	SetControlString( "TitleLabel", "#GameUI_Controller" );
+}

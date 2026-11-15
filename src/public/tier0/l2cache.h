@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ecfbfcf9b8a984884ce5058ef1a53bd1dd6f3d9c9bad874eeb78443e291f8607
-size 1017
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+#ifndef CL2CACHE_H
+#define CL2CACHE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class P4Event_BSQ_cache_reference;
+
+class CL2Cache
+{
+public:
+
+	CL2Cache();
+	~CL2Cache();
+
+	void Start( void );
+	void End( void );
+
+	//-------------------------------------------------------------------------
+	// GetL2CacheMisses
+	//-------------------------------------------------------------------------
+	int GetL2CacheMisses( void )
+	{
+		return m_iL2CacheMissCount;
+	}
+
+#ifdef DBGFLAG_VALIDATE
+	void Validate( CValidator &validator, tchar *pchName );		// Validate our internal structures
+#endif // DBGFLAG_VALIDATE
+
+private:
+
+	int								m_nID;
+
+	P4Event_BSQ_cache_reference		*m_pL2CacheEvent;
+	int64							m_i64Start;
+	int64							m_i64End;
+	int								m_iL2CacheMissCount;
+};
+
+#endif   // CL2CACHE_H
+

@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dcf959d9312f0cff07f826379251cb1111577d92eab79d04a745eca62dbb71a5
-size 529
+//========== Copyright © 2008, Valve Corporation, All rights reserved. ========
+//
+// Purpose:
+//
+//=============================================================================
+
+#ifndef VSCRIPT_SERVER_H
+#define VSCRIPT_SERVER_H
+
+#include "vscript/ivscript.h"
+#include "vscript_shared.h"
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+extern IScriptVM * g_pScriptVM;
+
+// Only allow scripts to create entities during map initialization
+bool IsEntityCreationAllowedInScripts( void );
+
+#endif // VSCRIPT_SERVER_H

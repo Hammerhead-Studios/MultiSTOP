@@ -1,3 +1,69 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2e91e4e21baf7b59abd7ebeb9e140ffb7f1d73529f0cd3520d94cc6284bbbc4d
-size 1204
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $Workfile:     $
+// $Date:         $
+//
+//-----------------------------------------------------------------------------
+// $Log: $
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef ARRAYSTACK_H
+#define ARRAYSTACK_H
+#pragma once
+
+#include <assert.h>
+#include "List.h"
+
+template <class T> class ArrayStack
+{
+protected:
+	T *data;
+	int m_stackDepth;
+	int m_maxNumElements;
+	
+public:
+	ArrayStack( int maxNumElements )
+	{
+		data = new T[maxNumElements];
+		m_maxNumElements = maxNumElements;
+		m_stackDepth = 0;
+		assert( data );
+	}
+	
+	void Push( T elem )
+	{
+		data[m_stackDepth++] = elem;
+		if( m_stackDepth > m_maxNumElements )
+		{
+			printf( "ArrayStack overflow\n" );
+			assert( 0 );
+		}
+	}
+	
+	T Pop( void )
+	{
+		if( m_stackDepth == 0 )
+		{
+			printf( "ArrayStack underflow\n" );
+			assert( 0 );
+		}
+		return data[--m_stackDepth];
+	}
+
+	bool IsEmpty()
+	{
+		return ( m_stackDepth == 0 );
+	}
+	
+	int GetDepth()
+	{
+		return m_stackDepth;
+	}
+};
+
+
+#endif // ARRAYSTACK_H

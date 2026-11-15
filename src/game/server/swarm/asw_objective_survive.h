@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b9c35037a9990c67717918decfdf2c984a2c2c3bd3bf8eb4a36cc29022187b9a
-size 549
+#ifndef _INCLUDED_ASW_OBJECTIVE_SURVIVE_H
+#define _INCLUDED_ASW_OBJECTIVE_SURVIVE_H
+#pragma once
+
+#include "asw_objective.h"
+
+// An objective that fails if any marines die
+
+class CBaseTrigger;
+
+class CASW_Objective_Survive : public CASW_Objective
+{
+public:
+	DECLARE_CLASS( CASW_Objective_Survive, CASW_Objective );
+	DECLARE_DATADESC();
+
+	CASW_Objective_Survive();
+	virtual ~CASW_Objective_Survive();
+	virtual void Spawn();
+	 
+	virtual void MarineKilled(CASW_Marine* pMarine);
+};
+
+#endif /* _INCLUDED_ASW_OBJECTIVE_SURVIVE_H */

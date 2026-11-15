@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ee3beaa38796df1a7beedf08675d77beffb462779e16ee8fa5c0e295526f9545
-size 736
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef ACTANIMATING_H
+#define ACTANIMATING_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "baseanimating.h"
+
+class CActAnimating : public CBaseAnimating
+{
+public:
+	DECLARE_CLASS( CActAnimating, CBaseAnimating );
+
+	void			SetActivity( Activity act );
+	inline Activity	GetActivity( void ) { return m_Activity; }
+
+	virtual int	ObjectCaps( void ) { return BaseClass::ObjectCaps() & ~FCAP_ACROSS_TRANSITION; }
+
+	DECLARE_DATADESC();
+
+private:
+	Activity	m_Activity;
+};
+
+
+
+#endif // ACTANIMATING_H

@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:56b3ddcdf501111c1a253d74a9ef69e80f2875ce749fbf410edf86701a33aaa8
-size 1158
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+#ifndef LOGICRELAY_H
+#define LOGICRELAY_H
+
+#include "cbase.h"
+#include "entityinput.h"
+#include "entityoutput.h"
+#include "eventqueue.h"
+
+class CLogicRelay : public CLogicalEntity
+{
+public:
+	DECLARE_CLASS( CLogicRelay, CLogicalEntity );
+
+	CLogicRelay();
+
+	void Spawn();
+	void Activate();
+	void Think();
+
+	// Input handlers
+	void InputEnable( inputdata_t &inputdata );
+	void InputEnableRefire( inputdata_t &inputdata );  // Private input handler, not in FGD
+	void InputDisable( inputdata_t &inputdata );
+	void InputToggle( inputdata_t &inputdata );
+	void InputTrigger( inputdata_t &inputdata );
+	void InputCancelPending( inputdata_t &inputdata );
+
+	DECLARE_DATADESC();
+
+	// Outputs
+	COutputEvent m_OnTrigger;
+	COutputEvent m_OnSpawn;
+	
+private:
+
+	bool m_bDisabled;
+	bool m_bWaitForRefire;			// Set to disallow a refire while we are waiting for our outputs to finish firing.
+};
+
+#endif //LOGICRELAY_H

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3c06f3892280ac776925b8c471e1fdf94ce497783958b316117efa3a1d8703cd
-size 364
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "TGAImagePanel.h"
+#include "bitmap/tgaloader.h"
+#include "vgui/ISurface.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"

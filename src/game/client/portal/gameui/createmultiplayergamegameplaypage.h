@@ -1,3 +1,48 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:75edd0a116d86eac0f528c8d6bed46a11c27276172b79d2f18b995d5d05f5845
-size 1353
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CREATEMULTIPLAYERGAMEGAMEPLAYPAGE_H
+#define CREATEMULTIPLAYERGAMEGAMEPLAYPAGE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/PropertyPage.h>
+
+class CPanelListPanel;
+class CDescription;
+class mpcontrol_t;
+
+//-----------------------------------------------------------------------------
+// Purpose: server options page of the create game server dialog
+//-----------------------------------------------------------------------------
+class CCreateMultiplayerGameGameplayPage : public vgui::PropertyPage
+{
+public:
+	CCreateMultiplayerGameGameplayPage(vgui::Panel *parent, const char *name);
+	~CCreateMultiplayerGameGameplayPage();
+
+	// returns currently entered information about the server
+	int GetMaxPlayers();
+	const char *GetPassword();
+	const char *GetHostName();
+
+protected:
+	virtual void OnApplyChanges();
+
+private:
+	const char *GetValue(const char *cvarName, const char *defaultValue);
+	void LoadGameOptionsList();
+	void GatherCurrentValues();
+
+	CDescription *m_pDescription;
+	mpcontrol_t *m_pList;
+	CPanelListPanel *m_pOptionsList;
+};
+
+
+#endif // CREATEMULTIPLAYERGAMEGAMEPLAYPAGE_H

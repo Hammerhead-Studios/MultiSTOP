@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4b56876e69cba5d3daed6754d32013882604eb6ee69076e8ea828b746cb604a7
-size 817
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef MAPDATA_SHARED_H
+#define MAPDATA_SHARED_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "interface.h"
+#include "mathlib/vector.h"
+
+#define INTERFACEVERSION_MAPDATA	"MapData001"
+
+abstract_class IMapData
+{
+public:
+
+	// World data queries.
+	virtual	void	GetMapBounds( Vector &vecMins, Vector &vecMaxs ) = 0;
+	virtual void	GetMapOrigin( Vector &vecOrigin ) = 0;
+	virtual void	GetMapSize( Vector &vecSize ) = 0;
+
+	// 3D Skybox data queries.
+	virtual void	Get3DSkyboxOrigin( Vector &vecOrigin ) = 0;
+	virtual float 	Get3DSkyboxScale( void ) = 0;
+};
+
+#endif // MAPDATA_SHARED_H

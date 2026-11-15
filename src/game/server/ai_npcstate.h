@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2cb4f2269ccfbc2bdc49ae386140718aa0b183826eb872c486504481beb1b010
-size 581
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef AI_NPCSTATE_H
+#define AI_NPCSTATE_H
+
+#if defined( _WIN32 )
+#pragma once
+#endif
+
+enum NPC_STATE
+{
+	NPC_STATE_INVALID = -1,
+	NPC_STATE_NONE = 0,
+	NPC_STATE_IDLE,
+	NPC_STATE_ALERT,
+	NPC_STATE_COMBAT,
+	NPC_STATE_SCRIPT,
+	NPC_STATE_PLAYDEAD,
+	NPC_STATE_PRONE,				// When in clutches of barnacle
+	NPC_STATE_DEAD
+
+};
+
+#endif // AI_NPCSTATE_H

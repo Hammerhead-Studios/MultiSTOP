@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:689fb45e7d2bb8371233c0cf48a25aac34461dd8d7594130d7e9e5f80c6cad48
-size 554
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//===========================================================================//
+
+#ifndef TE_EFFECT_DISPATCH_H
+#define TE_EFFECT_DISPATCH_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "effect_dispatch_data.h"
+
+void DispatchEffect( const char *pName, const CEffectData &data );
+void DispatchEffect( IRecipientFilter& filter, float flDelay, const char *pName, const CEffectData &data );
+
+#endif // TE_EFFECT_DISPATCH_H

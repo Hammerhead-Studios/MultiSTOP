@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:67aa6c8735e1fe98fb3a845153314394e543eee9abb0a6bedce47470a87922a7
-size 1083
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef INFO_CAMERA_LINK_H
+#define INFO_CAMERA_LINK_H
+
+#include "baseentity.h"
+
+//-----------------------------------------------------------------------------
+// Forward declarations
+//-----------------------------------------------------------------------------
+class CPointCamera;
+
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+CBaseEntity *CreateInfoCameraLink( CBaseEntity *pTarget, CPointCamera *pCamera );
+
+
+//-----------------------------------------------------------------------------
+// Sets up visibility 
+//-----------------------------------------------------------------------------
+void PointCameraSetupVisibility( CBaseEntity *pPlayer, int area, unsigned char *pvs, int pvssize );
+
+
+
+#endif // INFO_CAMERA_LINK_H
+

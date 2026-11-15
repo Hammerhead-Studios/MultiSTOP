@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3e0d97dcd8b0ea8a1e7c6c8560e8ced9b3d0ef7d7d6f32852ec1975efe3e51e8
-size 713
+#include "cbase.h"
+#include "asw_map_reset_filter.h"
+ 
+CASW_Map_Reset_Filter::CASW_Map_Reset_Filter() 
+{
+	m_pKeepEntities = new CUtlVector<const char*>;
+}
+
+CASW_Map_Reset_Filter::~CASW_Map_Reset_Filter() 
+{
+	delete m_pKeepEntities;
+}
+ 
+bool CASW_Map_Reset_Filter::ShouldCreateEntity(const char *pszClassname) 
+{
+	// Returns true if the entity isn't in our list of entities to keep around
+	return (m_pKeepEntities->Find(pszClassname)<0);
+}
+ 
+CBaseEntity* CASW_Map_Reset_Filter::CreateNextEntity(const char *pszClassname) 
+{
+	return CreateEntityByName(pszClassname);
+}
+ 
+
+void CASW_Map_Reset_Filter::AddKeepEntity(const char *pszClassname) 
+{
+	m_pKeepEntities->AddToTail(pszClassname);
+}

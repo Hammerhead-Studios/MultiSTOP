@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:01f3d4a729a7d81351c1021a11096d0b590fb0c051d691471527c9013593e910
-size 910
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Contains the set of functions for manipulating entity hierarchies.
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef HIERARCHY_H
+#define HIERARCHY_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "utlvector.h"
+
+class CBaseEntity;
+
+void		UnlinkFromParent( CBaseEntity *pRemove );
+void		TransferChildren( CBaseEntity *pOldParent, CBaseEntity *pNewParent );
+void		LinkChild( CBaseEntity *pParent, CBaseEntity *pChild );
+void		UnlinkAllChildren( CBaseEntity *pParent );
+int			GetAllChildren( CBaseEntity *pParent, CUtlVector<CBaseEntity *> &list );
+bool		EntityIsParentOf( CBaseEntity *pParent, CBaseEntity *pEntity );
+int			GetAllInHierarchy( CBaseEntity *pParent, CUtlVector<CBaseEntity *> &list );
+
+#endif // HIERARCHY_H

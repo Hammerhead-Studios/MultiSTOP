@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5e212d031420e636d72652737bf8376332182427a2e075770a9274df2d455fe9
-size 647
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef IVGUIMATINFO_H
+#define IVGUIMATINFO_H
+
+#include "IVguiMatInfoVar.h"
+
+// wrapper for IMaterial
+class IVguiMatInfo
+{
+public:	
+	// make sure to delete the returned object after use!
+	virtual IVguiMatInfoVar* FindVarFactory ( const char *varName, bool *found ) = 0;
+
+	virtual int GetNumAnimationFrames ( ) = 0;
+
+	// todo: if you need to add more IMaterial functions add them here
+};
+
+#endif //IVGUIMATINFO_H

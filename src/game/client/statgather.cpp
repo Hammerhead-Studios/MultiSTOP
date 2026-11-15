@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bcb8751d7967e26538f716d0aa75bc04090f4f70c93e6335257458c668d7a924
-size 436
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: module for gathering performance stats for upload so that we can
+//  monitor performance regressions and improvements
+//
+//=====================================================================================//
+
+
+#include "cbase.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"

@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a19ec2090929daa89b086ab7a10b0b930884ee96dc27b6819a047c6023b44f07
-size 518
+//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose:
+//
+//=============================================================================
+
+#ifndef VSMAYADMX_H
+#define VSMAYADMX_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+// Maya includes
+
+#include <maya/MDagPath.h>
+
+// Valve includes
+
+#include "movieobjects/dmemesh.h"
+
+class VsMayaDmx
+{
+	static CDmeMesh *MayaMeshToDmeMesh(
+		const MDagPath &i_mDagPath,
+		DmFileId_t fileId );
+
+};
+
+#endif // VSMAYADMX_H

@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:645872323e2e871e8f3315a572e9609e2b490452d134ae584ec80a5bca86de77
-size 524
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+
+#ifndef EP3_WEAPON_TELEPORT_H
+#define EP3_WEAPON_TELEPORT_H
+
+extern void ShootTeleportProjectile( Vector vOrigin, QAngle angles, CBaseEntity *pOwner, CBaseEntity *pGun );
+extern CBaseEntity *ShootTeleportProjectileNPC( Vector vOrigin, Vector vTossVelocity, CBaseEntity *pOwner );
+
+
+
+#endif // EP3_WEAPON_TELEPORT_H

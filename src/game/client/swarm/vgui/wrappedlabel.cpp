@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a53420f8033486bf1afed71f331009fbefcde2f41a079f2ee5a12177afb8030e
-size 702
+
+
+#include "cbase.h"
+#include "WrappedLabel.h"
+#include <KeyValues.h>
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include <tier0/memdbgon.h>
+
+using namespace vgui;
+
+WrappedLabel::WrappedLabel(Panel *parent, const char *panelName, const char *text) :
+	Label(parent, panelName, text)
+{
+	KeyValues *kv = new KeyValues( "Dummy", "wrap", 1);
+	Label::ApplySettings(kv);
+	kv->deleteThis();
+}
+
+WrappedLabel::WrappedLabel(Panel *parent, const char *panelName, const wchar_t *wszText) :
+	Label(parent, panelName, wszText)
+{
+	KeyValues *kv = new KeyValues( "Dummy", "wrap", 1);
+	Label::ApplySettings(kv);
+	kv->deleteThis();
+}
+
+
+WrappedLabel::~WrappedLabel()
+{
+
+}

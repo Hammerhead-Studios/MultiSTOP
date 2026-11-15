@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:315f550c9f92a20055c10bdc51599516b68ea36fed54fb8157c55fa3feedd318
-size 282
+/// PLACEHOLDER FILE FOR RESPONSE RULES RUNTIME LIBRARY 
+
+#include "rrbase.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+
+namespace ResponseRules 
+{
+	/// Custom symbol table for the response rules.
+	CUtlSymbolTable g_RS;
+};

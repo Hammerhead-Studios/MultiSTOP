@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9474d0ea6d9cdfa18488b56cbb7dac55ccb64e6c1a3e858dc5a67e932aeaf657
-size 534
+//========= Copyright 1996-2009, Valve Corporation, All rights reserved. ============//
+//
+//=============================================================================//
+
+#include "cbase.h"
+#include "hudelement.h"
+#include "iclientmode.h"
+#include <vgui_controls/editablepanel.h>
+#include <vgui_controls/imagepanel.h>
+#include <vgui/ivgui.h>
+#include <vgui/isurface.h>
+
+#include "c_weapon_paintgun.h"
+#include "c_baseplayer.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:612570d33685c23dc8fac71e30e84f31ff25b98af83281542b5182a9927a3991
-size 344
+@echo off
+setlocal
+
+if exist fxctmp9_tmp rd /s /q fxctmp9_tmp
+if exist vshtmp9_tmp rd /s /q vshtmp9_tmp
+if exist pshtmp9_tmp rd /s /q pshtmp9_tmp
+
+if exist fxctmp9_360_tmp rd /s /q fxctmp9_360_tmp
+if exist vshtmp9_360_tmp rd /s /q vshtmp9_360_tmp
+if exist pshtmp9_360_tmp rd /s /q pshtmp9_360_tmp
+
+if exist shaders rd /s /q shaders

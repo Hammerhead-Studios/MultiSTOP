@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2664e15a4f2439065b08977d3d82dddade8e33cba49f73200b5c0ba2c3920464
-size 1082
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#include "MouseMessageForwardingPanel.h"
+#include "KeyValues.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+using namespace vgui;
+
+CMouseMessageForwardingPanel::CMouseMessageForwardingPanel( Panel *parent, const char *name ) : BaseClass( parent, name )
+{
+	// don't draw an
+	SetPaintEnabled(false);
+	SetPaintBackgroundEnabled(false);
+	SetPaintBorderEnabled(false);
+}
+
+void CMouseMessageForwardingPanel::PerformLayout()
+{
+	// fill out the whole area
+	int w, t;
+	GetParent()->GetSize(w, t);
+	SetBounds(0, 0, w, t);
+}
+
+void CMouseMessageForwardingPanel::OnMousePressed( vgui::MouseCode code )
+{
+	CallParentFunction( new KeyValues("MousePressed", "code", code) );
+}
+
+void CMouseMessageForwardingPanel::OnMouseDoublePressed( vgui::MouseCode code )
+{
+	CallParentFunction( new KeyValues("MouseDoublePressed", "code", code) );
+}

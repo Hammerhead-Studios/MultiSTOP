@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b2e8127d2bedfd6757b05ad33cfa010661eb726608393533f66ecd1f84d35135
-size 923
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef PARTICLE_LIGHT_H
+#define PARTICLE_LIGHT_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+#include "baseentity.h"
+
+
+//==================================================
+// CParticleLight. These are tied to 
+//==================================================
+
+#define PARTICLELIGHT_ENTNAME	"env_particlelight"
+
+class CParticleLight : public CServerOnlyPointEntity
+{
+public:
+	DECLARE_CLASS( CParticleLight, CServerOnlyPointEntity );
+	DECLARE_DATADESC();
+
+					CParticleLight();
+
+
+public:
+	float			m_flIntensity;
+	Vector			m_vColor;	// 0-255
+	string_t		m_PSName;	// Name of the particle system entity this light affects.
+	bool			m_bDirectional;
+};
+
+
+#endif // PARTICLE_LIGHT_H

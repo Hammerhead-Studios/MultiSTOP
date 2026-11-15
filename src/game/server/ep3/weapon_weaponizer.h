@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7e9ff8c22883c1e75de3d5bb486b9c6a7b5a1299d9a39b7733944e452bc376f3
-size 673
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ====
+//
+// Purpose: 
+//
+//=============================================================================
+
+#ifndef WEAPON_WEAPONIZER_H
+#define WEAPON_WEAPONIZER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#define WEAPONIZER_MODEL_SPHERE "models/weapons/w_ball_small.mdl"
+#define WEAPONIZER_MODEL_MATTER "models/weapons/matter.mdl"
+
+enum attackstate_t
+{
+	ATTACK_PRE,
+	ATTACK_RUN,
+	ATTACK_POST,
+};
+
+
+enum weaponparamstypes_t
+{
+	WEAPONIZER_PARAM_PRIMARY = 0,
+	WEAPONIZER_PARAM_SECONDARY,
+	WEAPONIZER_PARAM_FUSION,
+
+	LAST_WEAPON_PARAM_COUNT,
+};
+
+#endif // WEAPON_WEAPONIZER_H
+

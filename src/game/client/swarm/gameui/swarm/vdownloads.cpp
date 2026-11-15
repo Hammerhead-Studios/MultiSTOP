@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:38f1a946169711a378b7df4d28bceb67d83119694d09a8ef16d195b13dcc99af
-size 1187
+//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=====================================================================================//
+
+#include "VDownloads.h"
+#include "VFooterPanel.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
+
+using namespace vgui;
+using namespace BaseModUI;
+
+//=============================================================================
+Downloads::Downloads(Panel *parent, const char *panelName):
+BaseClass(parent, panelName)
+{
+	SetDeleteSelfOnClose(true);
+	SetProportional( true );
+	SetTitle("#L4D360UI_Downloads", false);
+
+	SetUpperGarnishEnabled(true);
+	SetLowerGarnishEnabled(true);
+
+	CBaseModFooterPanel *footer = BaseModUI::CBaseModPanel::GetSingleton().GetFooterPanel();
+	if ( footer )
+	{
+		footer->SetButtons( 0, FF_NONE, true );
+	}
+
+	m_ActiveControl = NULL;
+}
+
+//=============================================================================
+Downloads::~Downloads()
+{
+
+}
+
+//=============================================================================
+void Downloads::OnCommand(const char *command)
+{
+}

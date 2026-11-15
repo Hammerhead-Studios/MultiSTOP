@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:497ae93d741cfeb0d8832e247f2c576313a5e6ab5abbeb4052cbe51e99abe004
-size 670
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef C_ASW_POINTCAMERA_H
+#define C_ASW_POINTCAMERA_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "c_point_camera.h"
+
+class C_ASW_PointCamera : public C_PointCamera
+{
+public:
+	DECLARE_CLASS( C_ASW_PointCamera, C_PointCamera );
+	DECLARE_CLIENTCLASS();
+
+public:
+	C_ASW_PointCamera();
+
+	void ApplyStimCamSettings();
+	void SetActive( bool bActive ) { m_bActive = bActive; }
+
+	bool m_bSecurityCam;
+};
+
+#endif // C_ASW_POINTCAMERA_H

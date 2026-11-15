@@ -1,3 +1,46 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4de7b9f0d5e7a879b3b6f943a6ff6409239daaea2336964f050ac8fa64822b33
-size 1428
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef ILAGCOMPENSATIONMANAGER_H
+#define ILAGCOMPENSATIONMANAGER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class CBasePlayer;
+class CUserCmd;
+
+enum LagCompensationType
+{
+	LAG_COMPENSATE_BOUNDS,
+	LAG_COMPENSATE_HITBOXES,
+	LAG_COMPENSATE_HITBOXES_ALONG_RAY,
+};
+
+//-----------------------------------------------------------------------------
+// Purpose: This is also an IServerSystem
+//-----------------------------------------------------------------------------
+abstract_class ILagCompensationManager
+{
+public:
+	// Called during player movement to set up/restore after lag compensation
+	virtual void	StartLagCompensation(
+		CBasePlayer *player,
+		LagCompensationType lagCompensationType,
+		const Vector& weaponPos = vec3_origin,
+		const QAngle &weaponAngles = vec3_angle,
+		float weaponRange = 0.0f ) = 0;
+	virtual void	FinishLagCompensation( CBasePlayer *player ) = 0;
+
+	// Mappers can flag certain additional entities to lag compensate, this handles them
+	virtual void	AddAdditionalEntity( CBaseEntity *pEntity ) = 0;
+	virtual void	RemoveAdditionalEntity( CBaseEntity *pEntity ) = 0;
+};
+
+extern ILagCompensationManager *lagcompensation;
+
+#endif // ILAGCOMPENSATIONMANAGER_H

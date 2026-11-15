@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:46fa8f980539adb84609fee9cf0cb077c5ed28dc9d1248563b6ddd1731792c06
-size 761
+#ifndef _INCLUDED_HOLDOUT_END_SCORE_PANEL_H
+#define _INCLUDED_HOLDOUT_END_SCORE_PANEL_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui/VGUI.h>
+#include <vgui_controls/EditablePanel.h>
+
+namespace vgui
+{
+	class Label;
+	class ImagePanel;
+}
+
+// this panel shows your current score and wave on the HUD
+
+class Holdout_End_Score_Panel : public vgui::EditablePanel
+{
+	DECLARE_CLASS_SIMPLE( Holdout_End_Score_Panel, vgui::EditablePanel );
+public:
+	Holdout_End_Score_Panel( vgui::Panel *parent, const char *name );
+	virtual ~Holdout_End_Score_Panel();
+
+	virtual void PerformLayout();
+	virtual void ApplySchemeSettings( vgui::IScheme *pScheme );
+
+protected:
+	// TODO: Overall scores
+};
+
+
+#endif // _INCLUDED_HOLDOUT_END_SCORE_PANEL_H

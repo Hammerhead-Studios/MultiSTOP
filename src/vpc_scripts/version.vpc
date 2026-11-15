@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d5b7faa6de9c6f044eda4b9c993192121e5cba553a14f9fda37acb32d0c6c1ca
-size 607
+//-----------------------------------------------------------------------------
+//	VERSION.VPC
+//
+//	Version tag for VPC scripts. All base scripts include this file first.
+//-----------------------------------------------------------------------------
+
+// This version tag serves as a critical safeguard to ensure all vcproj's can
+// be forced to rebuild. Changing the version or anything about this
+// file will cause the CRC checking to fail, and thus cause a rebuild.
+
+// DO NOT CHANGE THIS UNLESS YOU !!!REALLY!!! NEED TO FORCE EVERY SINGLE VCPROJ TO REGENERATE
+$Macro "InternalVersion"	"104"

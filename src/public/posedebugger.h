@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7bb6cd7420333900b006f183af9529dced6bc3a31cd1d599170a134a8a7b50d0
-size 808
+//====== Copyright c 1996-2007, Valve Corporation, All rights reserved. =======//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//
+//=============================================================================//
+
+#ifndef POSEDEBUGGER_H
+#define POSEDEBUGGER_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+class IClientNetworkable;
+
+abstract_class IPoseDebugger
+{
+public:
+	virtual void StartBlending( IClientNetworkable *pEntity, const CStudioHdr *pStudioHdr ) = 0;
+	
+	virtual void AccumulatePose(
+		const CStudioHdr *pStudioHdr,
+		CIKContext *pIKContext,
+		Vector pos[], 
+		Quaternion q[], 
+		int sequence, 
+		float cycle,
+		const float poseParameter[],
+		int boneMask,
+		float flWeight,
+		float flTime
+		) = 0;
+};
+
+extern IPoseDebugger *g_pPoseDebugger;
+
+#endif // #ifndef POSEDEBUGGER_H

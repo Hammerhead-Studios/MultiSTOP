@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7459c2c9820a8d62ac3010885584a055d0c1b3c105f386cdc5003c1edb402b2d
-size 796
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+// $NoKeywords: $
+//=============================================================================
+#if !defined( VGUI_GAMEDLL_INT_H )
+#define VGUI_GAMEDLL_INT_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "interface.h"
+
+#include <vgui/VGUI.h>
+
+namespace vgui
+{
+	class Panel;
+}
+
+bool VGui_Startup( CreateInterfaceFn appSystemFactory );
+bool VGui_PostInit();
+void VGui_Shutdown( void );
+void VGui_CreateGlobalPanels( void );
+vgui::VPANEL VGui_GetGameDLLRootPanel( void );
+void VGUI_CreateGameDLLRootPanel( void );
+void VGUI_DestroyGameDLLRootPanel( void );
+//void VGui_PreRender();
+
+void ShowGameDLLPanel( vgui::Panel *panel );
+
+#endif // VGUI_GAMEDLL_INT_H

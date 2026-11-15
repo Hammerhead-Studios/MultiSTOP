@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ea4ddbc465d787a690124af82f7e88beb33c1d149fd82528769bd14ab3514d10
-size 509
+//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//
+// Purpose: names mouse button inputs
+// NOTE: Button codes also contain key codes, but we won't worry about that
+//
+// $NoKeywords: $
+//===========================================================================//
+
+#ifndef MOUSECODE_H
+#define MOUSECODE_H
+
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "inputsystem/ButtonCode.h"
+
+namespace vgui
+{
+typedef ButtonCode_t MouseCode;
+}
+
+#endif // MOUSECODE_H

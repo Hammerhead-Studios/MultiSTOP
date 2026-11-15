@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ebb8965307bba613356b4f5d68134760d5ecd7c0ce7cc6e55f0504c2641287d5
-size 686
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+//=============================================================================//
+
+#ifndef GROUNDLINK_H
+#define GROUNDLINK_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+//-----------------------------------------------------------------------------
+// Purpose: Used for tracking many to one ground entity chains ( many ents can share a single ground entity )
+//-----------------------------------------------------------------------------
+struct groundlink_t
+{
+	EHANDLE					entity;
+	groundlink_t			*nextLink;
+	groundlink_t			*prevLink;
+};
+
+#endif // GROUNDLINK_H

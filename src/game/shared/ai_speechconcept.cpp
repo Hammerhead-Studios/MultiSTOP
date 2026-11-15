@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:364bf64a3a45877b4d818d17ed637741fcac4dfbfe315d483b4a068d045eeec0
-size 585
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose:
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#include "cbase.h"
+
+#include "ai_speechconcept.h"
+
+#ifdef GAME_DLL
+#include "game.h"
+#include "ai_basenpc.h"
+#include "sceneentity.h"
+#endif
+
+#include "engine/ienginesound.h"
+#include "keyvalues.h"
+#include "ai_criteria.h"
+#include "isaverestore.h"
+
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include <tier0/memdbgon.h>
+
+
+// empty

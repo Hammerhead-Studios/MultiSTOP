@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b674cd2a9541afa241607119e8776d35419485b4527262fa200284c29de2582c
-size 400
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+#if !defined( SAVEGAME_VERSION_H )
+#define SAVEGAME_VERSION_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#define	SAVEGAME_VERSION	0x0073		// Version 0.73
+
+#endif // SAVEGAME_VERSION_H

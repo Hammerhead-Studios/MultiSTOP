@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bb86d048d9248f913b73fef54f88777b083abbe587fe129aff75c55a3607fb64
-size 965
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: Shared data definition file for touch links
+//
+//=============================================================================//
+
+#ifndef TOUCHLINK_H
+#define TOUCHLINK_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+
+//-----------------------------------------------------------------------------
+// Purpose: for resolving touch/untouch pairs
+//-----------------------------------------------------------------------------
+enum touchlink_flags_t
+{
+	FTOUCHLINK_START_TOUCH = 0x00000001,
+};
+
+struct touchlink_t
+{
+#if defined( CLIENT_DLL )
+	C_BaseEntity		*entityTouched;
+#else
+	EHANDLE				entityTouched;
+#endif
+	int					touchStamp;
+	touchlink_t			*nextLink;
+	touchlink_t			*prevLink;
+	int					flags;
+};
+
+// means this touchlink is managed external to the main physics system
+#define TOUCHSTAMP_EVENT_DRIVEN		-1
+
+
+#endif // TOUCHLINK_H

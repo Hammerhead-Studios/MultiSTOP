@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f233c1650284670417b7956cb9573609c016a6bd64d863db187f74137c7aa1e1
-size 1356
+//========= Copyright Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef CREATEMULTIPLAYERGAMEDIALOG_H
+#define CREATEMULTIPLAYERGAMEDIALOG_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include <vgui_controls/PropertyDialog.h>
+
+class CCreateMultiplayerGameServerPage;
+class CCreateMultiplayerGameGameplayPage;
+class CCreateMultiplayerGameBotPage;
+
+//-----------------------------------------------------------------------------
+// Purpose: dialog for launching a listenserver
+//-----------------------------------------------------------------------------
+class CCreateMultiplayerGameDialog : public vgui::PropertyDialog
+{
+	DECLARE_CLASS_SIMPLE( CCreateMultiplayerGameDialog,  vgui::PropertyDialog );
+
+public:
+	CCreateMultiplayerGameDialog(vgui::Panel *parent);
+	~CCreateMultiplayerGameDialog();
+
+protected:
+	virtual bool OnOK(bool applyOnly);
+	virtual void OnKeyCodePressed( vgui::KeyCode code );
+
+private:
+	CCreateMultiplayerGameServerPage *m_pServerPage;
+	CCreateMultiplayerGameGameplayPage *m_pGameplayPage;
+	CCreateMultiplayerGameBotPage *m_pBotPage;
+
+	bool m_bBotsEnabled;
+
+	// for loading/saving game config
+	KeyValues *m_pSavedData;
+};
+
+
+#endif // CREATEMULTIPLAYERGAMEDIALOG_H

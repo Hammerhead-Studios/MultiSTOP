@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5f0245ecd74d11a42839abe5f353ede7bdd38c4ba9bf7051b78ebb3ac37e3b35
-size 841
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================//
+
+#ifndef ENERGYWAVE_H
+#define ENERGYWAVE_H
+#ifdef _WIN32
+#pragma once
+#endif
+
+#include "basecombatweapon.h"
+#include "energy_wave.h"
+
+
+//-----------------------------------------------------------------------------
+// Purpose: Shield
+//-----------------------------------------------------------------------------
+class CEnergyWave : public CBaseEntity
+{
+	DECLARE_DATADESC();
+public:
+	DECLARE_CLASS( CEnergyWave, CBaseEntity );
+	DECLARE_SERVERCLASS();
+
+public:
+	void Spawn( void );
+	void Precache( void );
+
+public:
+	static CEnergyWave* Create( CBaseEntity *pentOwner );
+};
+
+
+#endif //ENERGYWAVE_H

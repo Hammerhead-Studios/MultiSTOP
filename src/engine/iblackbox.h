@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:13111bf6947636608e49cbf59d327c651f54f2e927ce3dbb363babb037679d0e
-size 475
+#ifndef IBLACKBOX_H
+#define IBLACKBOX_H
+
+#define BLACKBOX_INTERFACE_VERSION "BlackBoxVersion001"
+
+class IBlackBox 
+{
+public:
+	virtual void Record(int type, const char *fmt) = 0;
+	virtual void SetLimit(int type, unsigned int count) = 0;
+	virtual const char *Get(int type, unsigned int index) = 0;
+	virtual int Count(int type) = 0;
+	virtual void Flush(int type) = 0;
+
+	virtual const char *GetTypeName(int type) = 0;
+	virtual int GetTypeCount() = 0;
+};
+
+#endif

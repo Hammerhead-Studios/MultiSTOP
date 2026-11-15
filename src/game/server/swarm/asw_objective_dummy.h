@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2cc40f20c2f3edbe6e552eb63df2c8301a9e0b7475338d3c70f495d5a0832389
-size 458
+#ifndef _INCLUDED_ASW_OBJECTIVE_DUMMY_H
+#define _INCLUDED_ASW_OBJECTIVE_DUMMY_H
+#pragma once
+
+#include "asw_objective.h"
+
+// A dummy objective used to show some text on the objectives screen
+
+class CASW_Objective_Dummy : public CASW_Objective
+{
+public:
+	DECLARE_CLASS( CASW_Objective_Dummy, CASW_Objective );
+	DECLARE_DATADESC();
+
+	CASW_Objective_Dummy();
+	virtual ~CASW_Objective_Dummy();	 
+};
+
+#endif /* _INCLUDED_ASW_OBJECTIVE_DUMMY_H */

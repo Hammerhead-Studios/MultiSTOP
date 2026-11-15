@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:105d6289d235a5a9dc726c67a064320a95574ef71d30eac2d99d19657fded9f6
-size 624
+//========= Copyright © 1996-2002, Valve LLC, All rights reserved. ============
+//
+// Purpose: 
+//
+// $NoKeywords: $
+//=============================================================================
+
+#ifndef LIGHTMAPPEDPAINT_DX9_HELPER_H
+#define LIGHTMAPPEDPAINT_DX9_HELPER_H
+
+#include "lightmappedgeneric_dx9_helper.h"
+
+void DrawLightmappedPaint_DX9( CBaseVSShader *pShader, IMaterialVar** params, 
+								 IShaderDynamicAPI *pShaderAPI, IShaderShadow* pShaderShadow, 
+								 LightmappedGeneric_DX9_Vars_t &info, CBasePerMaterialContextData **pContextDataPtr );
+
+
+#endif // LIGHTMAPPEDPAINT_DX9_HELPER_H
