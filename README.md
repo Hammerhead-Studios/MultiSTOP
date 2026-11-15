@@ -5,3 +5,6 @@
 It is based on arosla's mod, "Aperture Camera" (https://github.com/arosla-dev/aperture-camera)
 
 We will attempt to be an alternative to "F-Stop Deathmatch", another multiplayer fix for F-Stop.
+
+MultiSTOP Launcher: https://github.com/Hammerhead-Studios/MultiSTOP-Launcher
+MuktiSTOP Multiplayer custom Maps: https://github.com/Hammerhead-Studios/MultiSTOP-MP-Maps
