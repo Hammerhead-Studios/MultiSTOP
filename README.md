@@ -2,7 +2,7 @@
 
 ## MultiSTOP is a Work-In-Progress modification of arosla's mod "[Aperture Camera](https://github.com/arosla-dev/aperture-camera)" that aims to allow users to play F-Stop (Aperture) with multiple players.
 
-We will attempt to be an alternative to "F-Stop Deathmatch", another multiplayer fix for F-Stop.
+For additional links related to MultiSTOP, see below:
 
 MultiSTOP Launcher: https://github.com/Hammerhead-Studios/MultiSTOP-Launcher
 
