@@ -49,6 +49,3 @@ config.cfg
 
 # shader files
 *.tmp
-
-# temp
-game/valve/scripts.7z
