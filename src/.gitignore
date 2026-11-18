@@ -17,6 +17,7 @@ vc110.pdb
 vc120.pdb
 vc130.pdb
 vc140.pdb
+.vs/
 ipch
 *.sdf
 *.opensdf
@@ -48,3 +49,6 @@ config.cfg
 
 # shader files
 *.tmp
+
+# temp
+game/valve/scripts.7z
