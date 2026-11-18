@@ -5,4 +5,4 @@
 # EXTRAS
 ## MultiSTOP Launcher: https://github.com/Hammerhead-Studios/MultiSTOP-Launcher
 
-## MuktiSTOP Multiplayer Mps: https://github.com/Hammerhead-Studios/MultiSTOP-MP-Maps
+## MuktiSTOP Multiplayer Maps: https://github.com/Hammerhead-Studios/MultiSTOP-MP-Maps
