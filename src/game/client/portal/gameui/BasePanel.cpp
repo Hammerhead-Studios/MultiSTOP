@@ -424,6 +424,10 @@ public:
 				{
 					shouldBeVisible = false;
 				}
+				else if (isInGame && kv->GetInt("OnlyInMenu") )
+				{
+					shouldBeVisible = false;
+				}
 				else if (isMultiplayer && kv->GetInt("notmulti"))
 				{
 					shouldBeVisible = false;
