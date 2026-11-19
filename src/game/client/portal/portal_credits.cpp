@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright Â© 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -9,6 +9,7 @@
 #include "hud_numericdisplay.h"
 #include <vgui_controls/Panel.h>
 #include "hud.h"
+#include "hud_element_helper.h"
 #include "hud_suitpower.h"
 #include "hud_macros.h"
 #include "iclientmode.h"
@@ -72,6 +73,9 @@ public:
 	virtual void Init( void );
 	virtual void LevelShutdown( void );
 
+	// Starts the existing Portal outro-name credits from the main menu.
+	bool StartMenuCredits( void );
+
 	int GetStringPixelWidth ( wchar_t *pString, vgui::HFont hFont );
 	int GetPixelWidth( char *pString, vgui::HFont hFont );
 
@@ -132,6 +136,7 @@ private:
 	float m_flFadeTime;
 	float m_flCursorBlinkTime;
 	bool  m_bLastOneInPlace;
+	bool  m_bMenuCredits;
 	int   m_Alpha;
 	char  m_szAsciiArtFont[256];
 
@@ -237,11 +242,28 @@ DECLARE_HUDELEMENT( CHudPortalCredits );
 DECLARE_HUD_MESSAGE( CHudPortalCredits, CreditsPortalMsg );
 DECLARE_HUD_MESSAGE( CHudPortalCredits, LogoTimeMsg );
 
+// Main-menu bridge: GameUI invokes this client command for the Credits button.
+static void CC_MultiSTOP_ShowCredits( const CCommand & )
+{
+	CHudPortalCredits *pCredits = GET_HUDELEMENT( CHudPortalCredits );
+	if ( !pCredits || !pCredits->StartMenuCredits() )
+	{
+		Warning( "MultiSTOP: Credits could not be started.\n" );
+	}
+}
+
+static ConCommand multistop_showcredits(
+	"multistop_showcredits",
+	CC_MultiSTOP_ShowCredits,
+	"Starts the Portal credits from the MultiSTOP main menu."
+);
+
 //-----------------------------------------------------------------------------
 // Purpose: Constructor
 //-----------------------------------------------------------------------------
 CHudPortalCredits::CHudPortalCredits( const char *pElementName ) : CHudElement( pElementName ), BaseClass( NULL, "HudCredits" )
 {
+	m_bMenuCredits = false;
 	vgui::Panel *pParent = GetClientMode()->GetViewport();
 	SetParent( pParent );
 }
@@ -257,6 +279,7 @@ void CHudPortalCredits::Clear( void )
 	m_CreditsList.RemoveAll();
 	m_LyricsList.RemoveAll();
 	m_bLastOneInPlace = false;
+	m_bMenuCredits = false;
 	m_Alpha = m_TextColor[3];
 	m_iLogoState = LOGO_FADEOFF;
 }
@@ -601,7 +624,19 @@ void CHudPortalCredits::DrawOutroCreditsName( void )
 						if ( m_Alpha <= 0 )
 						{
 							pCredit->bActive = false;
-							engine->ClientCmd( "creditsdone" );
+
+							if ( m_bMenuCredits )
+							{
+								// This run was started from the title screen, so restore the menu.
+								m_bMenuCredits = false;
+								SetActive( false );
+								engine->ClientCmd_Unrestricted( "gameui_activate" );
+							}
+							else
+							{
+								// Preserve the original map/entity-driven credits behaviour.
+								engine->ClientCmd( "creditsdone" );
+							}
 						}
 					}
 				}
@@ -1402,6 +1437,27 @@ void CHudPortalCredits::PrepareOutroCredits( void )
 	SetActive( true );
 
 	g_iPortalCreditsPixelHeight = iHeight;
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: starts the existing Portal name-roll credits from the title screen
+//          without requiring an env_portal_credits entity in a running map.
+//-----------------------------------------------------------------------------
+bool CHudPortalCredits::StartMenuCredits( void )
+{
+	m_iCreditsType = CREDITS_OUTRO;
+	PrepareOutroCredits();
+
+	// Do not hide the main menu if the credits resource has no usable names.
+	if ( !IsActive() )
+	{
+		Warning( "MultiSTOP: Could not start credits. Check scripts/credits.txt and OutroCreditsNames.\n" );
+		return false;
+	}
+
+	m_bMenuCredits = true;
+	engine->ClientCmd_Unrestricted( "gameui_hide" );
+	return true;
 }
 
 void CHudPortalCredits::PreparePortalOutroCredits( void )
