@@ -10,3 +10,4 @@ game/valve/cfg/video.txt
 game/valve/demoheader.tmp
 game/valve/maps/graphs/*.ain
 game/valve/serverconfig.vdf
+game/valve/demoheader.tmp
