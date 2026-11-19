@@ -424,6 +424,10 @@ public:
 				{
 					shouldBeVisible = false;
 				}
+				else if (isInGame && kv->GetInt("OnlyInMenu") )
+				{
+					shouldBeVisible = false;
+				}
 				else if (isMultiplayer && kv->GetInt("notmulti"))
 				{
 					shouldBeVisible = false;
@@ -727,6 +731,7 @@ static const char *g_rgValidCommands[] =
 	"OpenFriendsDialog",
 	"OpenLoadDemoDialog",
 	"OpenCreateMultiplayerGameDialog",
+	"OpenCredits",
 	"OpenChangeGameDialog",
 	"OpenLoadCommentaryDialog",
 	"MainMenu",
@@ -1682,6 +1687,11 @@ void CBasePanel::RunMenuCommand(const char *command)
 	else if ( !Q_stricmp( command, "OpenCreateMultiplayerGameDialog" ) )
 	{
 		OnOpenCreateMultiplayerGameDialog();
+	}
+	else if ( !Q_stricmp( command, "OpenCredits" ) )
+	{
+		// Start the Portal credits HUD from the main menu.
+		engine->ClientCmd_Unrestricted( "multistop_showcredits" );
 	}
 	else if ( !Q_stricmp( command, "OpenChangeGameDialog" ) )
 	{
