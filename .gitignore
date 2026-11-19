@@ -8,5 +8,5 @@ game/valve/cfg/server_blacklist.txt
 game/valve/cfg/settings.scr
 game/valve/cfg/video.txt
 game/valve/demoheader.tmp
-game/valve/maps/graphs/my_name_is_soli.ain
+game/valve/maps/graphs/*.ain
 game/valve/serverconfig.vdf
