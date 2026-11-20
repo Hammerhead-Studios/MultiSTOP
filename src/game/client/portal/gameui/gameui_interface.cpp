@@ -1,4 +1,4 @@
-//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//===== Copyright Â© 1996-2005, Valve Corporation, All rights reserved. ======//
 //
 // Purpose: Implements all the functions exported by the GameUI dll
 //
@@ -171,7 +171,14 @@ void CGameUI::Initialize( CreateInterfaceFn factory )
 #endif
 
 	CGameUIConVarRef var( "gameui_xbox" );
-	m_bIsConsoleUI = var.IsValid() && var.GetBool();
+	// This source branch predates the modern Steam Deck -gamepadui support.
+	// Map the requested switch onto the legacy Portal console-style GameUI.
+	bool bForceGamepadUI = ( CommandLine()->FindParm( "-gamepadui" ) != 0 );
+	m_bIsConsoleUI = bForceGamepadUI || ( var.IsValid() && var.GetBool() );
+	if ( bForceGamepadUI )
+	{
+		Msg( "MultiSTOP: -gamepadui enabled the legacy Portal controller menu.\n" );
+	}
 
 	vgui::VGui_InitInterfacesList( "GameUI", &factory, 1 );
 	vgui::VGui_InitMatSysInterfacesList( "GameUI", &factory, 1 );
