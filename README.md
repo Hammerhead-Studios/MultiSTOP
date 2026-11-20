@@ -18,5 +18,5 @@
 | **britt3441** | Developer, Modeler, Playtester, Artist |
 | **fleckonalt** | Developer, Scripter, Mapper, Playtester |
 | **peanut_zg1** | Developer, Scripter, Playtester |
-| **sub_4bece3** | Developer, Scripter, Playtester |
+| **space** | Developer, Scripter, Playtester |
 | **crystalteal2008** | Music Composer / Producer |
