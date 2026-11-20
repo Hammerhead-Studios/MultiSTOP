@@ -40,6 +40,9 @@ using namespace vgui;
 #include "vgui_controls/AnimationController.h"
 #include "vgui_controls/ImagePanel.h"
 #include "vgui_controls/Label.h"
+#include "vgui_controls/Frame.h"
+#include "vgui_controls/Button.h"
+#include "vgui_controls/TextEntry.h"
 #include "vgui_controls/Menu.h"
 #include "vgui_controls/MenuItem.h"
 #include "vgui_controls/PHandle.h"
@@ -105,6 +108,118 @@ extern ConVar x360_audio_english;
 extern bool bSteamCommunityFriendsVersion;
 
 static vgui::DHANDLE<vgui::PropertyDialog> g_hOptionsDialog;
+
+
+// -----------------------------------------------------------------------------
+// MultiSTOP contributor credits dialog.
+// This is intentionally separate from CHudPortalCredits: it can be opened from
+// the title menu and does not depend on a running map or an env_portal_credits
+// entity.
+// -----------------------------------------------------------------------------
+class CMultiSTOPCreditsDialog : public vgui::Frame
+{
+    DECLARE_CLASS_SIMPLE( CMultiSTOPCreditsDialog, vgui::Frame );
+
+public:
+    CMultiSTOPCreditsDialog( vgui::Panel *parent ) : BaseClass( parent, "MultiSTOPCreditsDialog" )
+    {
+        SetTitle( "MultiSTOP Credits", true );
+        SetProportional( true );
+        SetSize( 780, 590 );
+        SetSizeable( false );
+        SetMoveable( true );
+        SetDeleteSelfOnClose( false );
+        SetCloseButtonVisible( true );
+
+        m_pCreditsText = new vgui::TextEntry( this, "CreditsText" );
+        m_pCreditsText->SetMultiline( true );
+        m_pCreditsText->SetEditable( false );
+        m_pCreditsText->SetVerticalScrollbar( true );
+        m_pCreditsText->SetText(
+            "MULTISTOP TEAM\n"
+            "Thank you to everyone helping make MultiSTOP possible.\n\n"
+            "Cyvix Z Voxless / sonic Fan Tech\n"
+            "Project Owner, Developer, Scripter, Mapper, Playtester, Music Composer / Producer\n\n"
+            "may_4096\n"
+            "Project Manager, Developer, Texture Artist, Playtester\n\n"
+            "_quaver._\n"
+            "Developer, Scripter, Mapper, Playtester\n\n"
+            "superkid0827\n"
+            "Mapper, Playtester\n\n"
+            "britt3441\n"
+            "Developer, Modeler, Playtester, Artist\n\n"
+            "fleckonalt\n"
+            "Developer, Scripter, Mapper, Playtester\n\n"
+            "peanut_zg1\n"
+            "Developer, Scripter, Playtester\n\n"
+            "sub_4bece3\n"
+            "Developer, Scripter, Playtester\n\n"
+            "crystalteal2008\n"
+            "Music Composer / Producer\n\n"
+            "segaguy1991\n"
+            "NO ROLE YET - NEW ON TEAM\n"
+        );
+
+        m_pCloseButton = new vgui::Button( this, "CreditsCloseButton", "Close" );
+        m_pCloseButton->SetCommand( "Close" );
+        m_pCloseButton->AddActionSignalTarget( this );
+    }
+
+    virtual void PerformLayout()
+    {
+        BaseClass::PerformLayout();
+
+        int wide, tall;
+        GetSize( wide, tall );
+        m_pCreditsText->SetBounds( 14, 42, wide - 28, tall - 92 );
+        m_pCloseButton->SetBounds( ( wide - 110 ) / 2, tall - 42, 110, 28 );
+    }
+
+    virtual void OnCommand( const char *command )
+    {
+        if ( !Q_stricmp( command, "Close" ) )
+        {
+            Close();
+            return;
+        }
+
+        BaseClass::OnCommand( command );
+    }
+
+    virtual void OnKeyCodePressed( vgui::KeyCode code )
+    {
+        if ( code == KEY_ESCAPE || code == KEY_XBUTTON_B )
+        {
+            Close();
+            return;
+        }
+
+        BaseClass::OnKeyCodePressed( code );
+    }
+
+private:
+    vgui::TextEntry *m_pCreditsText;
+    vgui::Button *m_pCloseButton;
+};
+
+static vgui::DHANDLE<CMultiSTOPCreditsDialog> g_hMultiSTOPCreditsDialog;
+
+static void OpenMultiSTOPCreditsDialog( vgui::Panel *parent )
+{
+    if ( !g_hMultiSTOPCreditsDialog.Get() )
+    {
+        g_hMultiSTOPCreditsDialog = new CMultiSTOPCreditsDialog( parent );
+    }
+
+    int screenWide, screenTall;
+    int dialogWide, dialogTall;
+    vgui::surface()->GetScreenSize( screenWide, screenTall );
+    g_hMultiSTOPCreditsDialog->GetSize( dialogWide, dialogTall );
+    g_hMultiSTOPCreditsDialog->SetPos(
+        ( screenWide - dialogWide ) / 2,
+        ( screenTall - dialogTall ) / 2 );
+    g_hMultiSTOPCreditsDialog->Activate();
+}
 
 //-----------------------------------------------------------------------------
 // Purpose: singleton accessor
@@ -593,7 +708,9 @@ CBasePanel::CBasePanel() : Panel(NULL, "BaseGameUIPanel")
 		m_pConsoleControlSettings = new KeyValues( "XboxDialogs.res" );
 		if ( !m_pConsoleControlSettings->LoadFromFile( g_pFullFileSystem, "resource/UI/XboxDialogs.res", "GAME" ) )
 		{
-			Error( "Failed to load UI control settings!\n" );
+			// This file may be absent in a PC-only mod build. Keep the menu alive
+			// and let controls use their default VGUI settings.
+			Warning( "MultiSTOP: resource/UI/XboxDialogs.res not found; using default dialog settings.\n" );
 		}
 		else
 		{
@@ -1690,8 +1807,7 @@ void CBasePanel::RunMenuCommand(const char *command)
 	}
 	else if ( !Q_stricmp( command, "OpenCredits" ) )
 	{
-		// Start the Portal credits HUD from the main menu.
-		engine->ClientCmd_Unrestricted( "multistop_showcredits" );
+		OpenMultiSTOPCreditsDialog( this );
 	}
 	else if ( !Q_stricmp( command, "OpenChangeGameDialog" ) )
 	{
