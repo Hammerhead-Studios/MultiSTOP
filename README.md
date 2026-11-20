@@ -6,3 +6,17 @@
 ## MultiSTOP Launcher: https://github.com/Hammerhead-Studios/MultiSTOP-Launcher
 
 ## MuktiSTOP Multiplayer Maps: https://github.com/Hammerhead-Studios/MultiSTOP-MP-Maps
+
+# MultiSTOP Credits
+-----------------
+# Names:                             Role:
+------
+Cyvix Z Voxless / sonic Fan Tech    Project Owner, Developer, Scripter, Mappers, Playtester, Music composer / producer.
+may_4096                            Project Manger, Developer, Texture Artists, Playtester
+_quaver._                           Developer, Scripter, mappers, Playtester
+superkid0827                        mappers, Playtester
+britt3441                           Developer, Modelers, Playtester, Artist
+fleckonalt                          Developer, Scripter, Mappers, Playtester
+peanut_zg1                          Developer, Scripter, Playtester
+sub_4bece3                          Developer, Scripter, Playtester
+crystalteal2008                     Music composer / producer
