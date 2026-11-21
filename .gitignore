@@ -12,3 +12,4 @@ game/valve/maps/graphs/*.ain
 game/valve/serverconfig.vdf
 game/valve/demoheader.tmp
 game/valve/modelsounds.cache
+game/valve/cfg/config.cfg
