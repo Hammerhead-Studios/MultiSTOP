@@ -152,7 +152,7 @@ public:
             "Developer, Scripter, Mapper, Playtester\n\n"
             "peanut_zg1\n"
             "Developer, Scripter, Playtester\n\n"
-            "sub_4bece3\n"
+            "space\n"
             "Developer, Scripter, Playtester\n\n"
             "crystalteal2008\n"
             "Music Composer / Producer\n\n"
@@ -1599,10 +1599,18 @@ void CBasePanel::ApplySchemeSettings(IScheme *pScheme)
 	// work out which background image to use
 	if ( IsPC() )
 	{
-		// pc uses blurry backgrounds based on the background level
-		char background[MAX_PATH];
-		engine->GetMainMenuBackgroundName( background, sizeof(background) );
-		Q_snprintf( filename, sizeof( filename ), "console/%s%s", background, ( bIsWidescreen ? "_widescreen" : "" ) );
+		// MultiSTOP's -gamepadui test uses a dedicated background texture.
+		if ( CommandLine()->FindParm( "-gamepadui" ) )
+		{
+			Q_snprintf( filename, sizeof( filename ), "console/multistop_background%s", ( bIsWidescreen ? "_widescreen" : "" ) );
+		}
+		else
+		{
+			// pc uses blurry backgrounds based on the background level
+			char background[MAX_PATH];
+			engine->GetMainMenuBackgroundName( background, sizeof(background) );
+			Q_snprintf( filename, sizeof( filename ), "console/%s%s", background, ( bIsWidescreen ? "_widescreen" : "" ) );
+		}
 	}
 	else
 	{
@@ -1743,25 +1751,18 @@ void CBasePanel::RunMenuCommand(const char *command)
 	}
 	else if ( !Q_stricmp( command, "OpenLoadGameDialog" ) )
 	{
-		if ( !GameUI().IsConsoleUI() )
-		{
+		// The -gamepadui compatibility mode uses the PC dialogs on this branch.
+		if ( !GameUI().IsConsoleUI() || CommandLine()->FindParm( "-gamepadui" ) )
 			OnOpenLoadGameDialog();
-		}
 		else
-		{
 			OnOpenLoadGameDialog_Xbox();
-		}
 	}
 	else if ( !Q_stricmp( command, "OpenSaveGameDialog" ) )
 	{
-		if ( !GameUI().IsConsoleUI() )
-		{
+		if ( !GameUI().IsConsoleUI() || CommandLine()->FindParm( "-gamepadui" ) )
 			OnOpenSaveGameDialog();
-		}
 		else
-		{
 			OnOpenSaveGameDialog_Xbox();
-		}
 	}
 	else if ( !Q_stricmp( command, "OpenBonusMapsDialog" ) )
 	{
@@ -1769,21 +1770,18 @@ void CBasePanel::RunMenuCommand(const char *command)
 	}
 	else if ( !Q_stricmp( command, "OpenOptionsDialog" ) )
 	{
-		if ( !GameUI().IsConsoleUI() )
-		{
+		// Avoid the Xbox-specific settings property sheet in the experimental PC gamepad mode.
+		if ( !GameUI().IsConsoleUI() || CommandLine()->FindParm( "-gamepadui" ) )
 			OnOpenOptionsDialog();
-		}
 		else
-		{
 			OnOpenOptionsDialog_Xbox();
-		}
 	}
 	else if ( !Q_stricmp( command, "OpenControllerDialog" ) )
 	{
-		if ( GameUI().IsConsoleUI() )
-		{
+		if ( GameUI().IsConsoleUI() && !CommandLine()->FindParm( "-gamepadui" ) )
 			OnOpenControllerDialog();
-		}
+		else if ( CommandLine()->FindParm( "-gamepadui" ) )
+			OnOpenOptionsDialog();
 	}
 	else if ( !Q_stricmp( command, "OpenBenchmarkDialog" ) )
 	{

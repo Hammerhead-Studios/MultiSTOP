@@ -1,6 +1,7 @@
 "GameInfo"
 {
 	"game"		"MultiSTOP"
+	"gamelogo" "1"
 	"title"		"MultiSTOP"
 	"type"		"singleplayer_only"
 	GameData	"portalretract_part2.fgd"

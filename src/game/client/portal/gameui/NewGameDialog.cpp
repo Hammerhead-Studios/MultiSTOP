@@ -294,6 +294,8 @@ CNewGameDialog::CNewGameDialog(vgui::Panel *parent, bool bCommentaryMode) : Base
 	m_ActiveTitleIdx = 0;
 
 	m_bCommentaryMode = bCommentaryMode;
+	m_bMultiSTOPMapListMode = false;
+	m_pMultiSTOPMapList = NULL;
 	m_bMapStarting = false;
 	m_bScrolling = false;
 	m_ScrollCt = 0;
@@ -347,6 +349,91 @@ CNewGameDialog::CNewGameDialog(vgui::Panel *parent, bool bCommentaryMode) : Base
 	else
 	{
 		m_pFooter = NULL;
+	}
+
+	// MultiSTOP experimental -gamepadui map picker: enumerate actual BSP files, not Portal chapter cfgs.
+	if ( CommandLine()->FindParm( "-gamepadui" ) )
+	{
+		m_bMultiSTOPMapListMode = true;
+		SetSize( 640, 250 );
+		SetCloseButtonVisible( true );
+		SetMoveable( false );
+		SetSizeable( false );
+		SetTitle( "Select a Map", true );
+
+		Label *pMapLabel = new Label( this, "MultiSTOPMapLabel", "Select a map to launch:" );
+		pMapLabel->SetBounds( 28, 58, 580, 24 );
+		m_pMultiSTOPMapList = new ComboBox( this, "MultiSTOPMapList", 12, false );
+		m_pMultiSTOPMapList->SetBounds( 28, 88, 584, 30 );
+
+		struct MultiSTOPMapEntry_t { char map[ MAX_PATH ]; };
+		CUtlVector< MultiSTOPMapEntry_t > maps;
+		FileFindHandle_t findHandle = FILESYSTEM_INVALID_FIND_HANDLE;
+		const char *pFile = g_pFullFileSystem->FindFirstEx( "maps/*.bsp", "MOD", &findHandle );
+		while ( pFile )
+		{
+			MultiSTOPMapEntry_t entry;
+			Q_strncpy( entry.map, pFile, sizeof( entry.map ) );
+			char *pExt = V_stristr( entry.map, ".bsp" );
+			if ( pExt ) *pExt = 0;
+			if ( entry.map[0] && !V_stristr( entry.map, "\\" ) )
+				maps.AddToTail( entry );
+			pFile = g_pFullFileSystem->FindNext( findHandle );
+		}
+		g_pFullFileSystem->FindClose( findHandle );
+
+		// Requested maps first; all other BSPs follow alphabetically.
+		for ( int i = 0; i < maps.Count(); ++i )
+		{
+			for ( int j = i + 1; j < maps.Count(); ++j )
+			{
+				int ri = 3, rj = 3;
+				if ( !Q_stricmp( maps[i].map, "lab_intro" ) ) ri = 0;
+				else if ( !Q_stricmp( maps[i].map, "aperturesandbox_tests" ) ) ri = 1;
+				else if ( !Q_stricmp( maps[i].map, "mp_test_multistop_as" ) ) ri = 2;
+				if ( !Q_stricmp( maps[j].map, "lab_intro" ) ) rj = 0;
+				else if ( !Q_stricmp( maps[j].map, "aperturesandbox_tests" ) ) rj = 1;
+				else if ( !Q_stricmp( maps[j].map, "mp_test_multistop_as" ) ) rj = 2;
+				if ( rj < ri || ( rj == ri && Q_stricmp( maps[j].map, maps[i].map ) < 0 ))
+				{
+					MultiSTOPMapEntry_t temp = maps[i];
+					maps[i] = maps[j];
+					maps[j] = temp;
+				}
+			}
+		}
+
+		int defaultItem = -1;
+		for ( int i = 0; i < maps.Count(); ++i )
+		{
+			char display[ MAX_PATH ];
+			Q_strncpy( display, maps[i].map, sizeof( display ) );
+			for ( char *p = display; *p; ++p ) if ( *p == '_' ) *p = ' ';
+			if ( !Q_stricmp( display, "lab intro" ) ) Q_strncpy( display, "Lab Intro", sizeof( display ) );
+			else if ( !Q_stricmp( display, "aperturesandbox tests" ) ) Q_strncpy( display, "Aperture Sandbox Tests", sizeof( display ) );
+			else if ( !Q_stricmp( display, "mp test multistop as" ) ) Q_strncpy( display, "MultiSTOP Multiplayer Test", sizeof( display ) );
+			// Other map names are displayed with underscores replaced by spaces.
+			KeyValues *pItemData = new KeyValues( "MultiSTOPMap", "map", maps[i].map );
+			int itemID = m_pMultiSTOPMapList->AddItem( display, pItemData );
+			if ( !Q_stricmp( maps[i].map, "lab_intro" ) ) defaultItem = itemID;
+		}
+
+		if ( maps.Count() > 0 )
+			m_pMultiSTOPMapList->ActivateItem( defaultItem >= 0 ? defaultItem : 0 );
+		else
+			m_pMultiSTOPMapList->AddItem( "No BSP maps found in maps/", new KeyValues( "MultiSTOPMap", "map", "" ) );
+
+		Button *pPlay = new Button( this, "MultiSTOPMapPlay", "Play" );
+		pPlay->SetBounds( 360, 168, 120, 32 );
+		pPlay->SetCommand( "Play" );
+		pPlay->AddActionSignalTarget( this );
+		if ( maps.Count() == 0 ) pPlay->SetEnabled( false );
+		Button *pCancel = new Button( this, "MultiSTOPMapCancel", "Cancel" );
+		pCancel->SetBounds( 492, 168, 120, 32 );
+		pCancel->SetCommand( "Close" );
+		pCancel->AddActionSignalTarget( this );
+		m_pMultiSTOPMapList->RequestFocus();
+		return;
 	}
 
 	// parse out the chapters off disk
@@ -1421,6 +1508,11 @@ void CNewGameDialog::StartGame( void )
 
 void CNewGameDialog::OnClose( void )
 {
+	if ( m_bMultiSTOPMapListMode )
+	{
+		BaseClass::OnClose();
+		return;
+	}
 	if ( GameUI().IsConsoleUI() && !m_bMapStarting )
 	{
 		BasePanel()->RunCloseAnimation( "CloseNewGameDialog_OpenMainMenu" );			
@@ -1436,6 +1528,18 @@ void CNewGameDialog::OnCommand( const char *command )
 {
 	if ( !stricmp( command, "Play" ) )
 	{
+		if ( m_bMultiSTOPMapListMode )
+		{
+			if ( !m_pMultiSTOPMapList ) return;
+			KeyValues *pData = m_pMultiSTOPMapList->GetActiveItemUserData();
+			const char *pMapName = pData ? pData->GetString( "map", "" ) : "";
+			if ( !pMapName[0] ) return;
+			char commandBuffer[ MAX_PATH + 32 ];
+			Q_snprintf( commandBuffer, sizeof( commandBuffer ), "disconnect\nmap %s\n", pMapName );
+			BasePanel()->FadeToBlackAndRunEngineCommand( commandBuffer );
+			OnClose();
+			return;
+		}
 		if ( m_bMapStarting )
 			return;
 
@@ -1606,6 +1710,12 @@ void CNewGameDialog::OnKeyCodePressed( KeyCode code )
 	case KEY_XSTICK1_LEFT:
 	case KEY_XSTICK2_LEFT:
 	case KEY_LEFT:
+		if ( m_bMultiSTOPMapListMode && m_pMultiSTOPMapList && m_pMultiSTOPMapList->GetItemCount() > 0 )
+		{
+			int active = m_pMultiSTOPMapList->GetActiveItem();
+			m_pMultiSTOPMapList->ActivateItem( active > 0 ? active - 1 : m_pMultiSTOPMapList->GetItemCount() - 1 );
+			return;
+		}
 		if ( !m_bScrolling )
 		{
 			for ( int i = 0; i < m_ChapterPanels.Count(); ++i )
@@ -1634,6 +1744,12 @@ void CNewGameDialog::OnKeyCodePressed( KeyCode code )
 	case KEY_XSTICK1_RIGHT:
 	case KEY_XSTICK2_RIGHT:
 	case KEY_RIGHT:
+		if ( m_bMultiSTOPMapListMode && m_pMultiSTOPMapList && m_pMultiSTOPMapList->GetItemCount() > 0 )
+		{
+			int active = m_pMultiSTOPMapList->GetActiveItem();
+			m_pMultiSTOPMapList->ActivateItem( active + 1 < m_pMultiSTOPMapList->GetItemCount() ? active + 1 : 0 );
+			return;
+		}
 		if ( !m_bScrolling )
 		{
 			for ( int i = 0; i < m_ChapterPanels.Count(); ++i )

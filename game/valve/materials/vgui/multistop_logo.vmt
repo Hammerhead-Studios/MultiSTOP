@@ -1,0 +1,9 @@
+"UnlitGeneric"
+{
+    "$basetexture" "vgui/multistop_logo"
+    "$translucent" "1"
+    "$vertexcolor" "1"
+    "$vertexalpha" "1"
+    "$no_mip" "1"
+    "$ignorez" "1"
+}

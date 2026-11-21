@@ -10,7 +10,7 @@
 				{
 					"gamelist"
 					{
-						"lastBarWidth"		"0"
+						"lastBarWidth"		"605"
 						"0_hidden"		"0"
 						"0_width"		"16"
 						"1_hidden"		"1"
@@ -37,7 +37,7 @@
 				{
 					"gamelist"
 					{
-						"lastBarWidth"		"0"
+						"lastBarWidth"		"605"
 						"0_hidden"		"0"
 						"0_width"		"16"
 						"1_hidden"		"1"
@@ -45,7 +45,7 @@
 						"2_hidden"		"0"
 						"2_width"		"16"
 						"3_hidden"		"0"
-						"3_width"		"50"
+						"3_width"		"313"
 						"4_hidden"		"1"
 						"4_width"		"64"
 						"5_hidden"		"0"
@@ -62,7 +62,7 @@
 				{
 					"gamelist"
 					{
-						"lastBarWidth"		"0"
+						"lastBarWidth"		"605"
 						"0_hidden"		"0"
 						"0_width"		"16"
 						"1_hidden"		"1"
@@ -70,7 +70,7 @@
 						"2_hidden"		"0"
 						"2_width"		"16"
 						"3_hidden"		"0"
-						"3_width"		"50"
+						"3_width"		"213"
 						"4_hidden"		"1"
 						"4_width"		"64"
 						"5_hidden"		"0"
@@ -82,14 +82,14 @@
 						"8_hidden"		"0"
 						"8_width"		"55"
 						"9_hidden"		"0"
-						"9_width"		"100"
+						"9_width"		"101"
 					}
 				}
 				"LanGames"
 				{
 					"gamelist"
 					{
-						"lastBarWidth"		"0"
+						"lastBarWidth"		"605"
 						"0_hidden"		"0"
 						"0_width"		"16"
 						"1_hidden"		"1"
@@ -97,7 +97,7 @@
 						"2_hidden"		"0"
 						"2_width"		"16"
 						"3_hidden"		"0"
-						"3_width"		"50"
+						"3_width"		"313"
 						"4_hidden"		"1"
 						"4_width"		"64"
 						"5_hidden"		"0"
@@ -149,8 +149,8 @@
 					}
 				}
 			}
-			"xpos"		"0"
-			"ypos"		"58"
+			"xpos"		"248"
+			"ypos"		"184"
 			"wide"		"640"
 			"tall"		"422"
 		}

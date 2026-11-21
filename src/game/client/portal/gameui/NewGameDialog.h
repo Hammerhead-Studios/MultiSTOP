@@ -12,6 +12,7 @@
 #endif
 
 #include "vgui_controls/Frame.h"
+#include "vgui_controls/ComboBox.h"
 #include "utlvector.h"
 
 class CGameChapterPanel;
@@ -117,6 +118,8 @@ private:
 	vgui::ImagePanel	*m_pBonusSelectionBorder;
 	CFooterPanel		*m_pFooter;
 	bool				m_bCommentaryMode;
+	bool				m_bMultiSTOPMapListMode;
+	vgui::ComboBox	*m_pMultiSTOPMapList;
 	vgui::Label			*m_pCommentaryLabel;
 
 	// Xbox

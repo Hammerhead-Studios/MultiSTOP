@@ -1,1 +1,1 @@
-valve.exe -console -steam -insecure -window -noborder
+valve.exe -gamepadui -console -steam -insecure -window -noborder
