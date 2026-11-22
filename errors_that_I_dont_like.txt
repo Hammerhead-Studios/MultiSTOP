@@ -4,8 +4,5 @@ l:\c++\github software sources\multistop\multistop\src\game\client\viewrender.cp
 l:\c++\github software sources\multistop\multistop\src\public\bone_accessor.cpp (26) : Assertion Failed: pBone->flags & m_ReadableBones
 l:\c++\github software sources\multistop\multistop\src\game\server\portal\prop_portal.cpp (1434) : Assertion Failed: !"Player stuck"
 l:\c++\github software sources\multistop\multistop\src\public\studio.cpp (923) : Assertion Failed: i >= 0 && i < GetNumSeq()
-l:\c++\github software sources\multistop\multistop\src\game\server\portal\prop_portal.cpp (1434) : Assertion Failed: !"Player stuck"
-l:\c++\github software sources\multistop\multistop\src\public\studio.cpp (923) : Assertion Failed: i >= 0 && i < GetNumSeq()
-l:\c++\github software sources\multistop\multistop\src\game\client\viewrender.cpp (3299) : Assertion Failed: pTargetEntity->ShouldDraw() && pTargetEntity->IsVisible()
 
 
