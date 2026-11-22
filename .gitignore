@@ -13,3 +13,7 @@ game/valve/serverconfig.vdf
 game/valve/demoheader.tmp
 game/valve/modelsounds.cache
 game/valve/cfg/config.cfg
+game/platform/config/serverbrowser.vdf
+game/valve/cfg/config.cfg
+game/valve/cfg/server_blacklist.txt
+game/platform/config/ingamedialogconfig.vdf
