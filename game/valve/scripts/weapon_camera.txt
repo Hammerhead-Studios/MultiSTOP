@@ -45,7 +45,7 @@ WeaponData
 		"crosshair"
 		{
 				"font"		"Crosshairs"
-				"character"	"."
+				"character"	"Q"
 		}
 		"autoaim"
 		{
@@ -56,4 +56,5 @@ WeaponData
 				"height"	"24"
 		}
 	}
+
 }
